@@ -3,7 +3,7 @@
   "info": {
     "title": "SCOPA API",
     "version": "1.0",
-    "description": "Захиалга үүсгэх"
+    "description": "SCOPA систем руу хандах API-н гарын авлага.\n"
   },
   "servers": [
     {
@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/EditOrder": {
+    "/Order/EditOrder": {
       "parameters": [],
       "post": {
         "summary": "Edit Order",
@@ -21,12 +21,46 @@
             "description": "OK"
           }
         },
-        "description": "Захиалга засварлах"
+        "description": "Захиалга засварлах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "orderId": "string",
+                    "orderDate": "string",
+                    "status": 0,
+                    "completeDate": "string",
+                    "merchantId": 0,
+                    "description": "string",
+                    "items": [
+                      {
+                        "orderId": 0,
+                        "ItemId": 0,
+                        "qty": 0,
+                        "price": 0,
+                        "complateQty": 0,
+                        "cancelQty": 0,
+                        "description": "string"
+                      }
+                    ],
+                    "ExpiryDate": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
       }
     },
-    "/CreateOrder": {
+    "/Order/CreateOrder": {
       "post": {
-        "summary": "Create New User",
+        "summary": "Create Order",
         "operationId": "post-user",
         "responses": {
           "200": {
@@ -96,34 +130,40 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "firstName": {
+                  "merchantId": {
+                    "type": "number",
+                    "description": "Захилга үүсгэж байгаа байгууллага мерчантын дэлгүүрийн дугаар"
+                  },
+                  "description": {
                     "type": "string"
                   },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "dateOfBirth": {
-                    "type": "string",
-                    "format": "date"
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderItems"
+                    }
                   }
                 },
                 "required": [
-                  "firstName",
-                  "lastName",
-                  "email",
-                  "dateOfBirth"
+                  "merchantId"
                 ]
               },
               "examples": {
-                "Create User Bob Fellow": {
+                "example-1": {
                   "value": {
-                    "firstName": "Bob",
-                    "lastName": "Fellow",
-                    "email": "bob.fellow@gmail.com",
-                    "dateOfBirth": "1996-08-24"
+                    "merchantId": 1,
+                    "description": "",
+                    "items": [
+                      {
+                        "orderId": 0,
+                        "ItemId": 0,
+                        "qty": 0,
+                        "price": 0,
+                        "complateQty": 0,
+                        "cancelQty": 0,
+                        "description": "string"
+                      }
+                    ]
                   }
                 }
               }
@@ -135,7 +175,7 @@
               }
             }
           },
-          "description": "Post the necessary fields for the API to create a new user."
+          "description": "Post the necessary fields for the API to create a new order."
         },
         "description": "Мерчантаас барааны захиалга өгөх",
         "parameters": [
@@ -145,13 +185,13 @@
             },
             "in": "header",
             "name": "company",
-            "description": "Байгууллагын дугаар"
+            "description": "Мерчантын дугаар"
           }
         ]
       },
       "parameters": []
     },
-    "/DetailOrder": {
+    "/Order/DetailOrder": {
       "post": {
         "summary": "Detail Order",
         "operationId": "post-DetailOrder",
@@ -161,16 +201,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Order"
                 },
                 "examples": {
-                  "example-123": {
-                    "value": {}
+                  "example-1": {
+                    "value": {
+                      "orderId": 0,
+                      "orderDate": "string",
+                      "status": 0,
+                      "completeDate": "string",
+                      "merchantId": 0,
+                      "description": "string",
+                      "items": [
+                        {
+                          "orderId": 0,
+                          "ItemId": 0,
+                          "qty": 0,
+                          "price": 0,
+                          "complateQty": 0,
+                          "cancelQty": 0,
+                          "description": "string"
+                        }
+                      ],
+                      "ExpiryDate": "string"
+                    }
                   }
                 }
               }
@@ -194,6 +248,269 @@
                 ]
               }
             }
+          },
+          "description": ""
+        }
+      },
+      "parameters": []
+    },
+    "/Order/CancelOrder": {
+      "post": {
+        "summary": "",
+        "operationId": "post-CancelOrder",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Захиалгын цуцлах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "type": "integer"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    },
+    "/Order/CompleteOrder": {
+      "post": {
+        "summary": "",
+        "operationId": "post-CompleteOrder",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    },
+    "/Order/OrderList": {
+      "post": {
+        "summary": "",
+        "operationId": "post-OrderList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": [
+                      {
+                        "orderId": 0,
+                        "orderDate": "string",
+                        "status": 0,
+                        "completeDate": "string",
+                        "merchantId": 0,
+                        "description": "string",
+                        "items": [
+                          {
+                            "orderId": 0,
+                            "ItemId": 0,
+                            "qty": 0,
+                            "price": 0,
+                            "complateQty": 0,
+                            "cancelQty": 0,
+                            "description": "string"
+                          }
+                        ],
+                        "ExpiryDate": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "Захиалгын жагсаалт авах"
+      },
+      "parameters": []
+    },
+    "/Auth/Login": {
+      "post": {
+        "summary": "Нэвтрэх",
+        "operationId": "post-Login",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": []
+    },
+    "/Supply/ProductBalance": {
+      "post": {
+        "summary": "Balance of product",
+        "operationId": "post-ProductList",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Дэлгүүрийн барааны үлдэгдэл",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductBalance"
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": [
+                    {
+                      "productId": 0,
+                      "name": "string",
+                      "price": 0,
+                      "AvailableQty": 0,
+                      "catId": 0,
+                      "catName": "string",
+                      "supplierId": 0,
+                      "supplierName": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    },
+    "/Supply/Sales": {
+      "post": {
+        "summary": "Sales",
+        "operationId": "post-Sales",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Мерчинтын борлуулалтын мэдээлэл"
+      },
+      "parameters": []
+    },
+    "/Product/Product": {
+      "post": {
+        "summary": "",
+        "operationId": "post-Product-ProductList",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Барааны жагсаалт",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": [
+                    {
+                      "productCode": "string",
+                      "Name": "string",
+                      "catId": 0,
+                      "Description": "string",
+                      "supplierId": 0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    },
+    "/Product/Category": {
+      "post": {
+        "summary": "",
+        "operationId": "post-Product-Category",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Барааны категорийн жагсаалт",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Category"
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": [
+                    {
+                      "catId": 0,
+                      "name": "string",
+                      "parentCatId": 0
+                    }
+                  ]
+                }
+              }
+            }
           }
         }
       }
@@ -206,67 +523,216 @@
         "type": "object",
         "description": "Захиалгын бараанууд",
         "x-examples": {
-          "123": {
-            "id": 142,
-            "firstName": "Alice",
-            "lastName": "Smith",
-            "email": "alice.smith@gmail.com",
-            "dateOfBirth": "1997-10-31",
-            "emailVerified": true,
-            "signUpDate": "2019-08-24"
+          "example-1": {
+            "orderId": 0,
+            "ItemId": 0,
+            "qty": 0,
+            "price": 0,
+            "complateQty": 0,
+            "cancelQty": 0,
+            "description": "string"
           }
         },
         "properties": {
           "orderId": {
             "type": "integer",
-            "description": "Unique identifier for the given user."
+            "description": "Шинэ захиалга дээр хоосон байна."
           },
           "ItemId": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Захиалга доторх дэд дугаарлалт"
           },
           "qty": {
-            "type": "number"
+            "type": "number",
+            "description": "Захиалах тоо"
           },
           "price": {
+            "format": "email",
             "type": "number",
-            "format": "email"
+            "description": "Барааны үнэ"
           },
-          "dateOfBirth": {
-            "type": "string",
-            "format": "date",
-            "example": "1997-10-31"
+          "complateQty": {
+            "type": "number",
+            "description": "Захиалга биелсэн тоо"
           },
-          "emailVerified": {
-            "type": "boolean",
-            "description": "Set to true if the user's email has been verified."
+          "cancelQty": {
+            "type": "number",
+            "description": "Захиалгаар хүлээж аваагүй тоо"
           },
-          "createDate": {
-            "type": "string",
-            "format": "date",
-            "description": "The date that the user was created."
+          "description": {
+            "type": "string"
+          },
+          "productId": {
+            "type": "integer",
+            "description": "Захилсан барааны код"
+          },
+          "supplierId": {
+            "description": "Захиалсан барааны нийлүүлэгч. Олон нийлүүлэгчтэй үед ашиглана.",
+            "type": "integer"
+          },
+          "supplierName": {
+            "type": "string"
+          },
+          "productName": {
+            "type": "string"
           }
         },
         "required": [
-          "orderId",
           "ItemId",
           "qty",
-          "price",
-          "emailVerified"
+          "price"
         ]
       },
       "Order": {
         "title": "Order",
         "type": "object",
         "x-examples": {
-          "123": {
-            "id": "string"
+          "example-1": {
+            "orderId": "string",
+            "orderDate": "string",
+            "status": 0,
+            "completeDate": "string",
+            "merchantId": 0,
+            "description": "string",
+            "items": [
+              {
+                "orderId": 0,
+                "ItemId": 0,
+                "qty": 0,
+                "price": 0,
+                "complateQty": 0,
+                "cancelQty": 0,
+                "description": "string"
+              }
+            ]
           }
         },
         "properties": {
-          "id": {
+          "orderId": {
+            "type": "integer",
+            "description": "Захиалгын дугаар"
+          },
+          "orderDate": {
+            "type": "string"
+          },
+          "status": {
+            "type": "number"
+          },
+          "completeDate": {
+            "type": "string"
+          },
+          "merchantId": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItems"
+            }
+          },
+          "ExpiryDate": {
             "type": "string"
           },
           "": {
+            "type": "string"
+          }
+        }
+      },
+      "Product": {
+        "title": "Product",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "catId": {
+            "type": "integer"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "supplierId": {
+            "type": "integer"
+          },
+          "catName": {
+            "type": "string"
+          },
+          "supplierName": {
+            "type": "string"
+          }
+        },
+        "description": "Барааны мэдээлэл"
+      },
+      "Supplier": {
+        "title": "Supplier",
+        "type": "object",
+        "properties": {
+          "supplierId": {
+            "type": "integer"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "categorys": {
+            "type": "array",
+            "description": "Бэлтгэн нийлүүэгчийн барааны ангилал",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "Category": {
+        "title": "Category",
+        "type": "object",
+        "description": "Барааны ангилал",
+        "properties": {
+          "catId": {
+            "type": "integer",
+            "description": "Барааны ангилал"
+          },
+          "name": {
+            "type": "string",
+            "description": "Ангилалын нэр"
+          },
+          "parentCatId": {
+            "type": "integer",
+            "description": "Үндсэн ангилал"
+          }
+        }
+      },
+      "ProductBalance": {
+        "title": "ProductBalance",
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "AvailableQty": {
+            "type": "number"
+          },
+          "catId": {
+            "type": "integer"
+          },
+          "catName": {
+            "type": "string"
+          },
+          "supplierId": {
+            "type": "integer"
+          },
+          "supplierName": {
             "type": "string"
           }
         }
