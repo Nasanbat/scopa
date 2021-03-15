@@ -109,6 +109,9 @@
           "400": {
             "description": "Missing Required Information"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "409": {
             "description": "Email Already Taken"
           },
@@ -360,7 +363,7 @@
     },
     "/Auth/Login": {
       "post": {
-        "summary": "Нэвтрэх",
+        "summary": "Login",
         "operationId": "post-Login",
         "responses": {
           "200": {
