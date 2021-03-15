@@ -54,7 +54,7 @@
               }
             }
           },
-          "description": ""
+          "description": "Захиалга засварлах"
         }
       }
     },
@@ -175,7 +175,7 @@
               }
             }
           },
-          "description": "Post the necessary fields for the API to create a new order."
+          "description": "Шинэ захиалга үүсгэх"
         },
         "description": "Мерчантаас барааны захиалга өгөх",
         "parameters": [
@@ -256,7 +256,7 @@
     },
     "/Order/CancelOrder": {
       "post": {
-        "summary": "",
+        "summary": "Cancel Order",
         "operationId": "post-CancelOrder",
         "responses": {
           "200": {
@@ -279,14 +279,15 @@
                 }
               }
             }
-          }
+          },
+          "description": ""
         }
       },
       "parameters": []
     },
     "/Order/CompleteOrder": {
       "post": {
-        "summary": "",
+        "summary": "Complete Order",
         "operationId": "post-CompleteOrder",
         "responses": {
           "200": {
@@ -301,13 +302,14 @@
               }
             }
           }
-        }
+        },
+        "description": "Захиалгыг амжилттай хүлээж авах"
       },
       "parameters": []
     },
     "/Order/OrderList": {
       "post": {
-        "summary": "",
+        "summary": "List order",
         "operationId": "post-OrderList",
         "responses": {
           "200": {
@@ -384,7 +386,8 @@
             }
           },
           "description": ""
-        }
+        },
+        "description": "SCOPA систем руу нэвтрэх"
       },
       "parameters": []
     },
@@ -431,7 +434,7 @@
     },
     "/Supply/Sales": {
       "post": {
-        "summary": "Sales",
+        "summary": "Sales info",
         "operationId": "post-Sales",
         "responses": {
           "200": {
@@ -444,7 +447,7 @@
     },
     "/Product/Product": {
       "post": {
-        "summary": "",
+        "summary": "List of products",
         "operationId": "post-Product-ProductList",
         "responses": {
           "200": {
@@ -482,7 +485,7 @@
     },
     "/Product/Category": {
       "post": {
-        "summary": "",
+        "summary": "List of product category",
         "operationId": "post-Product-Category",
         "responses": {
           "200": {
