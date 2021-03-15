@@ -14,7 +14,7 @@
     "/Order/EditOrder": {
       "parameters": [],
       "post": {
-        "summary": "Edit Order",
+        "summary": "2. Edit Order",
         "operationId": "post-EditOrder",
         "responses": {
           "200": {
@@ -65,7 +65,7 @@
     },
     "/Order/CreateOrder": {
       "post": {
-        "summary": "Create Order",
+        "summary": "1. Create Order",
         "operationId": "post-user",
         "responses": {
           "200": {
@@ -180,7 +180,7 @@
     },
     "/Order/DetailOrder": {
       "post": {
-        "summary": "Detail Order",
+        "summary": "3. Detail Order",
         "operationId": "post-DetailOrder",
         "responses": {
           "200": {
@@ -243,7 +243,7 @@
     },
     "/Order/CancelOrder": {
       "post": {
-        "summary": "Cancel Order",
+        "summary": "5. Cancel Order",
         "operationId": "post-CancelOrder",
         "responses": {
           "200": {
@@ -274,7 +274,7 @@
     },
     "/Order/CompleteOrder": {
       "post": {
-        "summary": "Complete Order",
+        "summary": "4. Complete Order",
         "operationId": "post-CompleteOrder",
         "responses": {
           "200": {
@@ -296,7 +296,7 @@
     },
     "/Order/OrderList": {
       "post": {
-        "summary": "List order",
+        "summary": "6. List order",
         "operationId": "post-OrderList",
         "responses": {
           "200": {
@@ -560,8 +560,8 @@
             "description": "Захиалах тоо"
           },
           "price": {
-            "format": "email",
             "type": "number",
+            "format": "double",
             "description": "Барааны үнэ"
           },
           "complateQty": {
