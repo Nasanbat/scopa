@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "SALES API's",
+    "title": "Sales",
     "version": "1.0",
-    "description": "Борлуулалтын мэдээлэл илгээх API-ууд"
+    "description": "БОРЛУУЛАЛТЫН МЭДЭЭЛЭЛ ХҮЛЭЭН АВАХ API-ууд"
   },
   "servers": [
     {

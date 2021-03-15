@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "ORDERING API's",
+    "title": "Ordering",
     "version": "1.0",
-    "description": "Бараа захиалга хийхтэй холбоотой API-ууд.\n"
+    "description": "БАРАА ЗАХИАЛГА ХИЙХТЭЙ ХОЛБООТОЙ API-ууд\n"
   },
   "servers": [
     {
