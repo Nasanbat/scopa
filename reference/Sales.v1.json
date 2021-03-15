@@ -14,7 +14,7 @@
     "/Sales": {
       "parameters": [],
       "post": {
-        "summary": "",
+        "summary": "Sales info",
         "operationId": "post-Sales",
         "responses": {
           "200": {
