@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Supplier",
+    "title": "Supplier API",
     "version": "1.0",
-    "description": "БЭЛТГЭН НИЙЛҮҮЛЭГЧИЙН БАРААНЫ МЭДЭЭЛЭЛ ХҮЛЭЭН АВАХ API"
+    "description": "БЭЛТГЭН НИЙЛҮҮЛЭГЧЭЭС БАРААНЫ МЭДЭЭЛЭЛ ХҮЛЭЭН АВАХ API"
   },
   "servers": [
     {
