@@ -695,12 +695,6 @@
           "description": {
             "type": "string"
           },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrderItems"
-            }
-          },
           "ExpiryDate": {
             "type": "string"
           },
@@ -709,6 +703,12 @@
           },
           "statusName": {
             "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItems"
+            }
           }
         }
       },
