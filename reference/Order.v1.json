@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "SCOPA API",
+    "title": "Ordering",
     "version": "1.0",
-    "description": "SCOPA систем руу хандах API-н гарын авлага.\n"
+    "description": "БАРАА ЗАХИАЛГА ХИЙХТЭЙ ХОЛБООТОЙ API-ууд\n"
   },
   "servers": [
     {
@@ -101,6 +101,9 @@
           },
           "400": {
             "description": "Missing Required Information"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "409": {
             "description": "Email Already Taken"
@@ -353,7 +356,7 @@
     },
     "/Auth/Login": {
       "post": {
-        "summary": "Нэвтрэх",
+        "summary": "Login",
         "operationId": "post-Login",
         "responses": {
           "200": {
