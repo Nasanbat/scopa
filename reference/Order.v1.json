@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "SCOPA API",
+    "title": "ORDERING API's",
     "version": "1.0",
-    "description": "SCOPA систем руу хандах API-н гарын авлага.\n"
+    "description": "Бараа захиалга хийхтэй холбоотой API-ууд.\n"
   },
   "servers": [
     {
