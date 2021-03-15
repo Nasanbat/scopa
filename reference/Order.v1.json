@@ -344,7 +344,43 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 10
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sortBy": {
+                    "type": "string",
+                    "example": "orderDate, supplierId"
+                  },
+                  "filters": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Filter"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "limit": 10,
+                    "offset": 1,
+                    "sortBy": "orderDate, supplierId",
+                    "filters": [
+                      {
+                        "field": "string",
+                        "operation": "=",
+                        "type": "number",
+                        "value": "string"
+                      }
+                    ]
+                  }
+                }
               }
             }
           },
@@ -416,19 +452,6 @@
             }
           }
         }
-      },
-      "parameters": []
-    },
-    "/Supply/Sales": {
-      "post": {
-        "summary": "Sales info",
-        "operationId": "post-Sales",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "description": "Мерчинтын борлуулалтын мэдээлэл"
       },
       "parameters": []
     },
@@ -723,6 +746,38 @@
             "type": "integer"
           },
           "supplierName": {
+            "type": "string"
+          }
+        }
+      },
+      "Filter": {
+        "title": "Filter",
+        "type": "object",
+        "description": "",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "operation": {
+            "type": "string",
+            "enum": [
+              "=",
+              "!=",
+              ">",
+              ">=",
+              "<",
+              "<="
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "number",
+              "string",
+              "date"
+            ]
+          },
+          "value": {
             "type": "string"
           }
         }
