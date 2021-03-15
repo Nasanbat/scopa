@@ -108,25 +108,8 @@
               }
             }
           },
-          "400": {
-            "description": "Missing Required Information"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "409": {
-            "description": "Email Already Taken"
-          },
           "501": {
-            "description": "Not Implemented",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            }
+            "$ref": "#/components/responses/501"
           }
         },
         "requestBody": {
@@ -931,6 +914,34 @@
         "name": "API Key",
         "type": "apiKey",
         "in": "query"
+      }
+    },
+    "responses": {
+      "501": {
+        "description": "Алдаатай хариу",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errCode": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            },
+            "examples": {
+              "91001000": {
+                "value": {
+                  "errCode": "91001000",
+                  "description": "Алдаа гарлаа."
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
