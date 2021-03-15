@@ -695,7 +695,7 @@
           "description": {
             "type": "string"
           },
-          "ExpiryDate": {
+          "expiryDate": {
             "type": "string"
           },
           "totalPrice": {
