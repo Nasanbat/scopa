@@ -19,7 +19,7 @@
     "/Order/EditOrder": {
       "parameters": [],
       "post": {
-        "summary": "2. Edit Order",
+        "summary": "Edit Order",
         "operationId": "post-EditOrder",
         "responses": {
           "200": {
@@ -65,16 +65,12 @@
             }
           },
           "description": "Захиалга засварлах"
-        },
-        "tags": [
-          "edit",
-          "order"
-        ]
+        }
       }
     },
     "/Order/CreateOrder": {
       "post": {
-        "summary": "1. Create Order",
+        "summary": "Create Order",
         "operationId": "post-user",
         "responses": {
           "200": {
@@ -176,7 +172,7 @@
     },
     "/Order/DetailOrder": {
       "post": {
-        "summary": "3. Detail Order",
+        "summary": "Detail Order",
         "operationId": "post-DetailOrder",
         "responses": {
           "200": {
@@ -233,17 +229,13 @@
             }
           },
           "description": ""
-        },
-        "tags": [
-          "detail",
-          "order"
-        ]
+        }
       },
       "parameters": []
     },
     "/Order/CancelOrder": {
       "post": {
-        "summary": "5. Cancel Order",
+        "summary": "Cancel Order",
         "operationId": "post-CancelOrder",
         "responses": {
           "200": {
@@ -268,11 +260,7 @@
             }
           },
           "description": ""
-        },
-        "tags": [
-          "cancel",
-          "order"
-        ]
+        }
       },
       "parameters": []
     },
@@ -294,11 +282,7 @@
             }
           }
         },
-        "description": "Захиалгыг амжилттай хүлээж авах",
-        "tags": [
-          "complete",
-          "order"
-        ]
+        "description": "Захиалгыг амжилттай хүлээж авах"
       },
       "parameters": []
     },
@@ -394,16 +378,13 @@
           },
           "description": ""
         },
-        "description": "Захиалгын жагсаалт авах",
-        "tags": [
-          "List"
-        ]
+        "description": "Захиалгын жагсаалт авах"
       },
       "parameters": []
     },
     "/Auth/Login": {
       "post": {
-        "summary": "0. Login",
+        "summary": "Login",
         "operationId": "post-Login",
         "responses": {
           "200": {
@@ -484,10 +465,7 @@
               }
             }
           }
-        },
-        "tags": [
-          "balance"
-        ]
+        }
       },
       "parameters": []
     },
@@ -525,10 +503,7 @@
               }
             }
           }
-        },
-        "tags": [
-          "product"
-        ]
+        }
       },
       "parameters": []
     },
@@ -611,10 +586,7 @@
               }
             }
           }
-        },
-        "tags": [
-          "supplier"
-        ]
+        }
       }
     }
   },
