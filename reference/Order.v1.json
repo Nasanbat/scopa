@@ -31,7 +31,7 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "orderId": "string",
+                    "orderId": 0,
                     "orderDate": "string",
                     "status": 0,
                     "completeDate": "string",
@@ -45,10 +45,15 @@
                         "price": 0,
                         "complateQty": 0,
                         "cancelQty": 0,
-                        "description": "string"
+                        "description": "string",
+                        "productId": 0,
+                        "supplierId": 0,
+                        "supplierName": "string",
+                        "productName": "string"
                       }
                     ],
-                    "ExpiryDate": "string"
+                    "ExpiryDate": "string",
+                    "": "string"
                   }
                 }
               }
@@ -79,19 +84,7 @@
                     "orderId"
                   ]
                 },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "id": 0,
-                      "firstName": "string",
-                      "lastName": "string",
-                      "email": "user@example.com",
-                      "dateOfBirth": "1997-10-31",
-                      "emailVerified": true,
-                      "createDate": "2019-08-24"
-                    }
-                  }
-                }
+                "examples": {}
               },
               "application/xml": {
                 "schema": {
