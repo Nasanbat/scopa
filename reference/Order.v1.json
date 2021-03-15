@@ -266,7 +266,7 @@
     },
     "/Order/CompleteOrder": {
       "post": {
-        "summary": "4. Complete Order",
+        "summary": "Complete Order",
         "operationId": "post-CompleteOrder",
         "responses": {
           "200": {
@@ -288,7 +288,7 @@
     },
     "/Order/OrderList": {
       "post": {
-        "summary": "6. List order",
+        "summary": "List order",
         "operationId": "post-OrderList",
         "responses": {
           "200": {
