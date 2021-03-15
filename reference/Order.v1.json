@@ -3,7 +3,12 @@
   "info": {
     "title": "Ordering",
     "version": "1.0",
-    "description": "БАРАА ЗАХИАЛГА ХИЙХТЭЙ ХОЛБООТОЙ API-ууд\n"
+    "description": "БАРАА ЗАХИАЛГА ХИЙХТЭЙ ХОЛБООТОЙ API-ууд\n",
+    "contact": {
+      "name": "SPOPA teams",
+      "url": "http://www.scopa.mn/",
+      "email": "devsupport@scopa.mn"
+    }
   },
   "servers": [
     {
