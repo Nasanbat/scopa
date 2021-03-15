@@ -65,7 +65,11 @@
             }
           },
           "description": "Захиалга засварлах"
-        }
+        },
+        "tags": [
+          "edit",
+          "order"
+        ]
       }
     },
     "/Order/CreateOrder": {
@@ -179,7 +183,11 @@
           "description": "Шинэ захиалга үүсгэх"
         },
         "description": "Барааны захиалга өгөх",
-        "parameters": []
+        "parameters": [],
+        "tags": [
+          "create",
+          "order"
+        ]
       },
       "parameters": []
     },
@@ -242,7 +250,11 @@
             }
           },
           "description": ""
-        }
+        },
+        "tags": [
+          "detail",
+          "order"
+        ]
       },
       "parameters": []
     },
@@ -273,7 +285,11 @@
             }
           },
           "description": ""
-        }
+        },
+        "tags": [
+          "cancel",
+          "order"
+        ]
       },
       "parameters": []
     },
@@ -295,7 +311,11 @@
             }
           }
         },
-        "description": "Захиалгыг амжилттай хүлээж авах"
+        "description": "Захиалгыг амжилттай хүлээж авах",
+        "tags": [
+          "complete",
+          "order"
+        ]
       },
       "parameters": []
     },
@@ -391,7 +411,10 @@
           },
           "description": ""
         },
-        "description": "Захиалгын жагсаалт авах"
+        "description": "Захиалгын жагсаалт авах",
+        "tags": [
+          "List"
+        ]
       },
       "parameters": []
     },
@@ -478,7 +501,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "balance"
+        ]
       },
       "parameters": []
     },
@@ -516,7 +542,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "product"
+        ]
       },
       "parameters": []
     },
@@ -552,12 +581,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "category"
+        ]
       }
     },
     "/Product/Supplier": {
       "post": {
-        "summary": "",
+        "summary": "List of supplier",
         "operationId": "post-Product-Supplier",
         "responses": {
           "200": {
@@ -596,7 +628,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "supplier"
+        ]
       }
     }
   },
@@ -691,6 +726,7 @@
             ]
           }
         },
+        "description": "Захиалгын мэдээлэл",
         "properties": {
           "orderId": {
             "type": "integer",
@@ -720,11 +756,13 @@
           "ExpiryDate": {
             "type": "string"
           },
-          "": {
+          "totalPrice": {
+            "type": "number"
+          },
+          "statusName": {
             "type": "string"
           }
-        },
-        "description": "Захиалгын мэдээлэл"
+        }
       },
       "Product": {
         "title": "Product",
