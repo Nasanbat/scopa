@@ -36,29 +36,17 @@
     },
     "/Supplier/EditCategory": {
       "post": {
-        "summary": "Create New User",
-        "operationId": "post-user",
+        "summary": "Edit Category",
+        "operationId": "post-EditCategory",
         "responses": {
           "200": {
-            "description": "User Created",
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "type": "object"
                 },
-                "examples": {
-                  "New User Bob Fellow": {
-                    "value": {
-                      "id": 12,
-                      "firstName": "Bob",
-                      "lastName": "Fellow",
-                      "email": "bob.fellow@gmail.com",
-                      "dateOfBirth": "1996-08-24",
-                      "emailVerified": false,
-                      "createDate": "2020-11-18"
-                    }
-                  }
-                }
+                "examples": {}
               }
             }
           }
@@ -67,28 +55,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "dateOfBirth": {
-                    "type": "string",
-                    "format": "date"
-                  }
-                },
-                "required": [
-                  "firstName",
-                  "lastName",
-                  "email",
-                  "dateOfBirth"
-                ]
+                "type": "object"
               },
               "examples": {
                 "Create User Bob Fellow": {
@@ -108,9 +75,9 @@
               }
             }
           },
-          "description": "Post the necessary fields for the API to create a new user."
+          "description": ""
         },
-        "description": "Create a new user."
+        "description": ""
       },
       "parameters": []
     },
