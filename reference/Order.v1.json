@@ -723,7 +723,8 @@
           "": {
             "type": "string"
           }
-        }
+        },
+        "description": "Захиалгын мэдээлэл"
       },
       "Product": {
         "title": "Product",
@@ -770,7 +771,8 @@
               "type": "integer"
             }
           }
-        }
+        },
+        "description": "Бэлтгэн нийлүүлэгч"
       },
       "Category": {
         "title": "Category",
@@ -794,6 +796,7 @@
       "ProductBalance": {
         "title": "ProductBalance",
         "type": "object",
+        "description": "Барааны үлдэгдэл",
         "properties": {
           "productId": {
             "type": "integer"
@@ -804,7 +807,7 @@
           "price": {
             "type": "number"
           },
-          "AvailableQty": {
+          "availableQty": {
             "type": "number"
           },
           "catId": {
@@ -824,7 +827,7 @@
       "Filter": {
         "title": "Filter",
         "type": "object",
-        "description": "",
+        "description": "Жагсаалтын шүүлтэнд ашиглана",
         "properties": {
           "field": {
             "type": "string"
@@ -874,6 +877,12 @@
             "type": "string"
           },
           "phone": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "merchantName": {
             "type": "string"
           }
         }
