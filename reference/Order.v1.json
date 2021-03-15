@@ -177,17 +177,8 @@
           },
           "description": "Шинэ захиалга үүсгэх"
         },
-        "description": "Мерчантаас барааны захиалга өгөх",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "company",
-            "description": "Мерчантын дугаар"
-          }
-        ]
+        "description": "Барааны захиалга өгөх",
+        "parameters": []
       },
       "parameters": []
     },
