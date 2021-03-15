@@ -3,7 +3,7 @@
   "info": {
     "title": "Ordering",
     "version": "1.0",
-    "description": "БАРАА ЗАХИАЛГА ХИЙХТЭЙ ХОЛБООТОЙ API-ууд\n",
+    "description": "БАРАА ЗАХИАЛГА ХИЙХТЭЙ ХОЛБООТОЙ API-ууд\n - Бараа захиалга\n - Бараа захиалгын дэлгэрэнгүй\n - Захиалгын жагсаалт\n - Захиалга хүлээж авах\n - Захиалга засварлах\n - Захиалга цуцлах \n - Нийлүүлэгчийн мэдээлэл\n - Барааны ангилал\n - Барааны мэдээлэл\n - Барааны үлдэгдэл",
     "contact": {
       "name": "SPOPA teams",
       "url": "http://www.scopa.mn/",
@@ -397,11 +397,18 @@
     },
     "/Auth/Login": {
       "post": {
-        "summary": "Login",
+        "summary": "0. Login",
         "operationId": "post-Login",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -409,7 +416,22 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                  "Login": {
+                    "type": "string"
+                  },
+                  "pin": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "Login": {
+                  "value": {
+                    "Login": "99013707",
+                    "pin": 3707
+                  }
+                }
               }
             }
           },
@@ -527,6 +549,50 @@
                     }
                   ]
                 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Product/Supplier": {
+      "post": {
+        "summary": "",
+        "operationId": "post-Product-Supplier",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Supplier"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": [
+                      {
+                        "supplierId": 0,
+                        "Name": "string",
+                        "categorys": [
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Бараа нийлүүлэгчийн жагсаалт",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
               }
             }
           }
@@ -783,6 +849,31 @@
             ]
           },
           "value": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "title": "User",
+        "type": "object",
+        "description": "Хэрэглэгчийн мэдээлэл",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "registerCode": {
+            "type": "string"
+          },
+          "merchantId": {
+            "type": "integer"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
             "type": "string"
           }
         }
