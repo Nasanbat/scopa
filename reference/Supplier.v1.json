@@ -14,7 +14,7 @@
     "/Supplier/AddCategory": {
       "parameters": [],
       "post": {
-        "summary": "",
+        "summary": "Add Category",
         "operationId": "post-Supplier-AddCategory",
         "responses": {
           "200": {
@@ -83,7 +83,7 @@
     },
     "/Supplier/DetailCategory": {
       "post": {
-        "summary": "",
+        "summary": "Detail Category",
         "operationId": "post-Supplier-DetailCategory",
         "responses": {
           "200": {
@@ -94,7 +94,7 @@
     },
     "/Supplier/AddProduct": {
       "post": {
-        "summary": "",
+        "summary": "Add Product",
         "operationId": "post-Supplier-AddProduct",
         "responses": {
           "200": {
@@ -105,7 +105,7 @@
     },
     "/Supplier/EditProduct": {
       "post": {
-        "summary": "",
+        "summary": "Edit Product",
         "operationId": "post-Supplier-EditProduct",
         "responses": {
           "200": {
@@ -116,7 +116,7 @@
     },
     "/Supplier/DetailProduct": {
       "post": {
-        "summary": "",
+        "summary": "Detail Product",
         "operationId": "post-Supplier-DetailProduct",
         "responses": {
           "200": {
@@ -127,7 +127,7 @@
     },
     "/Supplier/ListProduct": {
       "post": {
-        "summary": "",
+        "summary": "List Product",
         "operationId": "post-Supplier-ListProduct",
         "responses": {
           "200": {
@@ -138,7 +138,7 @@
     },
     "/Supplier/UpdateProductPrice": {
       "post": {
-        "summary": "",
+        "summary": "Update Product Price",
         "operationId": "post-Supplier-UpdateProductPrice",
         "responses": {
           "200": {
@@ -149,7 +149,7 @@
     },
     "/Supplier/UpdateProductBalance": {
       "post": {
-        "summary": "",
+        "summary": "Update Product Balance",
         "operationId": "post-Supplier-UpdateProductBalance",
         "responses": {
           "200": {
