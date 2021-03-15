@@ -21,7 +21,17 @@
             "description": "OK"
           }
         },
-        "description": "Барааны ангилал нэмэх"
+        "description": "Барааны ангилал нэмэх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        }
       }
     },
     "/Supplier/EditCategory": {
@@ -51,12 +61,6 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "Missing Required Information"
-          },
-          "409": {
-            "description": "Email Already Taken"
           }
         },
         "requestBody": {
@@ -96,6 +100,12 @@
                   }
                 }
               }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
             }
           },
           "description": "Post the necessary fields for the API to create a new user."
@@ -116,51 +126,69 @@
       }
     },
     "/Supplier/AddProduct": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
-        "responses": {},
-        "operationId": "get-Supplier-AddProduct"
+      "post": {
+        "summary": "",
+        "operationId": "post-Supplier-AddProduct",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/Supplier/EditProduct": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
-        "responses": {},
-        "operationId": "get-Supplier-EditProduct"
+      "post": {
+        "summary": "",
+        "operationId": "post-Supplier-EditProduct",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/Supplier/DetailProduct": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
-        "responses": {},
-        "operationId": "get-Supplier-DetailProduct"
+      "post": {
+        "summary": "",
+        "operationId": "post-Supplier-DetailProduct",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/Supplier/ListProduct": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
-        "responses": {},
-        "operationId": "get-Supplier-ListProduct"
+      "post": {
+        "summary": "",
+        "operationId": "post-Supplier-ListProduct",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/Supplier/UpdateProductPrice": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
-        "responses": {},
-        "operationId": "get-Supplier-UpdateProductPrice"
+      "post": {
+        "summary": "",
+        "operationId": "post-Supplier-UpdateProductPrice",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/Supplier/UpdateProductBalance": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
-        "responses": {},
-        "operationId": "get-Supplier-UpdateProductBalance"
+      "post": {
+        "summary": "",
+        "operationId": "post-Supplier-UpdateProductBalance",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   },
