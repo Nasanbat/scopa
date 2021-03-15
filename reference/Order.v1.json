@@ -162,11 +162,7 @@
           "description": "Шинэ захиалга үүсгэх"
         },
         "description": "Барааны захиалга өгөх",
-        "parameters": [],
-        "tags": [
-          "create",
-          "order"
-        ]
+        "parameters": []
       },
       "parameters": []
     },
@@ -539,10 +535,7 @@
               }
             }
           }
-        },
-        "tags": [
-          "category"
-        ]
+        }
       }
     },
     "/Product/Supplier": {
