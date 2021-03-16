@@ -673,6 +673,9 @@
             "items": {
               "$ref": "#/components/schemas/OrderItems"
             }
+          },
+          "pay": {
+            "type": "string"
           }
         }
       },
