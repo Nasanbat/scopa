@@ -112,45 +112,9 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "merchantId": {
-                    "type": "number",
-                    "description": "Захилга үүсгэж байгаа байгууллага мерчантын дэлгүүрийн дугаар"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "items": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/OrderItems"
-                    }
-                  }
-                },
-                "required": [
-                  "merchantId"
-                ]
+                "$ref": "#/components/schemas/Order"
               },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "merchantId": 1,
-                    "description": "",
-                    "items": [
-                      {
-                        "orderId": 0,
-                        "ItemId": 0,
-                        "qty": 0,
-                        "price": 0,
-                        "complateQty": 0,
-                        "cancelQty": 0,
-                        "description": "string"
-                      }
-                    ]
-                  }
-                }
-              }
+              "examples": {}
             },
             "application/xml": {
               "schema": {
