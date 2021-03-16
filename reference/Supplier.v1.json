@@ -77,7 +77,7 @@
           },
           "description": ""
         },
-        "description": ""
+        "description": "Барааны ангилал засварлах"
       },
       "parameters": []
     },
@@ -160,6 +160,132 @@
     }
   },
   "components": {
-    "schemas": {}
+    "schemas": {
+      "Category": {
+        "title": "Category",
+        "type": "object",
+        "description": "Барааны ангилал",
+        "properties": {
+          "catId": {
+            "type": "string"
+          },
+          "": {
+            "type": "string"
+          },
+          "parentCatId": {
+            "type": "integer"
+          },
+          "parantCatName": {
+            "type": "string"
+          }
+        }
+      },
+      "Product": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "Name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "catId": {
+            "type": "number"
+          },
+          "Description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supplierId": {
+            "type": "number"
+          },
+          "catName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supplierName": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "productCode",
+          "Name",
+          "catId",
+          "Description",
+          "supplierId",
+          "catName",
+          "supplierName"
+        ]
+      },
+      "ProductBalance": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "price": {
+            "type": "number"
+          },
+          "availableQty": {
+            "type": "number"
+          },
+          "catId": {
+            "type": "number"
+          },
+          "catName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supplierId": {
+            "type": "number"
+          },
+          "supplierName": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "productCode",
+          "name",
+          "price",
+          "availableQty",
+          "catId",
+          "catName",
+          "supplierId",
+          "supplierName"
+        ]
+      },
+      "ProductPrice": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productCode",
+          "price"
+        ]
+      }
+    }
   }
 }

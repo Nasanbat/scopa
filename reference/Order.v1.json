@@ -715,6 +715,7 @@
       "Product": {
         "title": "Product",
         "type": "object",
+        "description": "Барааны мэдээлэл",
         "properties": {
           "productCode": {
             "type": "string"
@@ -738,7 +739,17 @@
             "type": "string"
           }
         },
-        "description": "Барааны мэдээлэл"
+        "x-examples": {
+          "example-1": {
+            "productCode": "string",
+            "Name": "string",
+            "catId": 0,
+            "Description": "string",
+            "supplierId": 0,
+            "catName": "string",
+            "supplierName": "string"
+          }
+        }
       },
       "Supplier": {
         "title": "Supplier",
@@ -807,6 +818,18 @@
           },
           "supplierName": {
             "type": "string"
+          }
+        },
+        "x-examples": {
+          "example-1": {
+            "productId": 0,
+            "name": "string",
+            "price": 0,
+            "availableQty": 0,
+            "catId": 0,
+            "catName": "string",
+            "supplierId": 0,
+            "supplierName": "string"
           }
         }
       },
