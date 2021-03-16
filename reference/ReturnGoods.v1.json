@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Auth",
+    "title": "ReturnGoods",
     "version": "1.0",
-    "description": ""
+    "description": "БАРАА БУЦААЛТТАЙ ХОЛБООТОЙ API-ууд"
   },
   "servers": [
     {
@@ -11,62 +11,133 @@
     }
   ],
   "paths": {
-    "/Auth/Login": {
-      "parameters": [],
-      "post": {
-        "summary": "Login",
-        "operationId": "post-users-userId",
+    "/users/{userId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "description": "Id of an existing user."
+        }
+      ],
+      "get": {
+        "summary": "Get User Info by User ID",
+        "tags": [],
         "responses": {
           "200": {
-            "description": "OK",
-            "headers": {
-              "Session": {
-                "schema": {
-                  "type": "string"
-                },
-                "description": "TOKEN"
-              }
-            },
+            "description": "User Found",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "Get User Alice Smith": {
+                    "value": {
+                      "id": 142,
+                      "firstName": "Alice",
+                      "lastName": "Smith",
+                      "email": "alice.smith@gmail.com",
+                      "dateOfBirth": "1997-10-31",
+                      "emailVerified": true,
+                      "signUpDate": "2019-08-24"
+                    }
+                  }
                 }
               }
             }
+          },
+          "404": {
+            "description": "User Not Found"
           }
         },
-        "description": "SCOPA систем руу нэвтрэх",
+        "operationId": "get-users-userId",
+        "description": "Retrieve the information of the user with the matching user ID."
+      },
+      "patch": {
+        "summary": "Update User Information",
+        "operationId": "patch-users-userId",
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "Updated User Rebecca Baker": {
+                    "value": {
+                      "id": 13,
+                      "firstName": "Rebecca",
+                      "lastName": "Baker",
+                      "email": "rebecca@gmail.com",
+                      "dateOfBirth": "1985-10-02",
+                      "emailVerified": false,
+                      "createDate": "2019-08-24"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User Not Found"
+          },
+          "409": {
+            "description": "Email Already Taken"
+          }
+        },
+        "description": "Update the infromation of an existing user.",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "login": {
+                  "firstName": {
                     "type": "string"
                   },
-                  "PIN": {
+                  "lastName": {
                     "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "If a new email is given, the user's email verified property will be set to false."
+                  },
+                  "dateOfBirth": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Update First Name": {
+                  "value": {
+                    "firstName": "Rebecca"
+                  }
+                },
+                "Update Email": {
+                  "value": {
+                    "email": "rebecca@gmail.com"
+                  }
+                },
+                "Update Last Name & Date of Birth": {
+                  "value": {
+                    "lastName": "Baker",
+                    "dateOfBirth": "1985-10-02"
                   }
                 }
               }
             }
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "APP-KEY",
-            "description": "Хандаж байгаа апп болон системийн түлхүүр"
-          }
-        ]
+          },
+          "description": "Patch user properties to update."
+        }
       }
     },
-    "/Auth/Logout": {
+    "/user": {
       "post": {
         "summary": "Create New User",
         "operationId": "post-user",
@@ -143,88 +214,6 @@
           "description": "Post the necessary fields for the API to create a new user."
         },
         "description": "Create a new user."
-      },
-      "parameters": [],
-      "get": {
-        "summary": "Log Out",
-        "operationId": "get-Auth-Logout",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "description": "Системээс гарах",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "Login": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "description": ""
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Session",
-            "description": "TOKEN_ID"
-          }
-        ]
-      }
-    },
-    "/Auth/Echo": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "operationId": "get-Auth-echo",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Session",
-            "description": "TOKEN_ID"
-          }
-        ]
-      },
-      "parameters": [],
-      "post": {
-        "summary": "Echo",
-        "operationId": "post-Auth-Echo",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "description": "Холболт хэвийн байгаа эсэхийг шалгана"
-      }
-    },
-    "/Auth/GetToken": {
-      "parameters": [],
-      "post": {
-        "summary": "Get Token",
-        "operationId": "post-Auth-GetToken",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "description": "Автомат токен үүсгүүлж авах"
       }
     }
   },
@@ -235,15 +224,14 @@
         "type": "object",
         "description": "",
         "x-examples": {
-          "example-1": {
-            "id": 0,
-            "firstName": "string",
-            "lastName": "string",
-            "email": "user@example.com",
-            "phone": "1997-10-31",
-            "loginName": "string",
-            "type": "Merchant",
-            "Name": "string"
+          "Alice Smith": {
+            "id": 142,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice.smith@gmail.com",
+            "dateOfBirth": "1997-10-31",
+            "emailVerified": true,
+            "signUpDate": "2019-08-24"
           }
         },
         "properties": {
@@ -261,32 +249,19 @@
             "type": "string",
             "format": "email"
           },
-          "phone": {
+          "dateOfBirth": {
             "type": "string",
-            "example": "99013707"
+            "format": "date",
+            "example": "1997-10-31"
           },
-          "loginName": {
-            "type": "string",
+          "emailVerified": {
+            "type": "boolean",
             "description": "Set to true if the user's email has been verified."
           },
-          "type": {
-            "type": "number",
-            "description": "The date that the user was created.",
-            "enum": [
-              "Person",
-              "Merchant",
-              "Supplier"
-            ],
-            "default": "Merchant"
-          },
-          "Name": {
-            "type": "string"
-          },
-          "merchantId": {
-            "type": "integer"
-          },
-          "merchantName": {
-            "type": "string"
+          "createDate": {
+            "type": "string",
+            "format": "date",
+            "description": "The date that the user was created."
           }
         },
         "required": [
@@ -294,7 +269,7 @@
           "firstName",
           "lastName",
           "email",
-          "loginName"
+          "emailVerified"
         ]
       }
     }
