@@ -674,8 +674,9 @@
               "$ref": "#/components/schemas/OrderItems"
             }
           },
-          "pay": {
-            "type": "string"
+          "payType": {
+            "type": "string",
+            "description": "Line ашиглах эсэх"
           }
         }
       },
