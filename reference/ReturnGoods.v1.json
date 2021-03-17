@@ -220,9 +220,9 @@
   "components": {
     "schemas": {
       "User": {
-        "title": "User",
+        "title": "Item",
         "type": "object",
-        "description": "",
+        "description": "Бараа",
         "x-examples": {
           "Alice Smith": {
             "id": 142,
@@ -235,7 +235,7 @@
           }
         },
         "properties": {
-          "id": {
+          "prodType": {
             "type": "integer",
             "description": "Unique identifier for the given user."
           },
@@ -265,7 +265,7 @@
           }
         },
         "required": [
-          "id",
+          "prodType",
           "firstName",
           "lastName",
           "email",
