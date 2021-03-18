@@ -499,7 +499,7 @@
               }
             }
           },
-          "description": ""
+          "description": "Захиалгын мэдээлэл жагсаалт"
         },
         "description": "Захиалгын жагсаалт авах"
       },
@@ -552,7 +552,10 @@
         "operationId": "post-Product-ProductList",
         "responses": {
           "200": {
-            "description": "OK"
+            "$ref": "#/components/responses/501"
+          },
+          "501": {
+            "$ref": "#/components/responses/501"
           }
         },
         "description": "Барааны жагсаалт",
@@ -560,37 +563,78 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Product"
-                }
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "filters": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "required": [
+                        "field",
+                        "operation",
+                        "type",
+                        "value"
+                      ],
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "operation": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "type": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  },
+                  "offset": {
+                    "type": "number"
+                  },
+                  "limit": {
+                    "type": "number"
+                  },
+                  "orderBy": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "filters",
+                  "offset",
+                  "limit",
+                  "orderBy"
+                ]
               },
               "examples": {
-                "Барааны жагсаалт": {
-                  "value": [
-                    {
-                      "productCode": "AT001",
-                      "name": "Атар талх",
-                      "catId": 1000,
-                      "catName": "Гурилан бүтээгдэхүүн",
-                      "description": "Атар талх: 30 жилийн турш өөрчлөгдөөгүй онцгой найрлага, дотно үнэр, амт чанар нь хэрэглэгчдийн таашаалд хэдийнээ нийцсэн идингэтэй хэмээн хүндлэгддэг брэнд бүтээгдэхүүн. Орц найрлага: Буудайн гурил БГ-075, давс, талхны исгэгч Тэжээллэг чанар: +15C-аас +18C хэмд 48 цаг хадгална",
-                      "supplierId": 123,
-                      "supplierName": "Талх чихэр"
-                    },
-                    {
-                      "productCode": "AT002",
-                      "name": "СҮҮТЭЙ МӨӨХИЙ",
-                      "catId": 1001,
-                      "catName": "НАРИЙН БООВ",
-                      "description": "ОРЦ: Сүүнд хүний биед хэрэгтэй Витамин D, уураг, фосфор зэрэг бүх төрлийн шим тэжээл багтсан байдаг. Цөцгийтэй сүүний өег зөөлөн амт нь бүх насны хүмүүс хэрэглэхэд тохиромжтой. ЖИН: 650гр ХАДГАЛАХ ХУГАЦАА:  Хуурай сэрүүн нарны гэрлээс хол, харьцангуй чийглэг 70%-иас ихгүй, +15оС +18 С-ийн хэмд 21 хоног хадгална.",
-                      "supplierId": 123,
-                      "supplierName": "Талх чихэр"
-                    }
-                  ]
+                "Барааны жагсаалт авах": {
+                  "value": {
+                    "filters": [
+                      {
+                        "field": "catId",
+                        "operation": "=",
+                        "type": "int",
+                        "value": "1000"
+                      }
+                    ],
+                    "offset": 0,
+                    "limit": 10,
+                    "orderBy": "productCode"
+                  }
                 }
               }
             }
-          }
+          },
+          "description": "Барааны жагсаалт"
         }
       },
       "parameters": []
@@ -601,32 +645,110 @@
         "operationId": "post-Product-Category",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Category"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": [
+                      {
+                        "catId": 0,
+                        "name": "string",
+                        "parentCatId": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "501": {
+            "$ref": "#/components/responses/501"
           }
         },
-        "description": "Барааны категорийн жагсаалт",
+        "description": "Барааны ангилалын жагсаалт",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Category"
-                }
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "filters": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "required": [
+                        "field",
+                        "operation",
+                        "type",
+                        "value"
+                      ],
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "operation": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "type": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  },
+                  "offset": {
+                    "type": "number"
+                  },
+                  "limit": {
+                    "type": "number"
+                  },
+                  "orderBy": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "filters",
+                  "offset",
+                  "limit",
+                  "orderBy"
+                ]
               },
               "examples": {
-                "example-1": {
-                  "value": [
-                    {
-                      "catId": 0,
-                      "name": "string",
-                      "parentCatId": 0
-                    }
-                  ]
+                "Ангилал": {
+                  "value": {
+                    "filters": [
+                      {
+                        "field": "parantCatId",
+                        "operation": "=",
+                        "type": "int",
+                        "value": "1000"
+                      }
+                    ],
+                    "offset": 0,
+                    "limit": 10,
+                    "orderBy": "catId"
+                  }
                 }
               }
             }
-          }
+          },
+          "description": ""
         }
       }
     },
@@ -646,13 +768,14 @@
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "Нийлүүлэгч": {
                     "value": [
                       {
-                        "supplierId": 0,
-                        "Name": "string",
+                        "supplierId": 123,
+                        "name": "Талх чихэр",
                         "categorys": [
-                          0
+                          1000,
+                          1001
                         ]
                       }
                     ]
@@ -660,6 +783,9 @@
                 }
               }
             }
+          },
+          "501": {
+            "$ref": "#/components/responses/501"
           }
         },
         "description": "Бараа нийлүүлэгчийн жагсаалт",
@@ -667,10 +793,78 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object"
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "filters": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "required": [
+                        "field",
+                        "operation",
+                        "type",
+                        "value"
+                      ],
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "operation": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "type": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  },
+                  "offset": {
+                    "type": "number"
+                  },
+                  "limit": {
+                    "type": "number"
+                  },
+                  "orderBy": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "filters",
+                  "offset",
+                  "limit",
+                  "orderBy"
+                ]
+              },
+              "examples": {
+                "Нийлүүлэгч": {
+                  "value": {
+                    "filters": [
+                      {
+                        "field": "supplierId",
+                        "operation": "=",
+                        "type": "int",
+                        "value": "123"
+                      }
+                    ],
+                    "offset": 0,
+                    "limit": 10,
+                    "orderBy": "supplierId"
+                  }
+                }
               }
             }
-          }
+          },
+          "description": ""
         }
       }
     }
@@ -808,17 +1002,18 @@
         "title": "Product",
         "type": "object",
         "description": "Барааны мэдээлэл",
+        "x-examples": {},
         "properties": {
           "productCode": {
             "type": "string"
           },
-          "Name": {
+          "name": {
             "type": "string"
           },
           "catId": {
             "type": "integer"
           },
-          "Description": {
+          "description": {
             "type": "string"
           },
           "supplierId": {
@@ -830,28 +1025,20 @@
           "supplierName": {
             "type": "string"
           }
-        },
-        "x-examples": {
-          "example-1": {
-            "productCode": "string",
-            "Name": "string",
-            "catId": 0,
-            "Description": "string",
-            "supplierId": 0,
-            "catName": "string",
-            "supplierName": "string"
-          }
         }
       },
       "Supplier": {
         "title": "Supplier",
         "type": "object",
+        "description": "Бэлтгэн нийлүүлэгч",
         "properties": {
           "supplierId": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Нийлүүлэгчийн бүртгэл"
           },
-          "Name": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Нийлүүлэгчийн нэр"
           },
           "categorys": {
             "type": "array",
@@ -860,8 +1047,7 @@
               "type": "integer"
             }
           }
-        },
-        "description": "Бэлтгэн нийлүүлэгч"
+        }
       },
       "Category": {
         "title": "Category",
@@ -876,9 +1062,12 @@
             "type": "string",
             "description": "Ангилалын нэр"
           },
-          "parentCatId": {
+          "parantCatId": {
             "type": "integer",
             "description": "Үндсэн ангилал"
+          },
+          "parantCatName": {
+            "type": "string"
           }
         }
       },
@@ -886,9 +1075,10 @@
         "title": "ProductBalance",
         "type": "object",
         "description": "Барааны үлдэгдэл",
+        "x-examples": {},
         "properties": {
-          "productId": {
-            "type": "integer"
+          "productCode": {
+            "type": "string"
           },
           "name": {
             "type": "string"
@@ -910,18 +1100,6 @@
           },
           "supplierName": {
             "type": "string"
-          }
-        },
-        "x-examples": {
-          "example-1": {
-            "productId": 0,
-            "name": "string",
-            "price": 0,
-            "availableQty": 0,
-            "catId": 0,
-            "catName": "string",
-            "supplierId": 0,
-            "supplierName": "string"
           }
         }
       },
@@ -958,59 +1136,6 @@
           "value": {
             "type": "string",
             "description": "Хайлтын утга"
-          }
-        }
-      },
-      "SalesItems": {
-        "title": "Sales Items",
-        "type": "object",
-        "properties": {
-          "productCode": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "description": "Барааны нэр"
-          },
-          "qty": {
-            "type": "number",
-            "description": "Тоо ширхэг"
-          },
-          "price": {
-            "type": "number",
-            "description": "Барааны нэгжийн үнэ"
-          },
-          "supplierId": {
-            "type": "string",
-            "description": "Нийлүүлэгчийн дугаар"
-          },
-          "date": {
-            "type": "string"
-          },
-          "payType": {
-            "type": "string",
-            "enum": [
-              "Бэлэн",
-              "Бэлэн бус"
-            ],
-            "description": "Төлбөрийн хэлбэр"
-          }
-        },
-        "required": [
-          "productCode",
-          "name",
-          "qty",
-          "price"
-        ],
-        "x-examples": {
-          "example-1": {
-            "productCode": "string",
-            "name": "string",
-            "qty": 0,
-            "price": 0,
-            "supplierId": "string",
-            "date": "string",
-            "payType": "Бэлэн"
           }
         }
       }
