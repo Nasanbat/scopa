@@ -229,26 +229,41 @@
                   "$ref": "#/components/schemas/Order"
                 },
                 "examples": {
-                  "example-1": {
+                  "Захиалга 123": {
                     "value": {
-                      "orderId": 0,
-                      "orderDate": "string",
+                      "orderId": 12,
+                      "orderDate": "2021.03.12",
                       "status": 0,
-                      "completeDate": "string",
-                      "merchantId": 0,
-                      "description": "string",
+                      "statusName": "Хүлээгдэж байгаа",
+                      "merchantId": 123,
+                      "description": "Атар талх 10, Боов-10",
+                      "expiryDate": "2021.03.30",
+                      "totalPrice": 45000,
+                      "payType": "LINE",
+                      "payAmount": 45000,
+                      "curCode": "MNT",
                       "items": [
                         {
-                          "orderId": 0,
-                          "ItemId": 0,
-                          "qty": 0,
-                          "price": 0,
-                          "complateQty": 0,
-                          "cancelQty": 0,
-                          "description": "string"
+                          "ItemId": 1,
+                          "productCode": "AT001",
+                          "productName": "Атар талх",
+                          "qty": 10,
+                          "price": 1500,
+                          "curCode": "MNT",
+                          "supplierId": 123,
+                          "description": "Талх"
+                        },
+                        {
+                          "ItemId": 2,
+                          "productCode": "AT002",
+                          "productName": "Боорцог",
+                          "qty": 10,
+                          "price": 3000,
+                          "curCode": "MNT",
+                          "supplierId": 123,
+                          "description": ""
                         }
-                      ],
-                      "ExpiryDate": "string"
+                      ]
                     }
                   }
                 }
