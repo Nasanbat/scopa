@@ -410,33 +410,44 @@
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "Хүлээгдэж байгаа захиалга": {
                     "value": [
                       {
-                        "orderId": 0,
-                        "orderDate": "string",
+                        "orderId": 123,
+                        "orderDate": "2021.03.12",
+                        "merchantId": 123,
+                        "merchantName": "Цэцэг дэлгүүр",
+                        "description": "10 талх, 10 боорцог",
+                        "expiryDate": "2021.03.25",
+                        "totalPrice": 45000,
+                        "curCode": "MNT",
+                        "userId": 22,
+                        "userName": "Ц.Насанбат",
                         "status": 0,
-                        "completeDate": "string",
-                        "merchantId": 0,
-                        "description": "string",
-                        "items": [
-                          {
-                            "orderId": 0,
-                            "ItemId": 0,
-                            "qty": 0,
-                            "price": 0,
-                            "complateQty": 0,
-                            "cancelQty": 0,
-                            "description": "string"
-                          }
-                        ],
-                        "ExpiryDate": "string"
+                        "statusName": "Хүлээгдэж байгаа"
+                      },
+                      {
+                        "orderId": 124,
+                        "orderDate": "2021.03.13",
+                        "merchantId": 123,
+                        "merchantName": "Цэцэг дэлгүүр",
+                        "description": "30 Сэнгүүр",
+                        "expiryDate": "2021.03.25",
+                        "totalPrice": 60000,
+                        "curCode": "MNT",
+                        "userId": 23,
+                        "userName": "У.Баатар",
+                        "status": 0,
+                        "statusName": "Хүлээгдэж байгаа"
                       }
                     ]
                   }
                 }
               }
             }
+          },
+          "501": {
+            "$ref": "#/components/responses/501"
           }
         },
         "requestBody": {
@@ -447,18 +458,22 @@
                 "properties": {
                   "limit": {
                     "type": "integer",
-                    "minimum": 10
+                    "minimum": 10,
+                    "description": "нэг хуудасны хэмжээ"
                   },
                   "offset": {
                     "type": "integer",
-                    "minimum": 1
+                    "minimum": 1,
+                    "description": "Хуудасны дугаар"
                   },
                   "sortBy": {
                     "type": "string",
-                    "example": "orderDate, supplierId"
+                    "example": "orderDate, supplierId",
+                    "description": "Эрэмбэ хийх талбарууд"
                   },
                   "filters": {
                     "type": "array",
+                    "description": "шүүлт",
                     "items": {
                       "$ref": "#/components/schemas/Filter"
                     }
@@ -466,19 +481,19 @@
                 }
               },
               "examples": {
-                "example-1": {
+                "Хүлээгдэж байгаа захиалга": {
                   "value": {
-                    "limit": 10,
-                    "offset": 1,
-                    "sortBy": "orderDate, supplierId",
                     "filters": [
                       {
-                        "field": "string",
+                        "field": "status",
                         "operation": "=",
-                        "type": "number",
-                        "value": "string"
+                        "type": "int",
+                        "value": "0"
                       }
-                    ]
+                    ],
+                    "offset": 0,
+                    "limit": 10,
+                    "sortBy": "orderDate, orderId"
                   }
                 }
               }
