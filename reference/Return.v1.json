@@ -14,7 +14,7 @@
     "/return/createNew": {
       "post": {
         "summary": "CreateNew",
-        "operationId": "post-return",
+        "operationId": "post-createNew",
         "responses": {
           "200": {
             "description": "OK",
@@ -90,6 +90,38 @@
         }
       },
       "parameters": []
+    },
+    "/return/removeItem": {
+      "post": {
+        "summary": "removeItem",
+        "operationId": "post-return-removeItem",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "returnId": {
+                    "type": "string"
+                  },
+                  "productCode": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "returnId",
+                  "productCode"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

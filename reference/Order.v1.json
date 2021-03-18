@@ -80,7 +80,7 @@
     "/Order/CreateOrder": {
       "post": {
         "summary": "Create Order",
-        "operationId": "post-user",
+        "operationId": "post-createOrder",
         "responses": {
           "200": {
             "description": "Захиалга амжилттай болсон. Захиалгын дугаар ирнэ.",
