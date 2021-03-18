@@ -21,7 +21,59 @@
             "description": "OK"
           }
         },
-        "description": "Борлуулалтын мэдээлэл илгээх"
+        "description": "Борлуулалтын мэдээлэл илгээх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "salesItems": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "productCode": {
+                          "type": "string",
+                          "description": "Барааны код"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Барааны нэр"
+                        },
+                        "qty": {
+                          "type": "string",
+                          "description": "Тоо хэмжээ"
+                        },
+                        "price": {
+                          "type": "string"
+                        },
+                        "supplierId": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "salesItems": [
+                      {
+                        "productCode": "string",
+                        "name": "string",
+                        "qty": "string",
+                        "price": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "Борлуулалтын мэдээлэл"
+        }
       }
     }
   },

@@ -863,6 +863,48 @@
             "type": "string"
           }
         }
+      },
+      "SalesItems": {
+        "title": "Sales Items",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Барааны нэр"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Тоо ширхэг"
+          },
+          "price": {
+            "type": "number",
+            "description": "Барааны нэгжийн үнэ"
+          },
+          "supplierId": {
+            "type": "string",
+            "description": "Нийлүүлэгчийн дугаар"
+          },
+          "date": {
+            "type": "string"
+          },
+          "payType": {
+            "type": "string",
+            "enum": [
+              "Бэлэн",
+              "Бэлэн бус"
+            ],
+            "description": "Төлбөрийн хэлбэр"
+          }
+        },
+        "required": [
+          "productCode",
+          "name",
+          "qty",
+          "price"
+        ]
       }
     },
     "securitySchemes": {
