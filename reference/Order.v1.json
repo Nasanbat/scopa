@@ -238,6 +238,37 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/Order"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "orderId": 0,
+                    "orderDate": "string",
+                    "status": 0,
+                    "completeDate": "string",
+                    "merchantId": 0,
+                    "description": "string",
+                    "expiryDate": "string",
+                    "totalPrice": 0,
+                    "statusName": "string",
+                    "items": [
+                      {
+                        "orderId": 0,
+                        "ItemId": 0,
+                        "qty": 0,
+                        "price": 0,
+                        "complateQty": 0,
+                        "cancelQty": 0,
+                        "description": "string",
+                        "productId": 0,
+                        "supplierId": 0,
+                        "supplierName": "string",
+                        "productName": "string"
+                      }
+                    ],
+                    "payType": "string"
+                  }
+                }
               }
             }
           }
@@ -339,52 +370,6 @@
           "description": ""
         },
         "description": "Захиалгын жагсаалт авах"
-      },
-      "parameters": []
-    },
-    "/Auth/Login": {
-      "post": {
-        "summary": "Login",
-        "operationId": "post-Login",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "Login": {
-                    "type": "string"
-                  },
-                  "pin": {
-                    "type": "integer"
-                  }
-                }
-              },
-              "examples": {
-                "Login": {
-                  "value": {
-                    "Login": "99013707",
-                    "pin": 3707
-                  }
-                }
-              }
-            }
-          },
-          "description": ""
-        },
-        "description": "SCOPA систем руу нэвтрэх"
       },
       "parameters": []
     },
@@ -674,8 +659,9 @@
               "$ref": "#/components/schemas/OrderItems"
             }
           },
-          "pay": {
-            "type": "string"
+          "payType": {
+            "type": "string",
+            "description": "Line ашиглах эсэх"
           }
         }
       },
@@ -860,6 +846,59 @@
           },
           "merchantName": {
             "type": "string"
+          }
+        }
+      },
+      "SalesItems": {
+        "title": "Sales Items",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Барааны нэр"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Тоо ширхэг"
+          },
+          "price": {
+            "type": "number",
+            "description": "Барааны нэгжийн үнэ"
+          },
+          "supplierId": {
+            "type": "string",
+            "description": "Нийлүүлэгчийн дугаар"
+          },
+          "date": {
+            "type": "string"
+          },
+          "payType": {
+            "type": "string",
+            "enum": [
+              "Бэлэн",
+              "Бэлэн бус"
+            ],
+            "description": "Төлбөрийн хэлбэр"
+          }
+        },
+        "required": [
+          "productCode",
+          "name",
+          "qty",
+          "price"
+        ],
+        "x-examples": {
+          "example-1": {
+            "productCode": "string",
+            "name": "string",
+            "qty": 0,
+            "price": 0,
+            "supplierId": "string",
+            "date": "string",
+            "payType": "Бэлэн"
           }
         }
       }
