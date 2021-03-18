@@ -1,0 +1,62 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Return",
+    "version": "1.0",
+    "description": "БАРАА БУЦААЛТТАЙ ХОЛБООТОЙ API-ууд"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {},
+  "components": {
+    "schemas": {
+      "Item": {
+        "title": "Item",
+        "type": "object",
+        "description": "Буцаах бараа",
+        "x-examples": {
+          "Alice Smith": {
+            "id": 142,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice.smith@gmail.com",
+            "dateOfBirth": "1997-10-31",
+            "emailVerified": true,
+            "signUpDate": "2019-08-24"
+          }
+        },
+        "properties": {
+          "prodCode": {
+            "type": "string",
+            "description": "Скопагаас кодлосон барааны код байна"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Тоо, хэмжээ"
+          },
+          "unitPrice": {
+            "type": "number",
+            "description": "Нэгжийн үнэ"
+          },
+          "meas": {
+            "type": "string",
+            "description": "Хэмжих нэгж: C - ширхэг, Kg - kilogram, L - liter   "
+          },
+          "reason": {
+            "type": "string",
+            "description": "Буцаасан шалтгаан: EXPIRED хугацаа дууссан, UNFOLD - баглаа задарсан, MOLD - муудсан, OTHER"
+          }
+        },
+        "required": [
+          "prodCode",
+          "qty",
+          "unitPrice",
+          "meas"
+        ]
+      }
+    }
+  }
+}
