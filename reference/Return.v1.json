@@ -58,7 +58,7 @@
                     "type": "array",
                     "description": "Буцаасан барааны дэлгэрэнгүй жагсаалт",
                     "items": {
-                      "$ref": "#/components/schemas/Item"
+                      "$ref": "#/components/schemas/ItemAddNew"
                     }
                   }
                 },
@@ -179,7 +179,7 @@
                     "type": "string",
                     "description": "Хугацаа: LAST, LAST_DAY, LAST_WEEK, LAST_MONTH"
                   },
-                  "supplier": {
+                  "supplierId": {
                     "type": "string",
                     "description": "Нийлүүлэгчийн id: selected supplier id"
                   }
@@ -190,11 +190,11 @@
                 ]
               },
               "examples": {
-                "example-1": {
+                "example-2": {
                   "value": {
                     "status": "string",
                     "interval": "string",
-                    "supplier": "string"
+                    "supplierId": "string"
                   }
                 }
               }
