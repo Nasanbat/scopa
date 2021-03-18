@@ -238,6 +238,37 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/Order"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "orderId": 0,
+                    "orderDate": "string",
+                    "status": 0,
+                    "completeDate": "string",
+                    "merchantId": 0,
+                    "description": "string",
+                    "expiryDate": "string",
+                    "totalPrice": 0,
+                    "statusName": "string",
+                    "items": [
+                      {
+                        "orderId": 0,
+                        "ItemId": 0,
+                        "qty": 0,
+                        "price": 0,
+                        "complateQty": 0,
+                        "cancelQty": 0,
+                        "description": "string",
+                        "productId": 0,
+                        "supplierId": 0,
+                        "supplierName": "string",
+                        "productName": "string"
+                      }
+                    ],
+                    "payType": "string"
+                  }
+                }
               }
             }
           }
@@ -339,52 +370,6 @@
           "description": ""
         },
         "description": "Захиалгын жагсаалт авах"
-      },
-      "parameters": []
-    },
-    "/Auth/Login": {
-      "post": {
-        "summary": "Login",
-        "operationId": "post-Login",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "Login": {
-                    "type": "string"
-                  },
-                  "pin": {
-                    "type": "integer"
-                  }
-                }
-              },
-              "examples": {
-                "Login": {
-                  "value": {
-                    "Login": "99013707",
-                    "pin": 3707
-                  }
-                }
-              }
-            }
-          },
-          "description": ""
-        },
-        "description": "SCOPA систем руу нэвтрэх"
       },
       "parameters": []
     },

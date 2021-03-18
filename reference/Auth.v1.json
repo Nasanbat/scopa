@@ -107,79 +107,19 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "firstName": {
+                  "Login": {
                     "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "dateOfBirth": {
-                    "type": "string",
-                    "format": "date"
-                  }
-                },
-                "required": [
-                  "firstName",
-                  "lastName",
-                  "email",
-                  "dateOfBirth"
-                ]
-              },
-              "examples": {
-                "Create User Bob Fellow": {
-                  "value": {
-                    "firstName": "Bob",
-                    "lastName": "Fellow",
-                    "email": "bob.fellow@gmail.com",
-                    "dateOfBirth": "1996-08-24"
                   }
                 }
-              }
+              },
+              "examples": {}
             }
           },
           "description": "Post the necessary fields for the API to create a new user."
         },
         "description": "Create a new user."
       },
-      "parameters": [],
-      "get": {
-        "summary": "Log Out",
-        "operationId": "get-Auth-Logout",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "description": "Системээс гарах",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "Login": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "description": ""
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Session",
-            "description": "TOKEN_ID"
-          }
-        ]
-      }
+      "parameters": []
     },
     "/Auth/Echo": {
       "get": {
@@ -200,7 +140,8 @@
             "name": "Session",
             "description": "TOKEN_ID"
           }
-        ]
+        ],
+        "description": "Холболт хэвийн байгаа эсэхийг шалгана"
       },
       "parameters": [],
       "post": {
@@ -211,7 +152,17 @@
             "description": "OK"
           }
         },
-        "description": "Холболт хэвийн байгаа эсэхийг шалгана"
+        "description": "Холболт хэвийн байгаа эсэхийг шалгана",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "SESSIONID",
+            "description": "TOKEN_ID"
+          }
+        ]
       }
     },
     "/Auth/GetToken": {
@@ -224,7 +175,21 @@
             "description": "OK"
           }
         },
-        "description": "Автомат токен үүсгүүлж авах"
+        "description": "Автомат токен үүсгүүлж авах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "merchantId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
