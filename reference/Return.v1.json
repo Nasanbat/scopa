@@ -117,6 +117,14 @@
                   "returnId",
                   "productCode"
                 ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "returnId": "string",
+                    "productCode": "string"
+                  }
+                }
               }
             }
           }
@@ -180,6 +188,15 @@
                   "status",
                   "interval"
                 ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "status": "string",
+                    "interval": "string",
+                    "supplier": "string"
+                  }
+                }
               }
             }
           }
@@ -210,6 +227,13 @@
                 "required": [
                   "returnId"
                 ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "returnId": "string"
+                  }
+                }
               }
             }
           }
@@ -230,28 +254,18 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "returnId": {
-                    "type": "string"
-                  },
-                  "productCode": {
-                    "type": "string"
-                  },
-                  "qty": {
-                    "type": "number"
-                  },
-                  "reason": {
-                    "type": "string"
-                  },
-                  "meas": {
-                    "type": "string"
+                "$ref": "#/components/schemas/ItemEdit"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "returnId": "string",
+                    "productCode": "string",
+                    "qty": 0,
+                    "reason": "string",
+                    "meas": "string"
                   }
-                },
-                "required": [
-                  "returnId",
-                  "productCode"
-                ]
+                }
               }
             }
           }
@@ -272,8 +286,18 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {}
+                "$ref": "#/components/schemas/ItemEdit"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "returnId": "string",
+                    "productCode": "string",
+                    "qty": 0,
+                    "meas": "string",
+                    "reason": "string"
+                  }
+                }
               }
             },
             "application/xml": {
@@ -312,7 +336,7 @@
   },
   "components": {
     "schemas": {
-      "ItemToReturn": {
+      "ItemAddNew": {
         "title": "Item",
         "type": "object",
         "description": "Буцаах бараа",
@@ -396,6 +420,39 @@
           "status",
           "itemCount",
           "totalAmt"
+        ]
+      },
+      "ItemEdit": {
+        "title": "ItemAdd",
+        "type": "object",
+        "description": "Буцаах бараа",
+        "properties": {
+          "returnId": {
+            "type": "string",
+            "description": "Буцаалтын дугаар"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Буцаах барааны код"
+          },
+          "qty": {
+            "type": "integer",
+            "description": "Тоо, хэмжээ"
+          },
+          "meas": {
+            "type": "string",
+            "description": "Нэгж: C - ширхэг, Kg - килограмм, L - литр"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Буцаасан шалтгаан: EXPIRED хугацаа дууссан, UNFOLD - баглаа задарсан, MOLD - муудсан, OTHER"
+          }
+        },
+        "required": [
+          "returnId",
+          "productCode",
+          "qty",
+          "meas"
         ]
       }
     }
