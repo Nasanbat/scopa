@@ -14,7 +14,7 @@
     "/return/createNew": {
       "post": {
         "summary": "CreateNew",
-        "operationId": "post-return",
+        "operationId": "post-createNew",
         "responses": {
           "200": {
             "description": "OK",
