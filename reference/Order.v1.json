@@ -904,7 +904,18 @@
           "name",
           "qty",
           "price"
-        ]
+        ],
+        "x-examples": {
+          "example-1": {
+            "productCode": "string",
+            "name": "string",
+            "qty": 0,
+            "price": 0,
+            "supplierId": "string",
+            "date": "string",
+            "payType": "Бэлэн"
+          }
+        }
       }
     },
     "securitySchemes": {

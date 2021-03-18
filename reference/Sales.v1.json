@@ -26,48 +26,24 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "salesItems": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "productCode": {
-                          "type": "string",
-                          "description": "Барааны код"
-                        },
-                        "name": {
-                          "type": "string",
-                          "description": "Барааны нэр"
-                        },
-                        "qty": {
-                          "type": "string",
-                          "description": "Тоо хэмжээ"
-                        },
-                        "price": {
-                          "type": "string"
-                        },
-                        "supplierId": {
-                          "type": "integer"
-                        }
-                      }
-                    }
-                  }
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SalesItem"
                 }
               },
               "examples": {
                 "example-1": {
-                  "value": {
-                    "salesItems": [
-                      {
-                        "productCode": "string",
-                        "name": "string",
-                        "qty": "string",
-                        "price": "string"
-                      }
-                    ]
-                  }
+                  "value": [
+                    {
+                      "productCode": "string",
+                      "name": "string",
+                      "qty": 0,
+                      "price": 0,
+                      "supplierId": "string",
+                      "date": "string",
+                      "payType": "string"
+                    }
+                  ]
                 }
               }
             }
@@ -78,6 +54,52 @@
     }
   },
   "components": {
-    "schemas": {}
+    "schemas": {
+      "SalesItem": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Барааны код"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Барааны нэр"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Тоо хэмжээ"
+          },
+          "price": {
+            "type": "number",
+            "description": "Үнэ"
+          },
+          "supplierId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Бэлтгэн нийлүүлэгчийн мэдээлэл"
+          },
+          "date": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Борлуулалт хийсэн огноо"
+          },
+          "payType": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Төлбөрийн хэлбэр"
+          }
+        },
+        "required": [
+          "productCode",
+          "name",
+          "qty",
+          "price"
+        ]
+      }
+    }
   }
 }
