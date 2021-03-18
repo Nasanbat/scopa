@@ -511,7 +511,45 @@
         "operationId": "post-ProductList",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductBalance"
+                  }
+                },
+                "examples": {
+                  "Барааны үнэ": {
+                    "value": [
+                      {
+                        "productCode": "AT001",
+                        "productName": "Атар талх",
+                        "price": 3000,
+                        "curCode": "MNT",
+                        "availableQty": 0,
+                        "catId": 1000,
+                        "catName": "Талх",
+                        "supplierId": 123,
+                        "supplierName": "Талх чихэр"
+                      },
+                      {
+                        "productCode": "AT002",
+                        "productName": "Боорцог",
+                        "price": 3000,
+                        "curCode": "MNT",
+                        "availableQty": 0,
+                        "catId": 1001,
+                        "catName": "Нарийн боов",
+                        "supplierId": 123,
+                        "supplierName": "Талх чихэр"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
           }
         },
         "description": "Дэлгүүрийн барааны үлдэгдэл",
@@ -519,25 +557,73 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductBalance"
-                }
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "filters": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "required": [
+                        "field",
+                        "operation",
+                        "type",
+                        "value"
+                      ],
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "operation": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "type": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  },
+                  "offset": {
+                    "type": "number"
+                  },
+                  "limit": {
+                    "type": "number"
+                  },
+                  "orderBy": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "filters",
+                  "offset",
+                  "limit",
+                  "orderBy"
+                ]
               },
               "examples": {
-                "example-1": {
-                  "value": [
-                    {
-                      "productId": 0,
-                      "name": "string",
-                      "price": 0,
-                      "AvailableQty": 0,
-                      "catId": 0,
-                      "catName": "string",
-                      "supplierId": 0,
-                      "supplierName": "string"
-                    }
-                  ]
+                "Барааны үнэ авах": {
+                  "value": {
+                    "filters": [
+                      {
+                        "field": "catId",
+                        "operation": "=",
+                        "type": "int",
+                        "value": "1000"
+                      }
+                    ],
+                    "offset": 0,
+                    "limit": 10,
+                    "orderBy": "productCode"
+                  }
                 }
               }
             }
@@ -552,7 +638,41 @@
         "operationId": "post-Product-ProductList",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/501"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                },
+                "examples": {
+                  "Бараа": {
+                    "value": [
+                      {
+                        "productCode": "AT001",
+                        "productName": "Атар талх",
+                        "description": "Атар талх",
+                        "catId": 100,
+                        "catName": "Талх",
+                        "supplierId": 123,
+                        "supplierName": "Талх чихэр"
+                      },
+                      {
+                        "productCode": "AT002",
+                        "productName": "Мишээл талх",
+                        "description": "Мишээл талх",
+                        "catId": 100,
+                        "catName": "Талх",
+                        "supplierId": 123,
+                        "supplierName": "Талх чихэр"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
           },
           "501": {
             "$ref": "#/components/responses/501"
@@ -784,6 +904,15 @@
                           1000,
                           1001
                         ]
+                      },
+                      {
+                        "supplierId": 124,
+                        "name": "АПУ",
+                        "categorys": [
+                          1000,
+                          1001,
+                          2000
+                        ]
                       }
                     ]
                   }
@@ -1014,7 +1143,7 @@
           "productCode": {
             "type": "string"
           },
-          "name": {
+          "productName": {
             "type": "string"
           },
           "catId": {
@@ -1087,7 +1216,7 @@
           "productCode": {
             "type": "string"
           },
-          "name": {
+          "productName": {
             "type": "string"
           },
           "price": {
@@ -1106,6 +1235,9 @@
             "type": "integer"
           },
           "supplierName": {
+            "type": "string"
+          },
+          "curCode": {
             "type": "string"
           }
         }
