@@ -310,9 +310,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "501": {
+            "$ref": "#/components/responses/501"
           }
         },
-        "description": "Захиалгын цуцлах",
+        "description": "Захиалга цуцлах",
         "requestBody": {
           "content": {
             "application/json": {
@@ -326,10 +329,18 @@
                     "type": "string"
                   }
                 }
+              },
+              "examples": {
+                "Цуцлах": {
+                  "value": {
+                    "orderId": 123,
+                    "description": "Энэ захиалгыг цуцлахаар боллоо. Буруу захиалга"
+                  }
+                }
               }
             }
           },
-          "description": ""
+          "description": "Өмнө хийсэн захиалгааас захиалгын дугаар болон шалгаан явуулж цуцлана"
         }
       },
       "parameters": []
@@ -1002,6 +1013,12 @@
               }
             },
             "examples": {
+              "41001001": {
+                "value": {
+                  "errCode": "41001001",
+                  "description": "Энэ үйлдлийг хийх боломжгүй."
+                }
+              },
               "91001000": {
                 "value": {
                   "errCode": "91001000",
