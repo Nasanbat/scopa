@@ -13,7 +13,7 @@
   "paths": {
     "/return/createNew": {
       "post": {
-        "summary": "add",
+        "summary": "Create new",
         "operationId": "post-createNew",
         "responses": {
           "200": {
@@ -93,7 +93,7 @@
     },
     "/return/removeItem": {
       "post": {
-        "summary": "removeItem",
+        "summary": "Remove Item",
         "operationId": "post-return-removeItem",
         "responses": {
           "200": {
@@ -189,7 +189,7 @@
     },
     "/return/remove": {
       "post": {
-        "summary": "",
+        "summary": "Remove",
         "operationId": "post-return-remove",
         "responses": {
           "200": {
@@ -218,7 +218,7 @@
     },
     "/return/editItem": {
       "post": {
-        "summary": "",
+        "summary": "Edit item",
         "operationId": "post-return-editItem",
         "responses": {
           "200": {
@@ -260,7 +260,7 @@
     },
     "/return/addItem": {
       "post": {
-        "summary": "",
+        "summary": "Add item",
         "operationId": "post-return-addItem",
         "responses": {
           "200": {
