@@ -655,12 +655,19 @@
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "Ангилал": {
                     "value": [
                       {
-                        "catId": 0,
-                        "name": "string",
-                        "parentCatId": 0
+                        "catId": 100,
+                        "name": "Талх",
+                        "parentCatId": 10,
+                        "parentName": "Гурилан"
+                      },
+                      {
+                        "catId": 101,
+                        "name": "Нарийн боов",
+                        "parentCatId": 10,
+                        "parentName": "Гурилан"
                       }
                     ]
                   }
