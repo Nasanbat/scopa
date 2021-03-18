@@ -10,7 +10,88 @@
       "url": "http://localhost:3000"
     }
   ],
-  "paths": {},
+  "paths": {
+    "/return/createNew": {
+      "post": {
+        "summary": "CreateNew",
+        "operationId": "post-return",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "returnId": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "returnId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Шинээр буцаалт үүсгэх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "supplierId": {
+                    "type": "integer",
+                    "description": "Нийлүүлэгчийн Id"
+                  },
+                  "itemCount": {
+                    "type": "integer",
+                    "description": "Буцаах барааны тоо нэр төрлөөр"
+                  },
+                  "items": {
+                    "type": "array",
+                    "description": "Буцаасан барааны дэлгэрэнгүй жагсаалт",
+                    "items": {
+                      "$ref": "#/components/schemas/Item"
+                    }
+                  }
+                },
+                "required": [
+                  "supplierId",
+                  "itemCount",
+                  "items"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "supplierId": 0,
+                    "itemCount": 0,
+                    "items": [
+                      {
+                        "prodCode": "string",
+                        "qty": 0,
+                        "unitPrice": 0,
+                        "meas": "string",
+                        "reason": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    }
+  },
   "components": {
     "schemas": {
       "Item": {
@@ -29,7 +110,7 @@
           }
         },
         "properties": {
-          "prodCode": {
+          "productCode": {
             "type": "string",
             "description": "Скопагаас кодлосон барааны код байна"
           },
@@ -51,7 +132,7 @@
           }
         },
         "required": [
-          "prodCode",
+          "productCode",
           "qty",
           "unitPrice",
           "meas"

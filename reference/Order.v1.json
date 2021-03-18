@@ -89,7 +89,13 @@
                     "orderId"
                   ]
                 },
-                "examples": {}
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "orderId": 0
+                    }
+                  }
+                }
               },
               "application/xml": {
                 "schema": {
@@ -114,7 +120,37 @@
               "schema": {
                 "$ref": "#/components/schemas/Order"
               },
-              "examples": {}
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "orderId": 0,
+                    "orderDate": "string",
+                    "status": 0,
+                    "completeDate": "string",
+                    "merchantId": 0,
+                    "description": "string",
+                    "expiryDate": "string",
+                    "totalPrice": 0,
+                    "statusName": "string",
+                    "items": [
+                      {
+                        "orderId": 0,
+                        "ItemId": 0,
+                        "qty": 0,
+                        "price": 0,
+                        "complateQty": 0,
+                        "cancelQty": 0,
+                        "description": "string",
+                        "productId": 0,
+                        "supplierId": 0,
+                        "supplierName": "string",
+                        "productName": "string"
+                      }
+                    ],
+                    "payType": "string"
+                  }
+                }
+              }
             },
             "application/xml": {
               "schema": {
