@@ -869,6 +869,10 @@
           "curCode": {
             "type": "string",
             "description": "Валют"
+          },
+          "meas": {
+            "type": "string",
+            "description": "Хэмжих нэгж: C - ширхэг, Kg - kilogram, L - liter  "
           }
         },
         "required": [
@@ -1045,6 +1049,10 @@
           },
           "curCode": {
             "type": "string"
+          },
+          "meas": {
+            "type": "string",
+            "description": "Хэмжих нэгж: C - ширхэг, Kg - kilogram, L - liter  "
           }
         }
       },
