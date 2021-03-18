@@ -484,31 +484,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "limit": {
-                    "type": "integer",
-                    "minimum": 10,
-                    "description": "нэг хуудасны хэмжээ"
-                  },
-                  "offset": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "description": "Хуудасны дугаар"
-                  },
-                  "sortBy": {
-                    "type": "string",
-                    "example": "orderDate, supplierId",
-                    "description": "Эрэмбэ хийх талбарууд"
-                  },
-                  "filters": {
-                    "type": "array",
-                    "description": "шүүлт олон талбараар шүүх боломжтой байна",
-                    "items": {
-                      "$ref": "#/components/schemas/Filter"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/filters"
               },
               "examples": {
                 "Хүлээгдэж байгаа захиалга": {
@@ -587,57 +563,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
-                "type": "object",
-                "properties": {
-                  "filters": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "minItems": 1,
-                    "items": {
-                      "required": [
-                        "field",
-                        "operation",
-                        "type",
-                        "value"
-                      ],
-                      "properties": {
-                        "field": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "operation": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "type": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "value": {
-                          "type": "string",
-                          "minLength": 1
-                        }
-                      }
-                    }
-                  },
-                  "offset": {
-                    "type": "number"
-                  },
-                  "limit": {
-                    "type": "number"
-                  },
-                  "orderBy": {
-                    "type": "string",
-                    "minLength": 1
-                  }
-                },
-                "required": [
-                  "filters",
-                  "offset",
-                  "limit",
-                  "orderBy"
-                ]
+                "$ref": "#/components/schemas/filters"
               },
               "examples": {
                 "Барааны үнэ авах": {
@@ -713,57 +639,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
-                "type": "object",
-                "properties": {
-                  "filters": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "minItems": 1,
-                    "items": {
-                      "required": [
-                        "field",
-                        "operation",
-                        "type",
-                        "value"
-                      ],
-                      "properties": {
-                        "field": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "operation": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "type": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "value": {
-                          "type": "string",
-                          "minLength": 1
-                        }
-                      }
-                    }
-                  },
-                  "offset": {
-                    "type": "number"
-                  },
-                  "limit": {
-                    "type": "number"
-                  },
-                  "orderBy": {
-                    "type": "string",
-                    "minLength": 1
-                  }
-                },
-                "required": [
-                  "filters",
-                  "offset",
-                  "limit",
-                  "orderBy"
-                ]
+                "$ref": "#/components/schemas/filters"
               },
               "examples": {
                 "Барааны жагсаалт авах": {
@@ -834,57 +710,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
-                "type": "object",
-                "properties": {
-                  "filters": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "minItems": 1,
-                    "items": {
-                      "required": [
-                        "field",
-                        "operation",
-                        "type",
-                        "value"
-                      ],
-                      "properties": {
-                        "field": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "operation": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "type": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "value": {
-                          "type": "string",
-                          "minLength": 1
-                        }
-                      }
-                    }
-                  },
-                  "offset": {
-                    "type": "number"
-                  },
-                  "limit": {
-                    "type": "number"
-                  },
-                  "orderBy": {
-                    "type": "string",
-                    "minLength": 1
-                  }
-                },
-                "required": [
-                  "filters",
-                  "offset",
-                  "limit",
-                  "orderBy"
-                ]
+                "$ref": "#/components/schemas/filters"
               },
               "examples": {
                 "Ангилал": {
@@ -959,57 +785,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
-                "type": "object",
-                "properties": {
-                  "filters": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "minItems": 1,
-                    "items": {
-                      "required": [
-                        "field",
-                        "operation",
-                        "type",
-                        "value"
-                      ],
-                      "properties": {
-                        "field": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "operation": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "type": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "value": {
-                          "type": "string",
-                          "minLength": 1
-                        }
-                      }
-                    }
-                  },
-                  "offset": {
-                    "type": "number"
-                  },
-                  "limit": {
-                    "type": "number"
-                  },
-                  "orderBy": {
-                    "type": "string",
-                    "minLength": 1
-                  }
-                },
-                "required": [
-                  "filters",
-                  "offset",
-                  "limit",
-                  "orderBy"
-                ]
+                "$ref": "#/components/schemas/filters"
               },
               "examples": {
                 "Нийлүүлэгч": {
@@ -1307,6 +1083,68 @@
             "description": "Хайлтын утга"
           }
         }
+      },
+      "filters": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "filters": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "Шүүлт хийх талбарууд",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Шүүлт хийх талбар"
+                },
+                "operation": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "=, !=, >, <, Like, IN"
+                },
+                "type": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Шүүлтийн утгын төрөл"
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Утга"
+                }
+              },
+              "required": [
+                "field",
+                "operation",
+                "type",
+                "value"
+              ]
+            }
+          },
+          "offset": {
+            "type": "number",
+            "description": "Хуудас"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Нэг хуудасны мөрийн тоо"
+          },
+          "orderBy": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Эрэмбэ хийх талбарууд"
+          }
+        },
+        "required": [
+          "filters",
+          "offset",
+          "limit",
+          "orderBy"
+        ]
       }
     },
     "securitySchemes": {
