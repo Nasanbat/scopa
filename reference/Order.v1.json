@@ -23,7 +23,31 @@
         "operationId": "post-EditOrder",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/501"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Захиалга",
+                  "type": "object",
+                  "properties": {
+                    "orderId": {
+                      "type": "number",
+                      "description": "Захиалгын дугаар"
+                    }
+                  },
+                  "required": [
+                    "orderId"
+                  ]
+                },
+                "examples": {
+                  "Захиалга 12": {
+                    "value": {
+                      "orderId": 12
+                    }
+                  }
+                }
+              }
+            }
           },
           "501": {
             "$ref": "#/components/responses/501"
@@ -87,11 +111,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "description": "",
+                  "description": "Захиалга",
                   "type": "object",
                   "properties": {
                     "orderId": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "Захиалгын дугаар"
                     }
                   },
                   "required": [
@@ -212,16 +237,7 @@
           "description": "Шинэ захиалга үүсгэх"
         },
         "description": "Барааны захиалга өгөх",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "cookie",
-            "name": "SCOPASESSION",
-            "description": "FZFOfwDoOlJv9uGl4a6N2kLMWSkeQC"
-          }
-        ]
+        "parameters": []
       },
       "parameters": []
     },
@@ -238,7 +254,7 @@
                   "$ref": "#/components/schemas/Order"
                 },
                 "examples": {
-                  "Захиалга 123": {
+                  "Захиалга 12": {
                     "value": {
                       "orderId": 12,
                       "orderDate": "2021.03.12",
@@ -278,6 +294,9 @@
                 }
               }
             }
+          },
+          "501": {
+            "$ref": "#/components/responses/501"
           }
         },
         "description": "Захиалгын мэдээлэл лавлах",
@@ -285,16 +304,24 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
+                "description": "Захалга",
                 "type": "object",
                 "properties": {
                   "orderId": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Захиалгын дугаар"
                   }
                 },
                 "required": [
                   "orderId"
                 ]
+              },
+              "examples": {
+                "Захиалга 12": {
+                  "value": {
+                    "orderId": 12
+                  }
+                }
               }
             }
           },
@@ -321,12 +348,15 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "description": "Захиалга",
                 "properties": {
                   "orderId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Захиалгын дугаар"
                   },
                   "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Захиалгын тайлбар"
                   }
                 }
               },
@@ -473,7 +503,7 @@
                   },
                   "filters": {
                     "type": "array",
-                    "description": "шүүлт",
+                    "description": "шүүлт олон талбараар шүүх боломжтой байна",
                     "items": {
                       "$ref": "#/components/schemas/Filter"
                     }
@@ -499,7 +529,7 @@
               }
             }
           },
-          "description": "Захиалгын мэдээлэл жагсаалт"
+          "description": "filters хэсэгт status, orderId, orderDate, merchantId гэсэн талбараар шүүлт хийнэ."
         },
         "description": "Захиалгын жагсаалт авах"
       },
