@@ -340,7 +340,10 @@
         "operationId": "post-CompleteOrder",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Амжилттай хүлээж авсан."
+          },
+          "501": {
+            "$ref": "#/components/responses/501"
           }
         },
         "requestBody": {
@@ -350,33 +353,26 @@
                 "$ref": "#/components/schemas/Order"
               },
               "examples": {
-                "example-1": {
+                "Захиалга хүлээж авав": {
                   "value": {
-                    "orderId": 0,
-                    "orderDate": "string",
-                    "status": 0,
-                    "completeDate": "string",
-                    "merchantId": 0,
+                    "orderId": 123,
+                    "completeDate": "2021.03.28",
                     "description": "string",
-                    "expiryDate": "string",
-                    "totalPrice": 0,
-                    "statusName": "string",
                     "items": [
                       {
-                        "orderId": 0,
-                        "ItemId": 0,
-                        "qty": 0,
-                        "price": 0,
-                        "complateQty": 0,
-                        "cancelQty": 0,
-                        "description": "string",
-                        "productId": 0,
-                        "supplierId": 0,
-                        "supplierName": "string",
-                        "productName": "string"
+                        "ItemId": 1,
+                        "productCode": "AT001",
+                        "complateQty": 10,
+                        "description": "Бүгдийг нь хүлээж авав"
+                      },
+                      {
+                        "ItemId": 2,
+                        "productCode": "AT002",
+                        "complateQty": 9,
+                        "cancelQty": 1,
+                        "description": "1 боорцог ирээгүй"
                       }
-                    ],
-                    "payType": "string"
+                    ]
                   }
                 }
               }
@@ -752,6 +748,7 @@
           },
           "items": {
             "type": "array",
+            "description": "Захиалгын бараанууд",
             "items": {
               "$ref": "#/components/schemas/OrderItems"
             }
