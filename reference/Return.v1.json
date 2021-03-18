@@ -13,7 +13,7 @@
   "paths": {
     "/return/createNew": {
       "post": {
-        "summary": "CreateNew",
+        "summary": "add",
         "operationId": "post-createNew",
         "responses": {
           "200": {
@@ -120,13 +120,199 @@
               }
             }
           }
+        },
+        "description": "Буцаалтын бүргэлээс мөр хасах"
+      }
+    },
+    "/return/list": {
+      "get": {
+        "summary": "list",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/returnReq"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": [
+                      {
+                        "returnId": 0,
+                        "supplierId": "string",
+                        "status": "string",
+                        "itemCount": 0,
+                        "totalAmt": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-return-list",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "description": "Төлөв: ALL, PENDING, COMPLETED"
+                  },
+                  "interval": {
+                    "type": "string",
+                    "description": "Хугацаа: LAST, LAST_DAY, LAST_WEEK, LAST_MONTH"
+                  },
+                  "supplier": {
+                    "type": "string",
+                    "description": "Нийлүүлэгчийн id: selected supplier id"
+                  }
+                },
+                "required": [
+                  "status",
+                  "interval"
+                ]
+              }
+            }
+          }
+        },
+        "description": "Бүртгэсэн буцаалтын жагсаалт авах"
+      }
+    },
+    "/return/remove": {
+      "post": {
+        "summary": "",
+        "operationId": "post-return-remove",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Бүртгэсэн буцаалтыг устгах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "returnId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "returnId"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/return/editItem": {
+      "post": {
+        "summary": "",
+        "operationId": "post-return-editItem",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Бүртгэсэн буцаалт доторх мөр өөрчлөх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "returnId": {
+                    "type": "string"
+                  },
+                  "productCode": {
+                    "type": "string"
+                  },
+                  "qty": {
+                    "type": "number"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "meas": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "returnId",
+                  "productCode"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/return/addItem": {
+      "post": {
+        "summary": "",
+        "operationId": "post-return-addItem",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Бүртгэсэн буцаалт дээр мөр нэмэх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "returnId": {
+                    "type": "string"
+                  },
+                  "productCode": {
+                    "type": "string"
+                  },
+                  "qty": {
+                    "type": "number"
+                  },
+                  "meas": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "returnId",
+                  "productCode",
+                  "qty",
+                  "meas",
+                  "reason"
+                ]
+              }
+            }
+          }
         }
       }
     }
   },
   "components": {
     "schemas": {
-      "Item": {
+      "ItemToReturn": {
         "title": "Item",
         "type": "object",
         "description": "Буцаах бараа",
@@ -168,6 +354,48 @@
           "qty",
           "unitPrice",
           "meas"
+        ]
+      },
+      "returnReq": {
+        "title": "returnReq",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "returnId": 0,
+            "supplierId": "string",
+            "status": "string",
+            "itemCount": 0,
+            "totalAmt": 0
+          }
+        },
+        "properties": {
+          "returnId": {
+            "type": "integer",
+            "description": "Буцаалтын id"
+          },
+          "supplierId": {
+            "type": "string",
+            "description": "Нийлүүлэгч"
+          },
+          "status": {
+            "type": "string",
+            "description": "Төлөв: PENDING, ACCEPTED, COMPLETED"
+          },
+          "itemCount": {
+            "type": "integer",
+            "description": "Буцаалт доторх барааны тоо"
+          },
+          "totalAmt": {
+            "type": "number",
+            "description": "Буцаалтын үнийн дүн"
+          }
+        },
+        "required": [
+          "returnId",
+          "supplierId",
+          "status",
+          "itemCount",
+          "totalAmt"
         ]
       }
     }
