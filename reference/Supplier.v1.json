@@ -15,7 +15,7 @@
       "parameters": [],
       "post": {
         "summary": "Add Category",
-        "operationId": "post-Supplier-AddCategory",
+        "operationId": "19002011",
         "responses": {
           "200": {
             "description": "OK"
@@ -37,7 +37,7 @@
     "/Supplier/EditCategory": {
       "post": {
         "summary": "Edit Category",
-        "operationId": "post-EditCategory",
+        "operationId": "19002012",
         "responses": {
           "200": {
             "description": "",
@@ -84,78 +84,85 @@
     "/Supplier/DetailCategory": {
       "post": {
         "summary": "Detail Category",
-        "operationId": "post-Supplier-DetailCategory",
+        "operationId": "19002013",
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "description": "Ангилалын мэдээллийн дэлгэрэнгүй"
       }
     },
     "/Supplier/AddProduct": {
       "post": {
         "summary": "Add Product",
-        "operationId": "post-Supplier-AddProduct",
+        "operationId": "19002001",
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "description": "Шинэ бараа нэмэх"
       }
     },
     "/Supplier/EditProduct": {
       "post": {
         "summary": "Edit Product",
-        "operationId": "post-Supplier-EditProduct",
+        "operationId": "19002002",
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "description": "Барааны мэдээлэл засварлах"
       }
     },
     "/Supplier/DetailProduct": {
       "post": {
         "summary": "Detail Product",
-        "operationId": "post-Supplier-DetailProduct",
+        "operationId": "19002003",
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "description": "Бараанмы дэлгэрэнгүй мэдээлэл"
       }
     },
     "/Supplier/ListProduct": {
       "post": {
         "summary": "List Product",
-        "operationId": "post-Supplier-ListProduct",
+        "operationId": "19002000",
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "description": "Барааны жагсаалт"
       }
     },
     "/Supplier/UpdateProductPrice": {
       "post": {
         "summary": "Update Product Price",
-        "operationId": "post-Supplier-UpdateProductPrice",
+        "operationId": "19002006",
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "description": "Барааны үндсэн үнийн мэдээлэл"
       }
     },
     "/Supplier/UpdateProductBalance": {
       "post": {
         "summary": "Update Product Balance",
-        "operationId": "post-Supplier-UpdateProductBalance",
+        "operationId": "19002007",
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "description": "Барааны үлдэгдэлийн мэдээлэл"
       }
     }
   },

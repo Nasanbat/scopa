@@ -20,7 +20,7 @@
       "parameters": [],
       "post": {
         "summary": "Edit Order",
-        "operationId": "post-EditOrder",
+        "operationId": "19001002",
         "responses": {
           "200": {
             "description": "OK",
@@ -106,7 +106,7 @@
     "/Order/CreateOrder": {
       "post": {
         "summary": "Create Order",
-        "operationId": "post-createOrder",
+        "operationId": "19001001",
         "responses": {
           "200": {
             "description": "Захиалга амжилттай болсон. Захиалгын дугаар ирнэ.",
@@ -248,7 +248,7 @@
     "/Order/DetailOrder": {
       "post": {
         "summary": "Detail Order",
-        "operationId": "post-DetailOrder",
+        "operationId": "19001004",
         "responses": {
           "200": {
             "description": "OK",
@@ -339,7 +339,7 @@
     "/Order/CancelOrder": {
       "post": {
         "summary": "Cancel Order",
-        "operationId": "post-CancelOrder",
+        "operationId": "19001003",
         "responses": {
           "200": {
             "description": "OK"
@@ -384,7 +384,7 @@
     "/Order/CompleteOrder": {
       "post": {
         "summary": "Complete Order",
-        "operationId": "post-CompleteOrder",
+        "operationId": "19001005",
         "responses": {
           "200": {
             "description": "Амжилттай хүлээж авсан."
@@ -433,7 +433,7 @@
     "/Order/OrderList": {
       "post": {
         "summary": "List order",
-        "operationId": "post-OrderList",
+        "operationId": "19001000",
         "responses": {
           "200": {
             "description": "OK",
@@ -520,7 +520,7 @@
     "/Supply/ProductBalance": {
       "post": {
         "summary": "Balance of product",
-        "operationId": "post-ProductList",
+        "operationId": "19002005",
         "responses": {
           "200": {
             "description": "OK",
@@ -599,7 +599,7 @@
     "/Product/Product": {
       "post": {
         "summary": "List of products",
-        "operationId": "post-Product-ProductList",
+        "operationId": "19002000",
         "responses": {
           "200": {
             "description": "OK",
@@ -676,7 +676,7 @@
     "/Product/Category": {
       "post": {
         "summary": "List of product category",
-        "operationId": "post-Product-Category",
+        "operationId": "19002010",
         "responses": {
           "200": {
             "description": "OK",
@@ -746,7 +746,7 @@
     "/Product/Supplier": {
       "post": {
         "summary": "List of supplier",
-        "operationId": "post-Product-Supplier",
+        "operationId": "19002020",
         "responses": {
           "200": {
             "description": "OK",
