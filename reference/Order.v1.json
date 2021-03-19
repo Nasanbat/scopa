@@ -511,7 +511,7 @@
               }
             }
           },
-          "description": "filters хэсэгт status, orderId, orderDate, merchantId гэсэн талбараар шүүлт хийнэ."
+          "description": "Шүүлт дээр дараах талбаруудаар шүүх боломжтой. \n - orderId\n - orderDate\n - status\n - merchantId "
         },
         "description": "Захиалгын жагсаалт авах"
       },
@@ -642,7 +642,7 @@
             "$ref": "#/components/responses/501"
           }
         },
-        "description": "Барааны жагсаалт",
+        "description": "Захиалга хийх боломжтой барааны жагсаалт",
         "requestBody": {
           "content": {
             "application/json": {
@@ -668,7 +668,7 @@
               }
             }
           },
-          "description": "Барааны жагсаалт"
+          "description": "Шүүлт дээр дараах талбаруудаар шүүх боломжтой. \n - productCode\n - productName\n - catId\n - supplierId"
         }
       },
       "parameters": []
@@ -679,7 +679,7 @@
         "operationId": "19002010",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Барааны ангиллын мэдээлэл ирнэ. Үндсэн ангилалын мэдээлэл давхар ирнэ.",
             "content": {
               "application/json": {
                 "schema": {
@@ -713,7 +713,7 @@
             "$ref": "#/components/responses/501"
           }
         },
-        "description": "Барааны ангилалын жагсаалт",
+        "description": "Захиалга хийх боломжтой барааны ангилалын жагсаалт",
         "requestBody": {
           "content": {
             "application/json": {
@@ -739,7 +739,7 @@
               }
             }
           },
-          "description": ""
+          "description": "Шүүлт дээр дараах талбаруудаар шүүх боломжтой. \n - catId\n - name\n - parantCatId"
         }
       }
     },
@@ -788,7 +788,7 @@
             "$ref": "#/components/responses/501"
           }
         },
-        "description": "Бараа нийлүүлэгчийн жагсаалт",
+        "description": "Бараа нийлүүлэгчийн жагсаалт - Захиалга хийх боломжтой нийлүүлэгчидийн мэдээлэл",
         "requestBody": {
           "content": {
             "application/json": {
@@ -814,7 +814,7 @@
               }
             }
           },
-          "description": ""
+          "description": "Шүүлт дээр дараах талбаруудаар шүүх боломжтой. \n - supplierId\n - name\n - catId"
         }
       }
     }
