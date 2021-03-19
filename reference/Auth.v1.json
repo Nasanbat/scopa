@@ -15,22 +15,38 @@
       "parameters": [],
       "post": {
         "summary": "Login",
-        "operationId": "post-users-userId",
+        "operationId": "19000001",
         "responses": {
           "200": {
             "description": "OK",
             "headers": {
-              "Session": {
+              "ScopaSession": {
                 "schema": {
                   "type": "string"
                 },
-                "description": "TOKEN"
+                "description": "NEW_TOKEN"
               }
             },
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "id": 0,
+                      "firstName": "string",
+                      "lastName": "string",
+                      "email": "user@example.com",
+                      "phone": "99013707",
+                      "loginName": "string",
+                      "type": "Merchant",
+                      "Name": "string",
+                      "merchantId": 0,
+                      "merchantName": "string"
+                    }
+                  }
                 }
               }
             }
@@ -68,37 +84,11 @@
     },
     "/Auth/Logout": {
       "post": {
-        "summary": "Create New User",
-        "operationId": "post-user",
+        "summary": "Logout",
+        "operationId": "19000002",
         "responses": {
           "200": {
-            "description": "User Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "examples": {
-                  "New User Bob Fellow": {
-                    "value": {
-                      "id": 12,
-                      "firstName": "Bob",
-                      "lastName": "Fellow",
-                      "email": "bob.fellow@gmail.com",
-                      "dateOfBirth": "1996-08-24",
-                      "emailVerified": false,
-                      "createDate": "2020-11-18"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Missing Required Information"
-          },
-          "409": {
-            "description": "Email Already Taken"
+            "description": "OK"
           }
         },
         "requestBody": {
@@ -112,33 +102,42 @@
                   }
                 }
               },
-              "examples": {}
+              "examples": {
+                "Системээс гарах": {
+                  "value": {
+                    "Login": "99013707"
+                  }
+                }
+              }
             }
           },
-          "description": "Post the necessary fields for the API to create a new user."
+          "description": "Хэрэглэгчийн login нэрийг дамжуулж болно. "
         },
-        "description": "Create a new user."
+        "description": "Хэрэглэгч системээс гарах"
       },
       "parameters": []
     },
     "/Auth/Echo": {
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "Echo",
         "tags": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Session идэвхтэй байна"
+          },
+          "501": {
+            "description": "Session дууссан байна."
           }
         },
-        "operationId": "get-Auth-echo",
+        "operationId": "19000000",
         "parameters": [
           {
             "schema": {
               "type": "string"
             },
             "in": "header",
-            "name": "Session",
-            "description": "TOKEN_ID"
+            "name": "ScopaSession",
+            "description": "TOKEN"
           }
         ],
         "description": "Холболт хэвийн байгаа эсэхийг шалгана"
@@ -146,10 +145,13 @@
       "parameters": [],
       "post": {
         "summary": "Echo",
-        "operationId": "post-Auth-Echo",
+        "operationId": "19000000",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Session идэвхтэй байна"
+          },
+          "501": {
+            "description": "Session дууссан байна."
           }
         },
         "description": "Холболт хэвийн байгаа эсэхийг шалгана",
@@ -159,8 +161,8 @@
               "type": "string"
             },
             "in": "header",
-            "name": "SESSIONID",
-            "description": "TOKEN_ID"
+            "name": "ScopaSession",
+            "description": "TOKEN"
           }
         ]
       }
@@ -169,10 +171,21 @@
       "parameters": [],
       "post": {
         "summary": "Get Token",
-        "operationId": "post-Auth-GetToken",
+        "operationId": "19000003",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "headers": {
+              "ScopaSession": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "NEW_TOKEN"
+              }
+            }
+          },
+          "501": {
+            "description": "Session үүсгэж өгөх боломжгүй "
           }
         },
         "description": "Автомат токен үүсгүүлж авах",
@@ -183,12 +196,16 @@
                 "type": "object",
                 "properties": {
                   "merchantId": {
+                    "type": "integer"
+                  },
+                  "Key": {
                     "type": "string"
                   }
                 }
               }
             }
-          }
+          },
+          "description": "Мерчантын дугаар болон Түлхүүр дамжуулна."
         }
       }
     }
