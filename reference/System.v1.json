@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Auth",
+    "title": "System",
     "version": "1.0",
-    "description": ""
+    "description": "System холболт тогтоох, холболт шалгах зэрэг апи функцүүд"
   },
   "servers": [
     {
