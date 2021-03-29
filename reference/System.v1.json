@@ -11,113 +11,7 @@
     }
   ],
   "paths": {
-    "/Auth/Login": {
-      "parameters": [],
-      "post": {
-        "summary": "Login",
-        "operationId": "19000001",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "headers": {
-              "ScopaSession": {
-                "schema": {
-                  "type": "string"
-                },
-                "description": "NEW_TOKEN"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "id": 0,
-                      "firstName": "string",
-                      "lastName": "string",
-                      "email": "user@example.com",
-                      "phone": "99013707",
-                      "loginName": "string",
-                      "type": "Merchant",
-                      "Name": "string",
-                      "merchantId": 0,
-                      "merchantName": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "SCOPA систем руу нэвтрэх",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "login": {
-                    "type": "string"
-                  },
-                  "PIN": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "APP-KEY",
-            "description": "Хандаж байгаа апп болон системийн түлхүүр"
-          }
-        ]
-      }
-    },
-    "/Auth/Logout": {
-      "post": {
-        "summary": "Logout",
-        "operationId": "19000002",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "Login": {
-                    "type": "string"
-                  }
-                }
-              },
-              "examples": {
-                "Системээс гарах": {
-                  "value": {
-                    "Login": "99013707"
-                  }
-                }
-              }
-            }
-          },
-          "description": "Хэрэглэгчийн login нэрийг дамжуулж болно. "
-        },
-        "description": "Хэрэглэгч системээс гарах"
-      },
-      "parameters": []
-    },
-    "/Auth/Echo": {
+    "/system/echo": {
       "get": {
         "summary": "Echo",
         "tags": [],
@@ -167,10 +61,10 @@
         ]
       }
     },
-    "/Auth/GetToken": {
+    "/system/getToken": {
       "parameters": [],
       "post": {
-        "summary": "Get Token",
+        "summary": "Get token",
         "operationId": "19000003",
         "responses": {
           "200": {
@@ -195,17 +89,22 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "merchantId": {
-                    "type": "integer"
-                  },
-                  "Key": {
-                    "type": "string"
+                  "tanCode": {
+                    "type": "integer",
+                    "description": "Merchant mobile app -с энэ ТАН кодыг авч дамжуулна."
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "tanCode": 845762
                   }
                 }
               }
             }
           },
-          "description": "Мерчантын дугаар болон Түлхүүр дамжуулна."
+          "description": "Холболтын session token авах функц. Авсан токеноо ашиглана дараа дараачийн үйлдлүүдийг хийнэ."
         }
       }
     }
