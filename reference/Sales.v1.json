@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/Sales": {
+    "/sales/sendSalesInfo": {
       "parameters": [],
       "post": {
         "summary": "Sales info",
