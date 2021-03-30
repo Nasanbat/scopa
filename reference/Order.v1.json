@@ -831,7 +831,7 @@
             "type": "integer",
             "description": "Захиалгын дугаар"
           },
-          "ItemId": {
+          "itemId": {
             "type": "integer",
             "description": "Захиалгын дэд дугаар"
           },
@@ -884,7 +884,7 @@
           }
         },
         "required": [
-          "ItemId",
+          "itemId",
           "qty",
           "price"
         ]

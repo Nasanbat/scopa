@@ -14,7 +14,7 @@
     "/sales/sendSalesInfo": {
       "parameters": [],
       "post": {
-        "summary": "Sales info",
+        "summary": "Send sales info",
         "operationId": "19003000",
         "responses": {
           "200": {
@@ -51,6 +51,58 @@
           "description": "Борлуулалтын мэдээлэл"
         }
       }
+    },
+    "/sales/sendSalesInfoBatch": {
+      "post": {
+        "summary": "Send sales info batch",
+        "operationId": "post-sales-sendSalesInfoBatch",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        },
+        "description": "Багцаар борлуулалтын мэдээлэл илгээх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Sales"
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": [
+                    {
+                      "id": "string",
+                      "totalPrice": 0,
+                      "payType": "string",
+                      "salesDate": "2021.05.20 18:25",
+                      "items": [
+                        {
+                          "prodCode": "string",
+                          "prodName": "string",
+                          "qty": 0,
+                          "price": 0,
+                          "prodTag": "string"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "description": "Нэг хүсэлт дотор 50-с илүүгүй борлуулалтын мэдээг багцалж илгээнэ."
+        }
+      }
     }
   },
   "components": {
@@ -59,12 +111,12 @@
         "description": "",
         "type": "object",
         "properties": {
-          "productCode": {
+          "prodCode": {
             "type": "string",
             "minLength": 1,
-            "description": "Барааны код"
+            "description": "Барааны ID дэлгүүр дотроо ашигладаг код"
           },
-          "name": {
+          "prodName": {
             "type": "string",
             "minLength": 1,
             "description": "Барааны нэр"
@@ -77,27 +129,69 @@
             "type": "number",
             "description": "Үнэ"
           },
-          "supplierId": {
+          "prodTag": {
             "type": "string",
-            "minLength": 1,
-            "description": "Бэлтгэн нийлүүлэгчийн мэдээлэл"
-          },
-          "date": {
-            "type": "string",
-            "minLength": 1,
-            "description": "Борлуулалт хийсэн огноо"
-          },
-          "payType": {
-            "type": "string",
-            "minLength": 1,
-            "description": "Төлбөрийн хэлбэр"
+            "description": "Барааны Scopa дээрх код. "
           }
         },
         "required": [
-          "productCode",
-          "name",
+          "prodCode",
+          "prodName",
           "qty",
           "price"
+        ]
+      },
+      "Sales": {
+        "title": "Sales",
+        "type": "object",
+        "description": "Борлуулалтын мэдээ",
+        "x-examples": {
+          "example-1": {
+            "id": "string",
+            "totalPrice": 0,
+            "payType": "string",
+            "salesDate": "2021.05.20 18:25",
+            "items": [
+              {
+                "prodCode": "string",
+                "prodName": "string",
+                "qty": 0,
+                "price": 0,
+                "prodTag": "string"
+              }
+            ]
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Борлуулалтын давтагдахгүй дугаарлалт"
+          },
+          "totalPrice": {
+            "type": "number"
+          },
+          "payType": {
+            "type": "string",
+            "description": "Төлбөр хийсэн хэлбэр, CASH, CARD, MOBILE, MIXED"
+          },
+          "salesDate": {
+            "type": "string",
+            "description": "борлуулалт хийсэн огноо, цаг, минуттай",
+            "format": "date-time",
+            "example": "2021.05.20 18:25",
+            "default": "yyyy.MM.dd hh:mi"
+          },
+          "items": {
+            "type": "array",
+            "description": "Борлуулсан бараанууд",
+            "items": {
+              "$ref": "#/components/schemas/SalesItem"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "totalPrice"
         ]
       }
     }
