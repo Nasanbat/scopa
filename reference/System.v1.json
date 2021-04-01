@@ -17,7 +17,7 @@
         "tags": [],
         "responses": {
           "200": {
-            "description": "Successful"
+            "description": "Холболт хэвийн"
           },
           "501": {
             "description": "Not Implemented"
@@ -30,7 +30,7 @@
               "type": "string"
             },
             "in": "header",
-            "name": "NesSession",
+            "name": "SessionToken",
             "description": "TOKEN"
           }
         ],
@@ -39,10 +39,10 @@
       "parameters": [],
       "post": {
         "summary": "Echo",
-        "operationId": "19000000",
+        "operationId": "19000015",
         "responses": {
           "200": {
-            "description": "Session идэвхтэй байна"
+            "description": "Холболт хэвийн"
           },
           "501": {
             "description": "Session дууссан байна."
@@ -55,22 +55,22 @@
               "type": "string"
             },
             "in": "header",
-            "name": "ScopaSession",
+            "name": "SessionToken",
             "description": "TOKEN"
           }
         ]
       }
     },
-    "/system/getToken": {
+    "/system/connect": {
       "parameters": [],
       "post": {
-        "summary": "Get token",
-        "operationId": "19000003",
+        "summary": "Connect",
+        "operationId": "19000015",
         "responses": {
           "200": {
             "description": "OK",
             "headers": {
-              "ScopaSession": {
+              "SessionToken": {
                 "schema": {
                   "type": "string"
                 },
@@ -80,9 +80,20 @@
           },
           "501": {
             "description": "Session үүсгэж өгөх боломжгүй "
+          },
+          "": {
+            "headers": {
+              "AccessToken": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Энэ токенийг ашиглана дараа дараачийн үйлдлүүдийг хийнэ."
+              }
+            },
+            "description": ""
           }
         },
-        "description": "Автомат токен үүсгүүлж авах",
+        "description": "СКОПА платформд холболт тогтоох. ",
         "requestBody": {
           "content": {
             "application/json": {
