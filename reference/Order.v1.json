@@ -100,7 +100,15 @@
             }
           },
           "description": "Захиалга засварлах"
-        }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header"
+          }
+        ]
       }
     },
     "/Order/CreateOrder": {

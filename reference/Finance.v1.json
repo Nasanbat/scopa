@@ -11,10 +11,9 @@
     }
   ],
   "paths": {
-    "/user": {
+    "/fin/summary": {
       "post": {
         "summary": "Create New User",
-        "operationId": "post-user",
         "responses": {
           "200": {
             "description": "User Created",
@@ -90,14 +89,15 @@
         "description": "Create a new user."
       },
       "get": {
-        "summary": "",
-        "operationId": "get-user",
+        "summary": "Financial summary info",
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
-      }
+        },
+        "description": "Санхүүгийн байдал, Харилцах, шугам лимит"
+      },
+      "parameters": []
     }
   },
   "components": {
