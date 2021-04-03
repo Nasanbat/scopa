@@ -118,6 +118,25 @@
           "description": "Холболтын session token авах функц. Авсан токеноо ашиглана дараа дараачийн үйлдлүүдийг хийнэ."
         }
       }
+    },
+    "/system/getCommand": {
+      "get": {
+        "summary": "Get command",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-system-getCommand",
+        "description": "Системээс өгсөн командыг авах. ",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "SessionToken",
+            "description": "Connect функцээр хүлээн авсан токен-г дамжуулна."
+          }
+        ]
+      }
     }
   },
   "components": {
