@@ -108,7 +108,7 @@
   "components": {
     "schemas": {
       "SalesItem": {
-        "description": "",
+        "description": "Борлуулалт доторх барааны мэдээлэл",
         "type": "object",
         "properties": {
           "prodCode": {
@@ -129,7 +129,7 @@
             "type": "number",
             "description": "Үнэ"
           },
-          "prodTag": {
+          "prodCodeBase": {
             "type": "string",
             "description": "Барааны Scopa дээрх код. "
           }
@@ -192,6 +192,39 @@
         "required": [
           "id",
           "totalPrice"
+        ]
+      },
+      "ReversalItem": {
+        "title": "ReversalItem",
+        "type": "object",
+        "description": "Буцаалт доторх барааны мэдээлэл",
+        "properties": {
+          "prodCode": {
+            "type": "string",
+            "description": "Барааны код"
+          },
+          "prodName": {
+            "type": "string",
+            "description": "Барааны нэр"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Тоо ширхэг"
+          },
+          "price": {
+            "type": "number",
+            "description": "нэгж үнэ"
+          },
+          "prodCodeBase": {
+            "type": "string",
+            "description": "Барааны код Скопа платформ дээрх"
+          }
+        },
+        "required": [
+          "prodCode",
+          "prodName",
+          "qty",
+          "price"
         ]
       }
     }
