@@ -57,7 +57,16 @@
             }
           },
           "description": "Борлуулалтын мэдээлэл"
-        }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "SessionToken"
+          }
+        ]
       }
     },
     "/sales/sendSalesInfoBatch": {
@@ -124,7 +133,16 @@
             }
           },
           "description": "Нэг хүсэлт дотор 50-с илүүгүй борлуулалтын мэдээг багцалж илгээнэ."
-        }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "SessionToken"
+          }
+        ]
       }
     },
     "/sales/sendReverseInfo": {
@@ -171,7 +189,16 @@
             }
           },
           "description": "Буцааж байгаа бараанууд"
-        }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "SessionToken"
+          }
+        ]
       }
     }
   },
