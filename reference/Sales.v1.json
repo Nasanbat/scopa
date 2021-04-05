@@ -89,17 +89,32 @@
                 "example-1": {
                   "value": [
                     {
-                      "id": "string",
-                      "totalPrice": 0,
-                      "payType": "string",
+                      "id": "100010",
+                      "totalPrice": 230,
+                      "payType": "CARD",
                       "salesDate": "2021.05.20 18:25",
                       "items": [
                         {
-                          "prodCode": "string",
-                          "prodName": "string",
-                          "qty": 0,
-                          "price": 0,
-                          "prodTag": "string"
+                          "prodCode": "123",
+                          "prodName": "Талх",
+                          "qty": 1,
+                          "price": 230,
+                          "prodCodeBase": "1250"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "100011",
+                      "totalPrice": 2780,
+                      "payType": "CASH",
+                      "salesDate": "2021.05.20 18:23",
+                      "items": [
+                        {
+                          "prodCode": "7778",
+                          "prodName": "Гоймон",
+                          "qty": 1,
+                          "price": 2780,
+                          "prodCodeBase": "452"
                         }
                       ]
                     }
@@ -109,6 +124,52 @@
             }
           },
           "description": "Нэг хүсэлт дотор 50-с илүүгүй борлуулалтын мэдээг багцалж илгээнэ."
+        }
+      }
+    },
+    "/sales/sendReverseInfo": {
+      "post": {
+        "summary": "Send sales reversal info",
+        "operationId": "post-sales-sendReverseInfo",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Буцаалтын гүйлгээний мэдээ илгээх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ReversalItem"
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": [
+                    {
+                      "prodCode": "string",
+                      "prodName": "string",
+                      "qty": 0,
+                      "price": 0,
+                      "prodCodeBase": "string",
+                      "id": "string"
+                    },
+                    {
+                      "prodCode": "string",
+                      "prodName": "string",
+                      "qty": 0,
+                      "price": 0,
+                      "prodCodeBase": "string",
+                      "id": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -226,13 +287,18 @@
           "prodCodeBase": {
             "type": "string",
             "description": "Барааны код Скопа платформ дээрх"
+          },
+          "id": {
+            "type": "string",
+            "description": "Борлуулалтын дугаар"
           }
         },
         "required": [
           "prodCode",
           "prodName",
           "qty",
-          "price"
+          "price",
+          "id"
         ]
       }
     }
