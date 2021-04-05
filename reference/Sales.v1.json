@@ -28,7 +28,32 @@
               "schema": {
                 "$ref": "#/components/schemas/Sales"
               },
-              "examples": {}
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "id": "100011",
+                    "totalPrice": 35200,
+                    "payType": "CARD",
+                    "salesDate": "2021.05.20 18:25",
+                    "items": [
+                      {
+                        "prodCode": "789",
+                        "prodName": "Атар талх",
+                        "qty": 2,
+                        "price": 1200,
+                        "prodCodeBase": "111"
+                      },
+                      {
+                        "prodCode": "856",
+                        "prodName": "Eden архи",
+                        "qty": 1,
+                        "price": 32800,
+                        "prodCodeBase": "511"
+                      }
+                    ]
+                  }
+                }
+              }
             }
           },
           "description": "Борлуулалтын мэдээлэл"
