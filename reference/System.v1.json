@@ -108,13 +108,23 @@
                   "$ref": "#/components/schemas/response"
                 },
                 "examples": {
-                  "example-1": {
+                  "Take order data": {
                     "value": {
                       "responseCode": "0",
                       "responseDesc": "Амжилттай",
                       "responseData": {
                         "cmd": "TAKE_ORDER_DATA",
                         "data": 1200012
+                      }
+                    }
+                  },
+                  "To send inv balance": {
+                    "value": {
+                      "responseCode": "0",
+                      "responseDesc": "Амжилттай",
+                      "responseData": {
+                        "cmd": "SEND_PROD_BAL",
+                        "data": "1245"
                       }
                     }
                   }
@@ -154,14 +164,21 @@
             "description": "Бизнесс алдаа гарсан үед алдааны тухай тайлбар"
           },
           "responseData": {
-            "type": "string",
-            "description": "Хэрэв утга буцаадаг энэ текстээр байрлана."
+            "type": "object",
+            "description": "Дата буцаах бол энд байрлана"
           }
         },
         "required": [
           "responseCode",
           "responseDesc"
-        ]
+        ],
+        "x-examples": {
+          "example-1": {
+            "responseCode": "string",
+            "responseDesc": "string",
+            "responseData": {}
+          }
+        }
       }
     },
     "responses": {}
