@@ -142,7 +142,8 @@
             },
             "in": "header",
             "name": "SessionToken",
-            "description": "Connect функцээр хүлээн авсан токен-г дамжуулна."
+            "description": "Connect функцээр авсан TOKEN",
+            "required": true
           }
         ]
       }

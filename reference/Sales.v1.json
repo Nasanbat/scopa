@@ -64,7 +64,9 @@
               "type": "string"
             },
             "in": "header",
-            "name": "SessionToken"
+            "name": "SessionToken",
+            "description": "Connect функцээр авсан TOKEN",
+            "required": true
           }
         ]
       }
@@ -140,7 +142,9 @@
               "type": "string"
             },
             "in": "header",
-            "name": "SessionToken"
+            "name": "SessionToken",
+            "description": "Connect функцээр авсан TOKEN",
+            "required": true
           }
         ]
       }
@@ -196,7 +200,9 @@
               "type": "string"
             },
             "in": "header",
-            "name": "SessionToken"
+            "name": "SessionToken",
+            "description": "Connect функцээр авсан TOKEN",
+            "required": true
           }
         ]
       }
