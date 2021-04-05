@@ -112,7 +112,10 @@
                     "value": {
                       "responseCode": "0",
                       "responseDesc": "Амжилттай",
-                      "responseData": "{\"cmd\":\"TAKE_ORDER_DATA\",\"data\":1200012}"
+                      "responseData": {
+                        "cmd": "TAKE_ORDER_DATA",
+                        "data": 1200012
+                      }
                     }
                   }
                 }
