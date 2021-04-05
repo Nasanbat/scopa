@@ -12,30 +12,6 @@
   ],
   "paths": {
     "/system/echo": {
-      "get": {
-        "summary": "Echo",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "Холболт хэвийн"
-          },
-          "501": {
-            "description": "Not Implemented"
-          }
-        },
-        "operationId": "19000000",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "SessionToken",
-            "description": "TOKEN"
-          }
-        ],
-        "description": "Холболт хэвийн байгаа эсэхийг шалгана"
-      },
       "parameters": [],
       "post": {
         "summary": "Echo",
@@ -129,8 +105,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {}
+                  "$ref": "#/components/schemas/response"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "responseCode": "0",
+                      "responseDesc": "Амжилттай",
+                      "responseData": "{\"cmd\":\"TAKE_ORDER_DATA\",\"data\":1200012}"
+                    }
+                  }
                 }
               }
             }
@@ -158,16 +142,23 @@
         "type": "object",
         "description": "Хариу",
         "properties": {
-          "resCode": {
-            "type": "string"
+          "responseCode": {
+            "type": "string",
+            "description": "0 - бол амжилттай, 0-с ялгаатай бол бизнес алдаа гарсан гэсэн үг."
           },
-          "resDesc": {
-            "type": "string"
+          "responseDesc": {
+            "type": "string",
+            "description": "Бизнесс алдаа гарсан үед алдааны тухай тайлбар"
           },
-          "resData": {
-            "type": "string"
+          "responseData": {
+            "type": "string",
+            "description": "Хэрэв утга буцаадаг энэ текстээр байрлана."
           }
-        }
+        },
+        "required": [
+          "responseCode",
+          "responseDesc"
+        ]
       }
     },
     "responses": {}
