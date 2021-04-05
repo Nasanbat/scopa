@@ -123,7 +123,19 @@
       "get": {
         "summary": "Get command",
         "tags": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
         "operationId": "get-system-getCommand",
         "description": "Системээс өгсөн командыг авах. ",
         "parameters": [
@@ -140,6 +152,24 @@
     }
   },
   "components": {
-    "schemas": {}
+    "schemas": {
+      "response": {
+        "title": "response",
+        "type": "object",
+        "description": "Хариу",
+        "properties": {
+          "resCode": {
+            "type": "string"
+          },
+          "resDesc": {
+            "type": "string"
+          },
+          "resData": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {}
   }
 }
