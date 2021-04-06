@@ -278,6 +278,97 @@
           }
         }
       }
+    },
+    "/Order/DetailOrder": {
+      "post": {
+        "summary": "Detail Order",
+        "operationId": "19001004",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                },
+                "examples": {
+                  "Захиалга 12": {
+                    "value": {
+                      "orderId": 12,
+                      "orderDate": "2021.03.12",
+                      "status": 0,
+                      "statusName": "Хүлээгдэж байгаа",
+                      "merchantId": 123,
+                      "description": "Атар талх 10, Боов-10",
+                      "expiryDate": "2021.03.30",
+                      "totalPrice": 45000,
+                      "payType": "LINE",
+                      "payAmount": 45000,
+                      "curCode": "MNT",
+                      "items": [
+                        {
+                          "ItemId": 1,
+                          "productCode": "AT001",
+                          "productName": "Атар талх",
+                          "qty": 10,
+                          "meas": "C",
+                          "price": 1500,
+                          "curCode": "MNT",
+                          "supplierId": 123,
+                          "description": "Талх"
+                        },
+                        {
+                          "ItemId": 2,
+                          "productCode": "AT002",
+                          "productName": "Боорцог",
+                          "qty": 10,
+                          "meas": "C",
+                          "price": 3000,
+                          "curCode": "MNT",
+                          "supplierId": 123,
+                          "description": ""
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "501": {
+            "$ref": "#/components/responses/501"
+          }
+        },
+        "description": "Захиалгын мэдээлэл лавлах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Захалга",
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "type": "number",
+                    "description": "Захиалгын дугаар"
+                  }
+                },
+                "required": [
+                  "orderId"
+                ]
+              },
+              "examples": {
+                "Захиалга 12": {
+                  "value": {
+                    "orderId": 12
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": []
     }
   },
   "components": {
@@ -368,6 +459,137 @@
           "id",
           "totalPrice"
         ]
+      },
+      "OrderItems": {
+        "title": "OrderItems",
+        "type": "object",
+        "description": "Захиалгын бараанууд",
+        "x-examples": {},
+        "properties": {
+          "orderId": {
+            "type": "integer",
+            "description": "Захиалгын дугаар"
+          },
+          "itemId": {
+            "type": "integer",
+            "description": "Захиалгын дэд дугаар"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Захиалах тоо",
+            "format": "double"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "Барааны үнэ"
+          },
+          "complateQty": {
+            "type": "number",
+            "description": "Захиалгаар хүлээн авсан тоо",
+            "format": "double"
+          },
+          "cancelQty": {
+            "type": "number",
+            "description": "Захиалгаар хүлээж аваагүй тоо"
+          },
+          "description": {
+            "type": "string",
+            "description": "Нэмэлт тайлбар"
+          },
+          "productCode": {
+            "description": "Барааны код",
+            "type": "string"
+          },
+          "supplierId": {
+            "description": "Захиалсан барааны нийлүүлэгч. Олон нийлүүлэгчтэй үед ашиглана.",
+            "type": "integer"
+          },
+          "supplierName": {
+            "type": "string",
+            "description": "Нийлүүлэгчийн нэр"
+          },
+          "productName": {
+            "type": "string",
+            "description": "Барааны нэр"
+          },
+          "curCode": {
+            "type": "string",
+            "description": "Валют"
+          },
+          "meas": {
+            "type": "string",
+            "description": "Хэмжих нэгж: C - ширхэг, Kg - kilogram, L - liter  "
+          }
+        },
+        "required": [
+          "itemId",
+          "qty",
+          "price"
+        ]
+      },
+      "Order": {
+        "title": "Order",
+        "type": "object",
+        "x-examples": {},
+        "description": "Захиалгын мэдээлэл",
+        "properties": {
+          "orderId": {
+            "type": "integer",
+            "description": "Захиалгын дугаар"
+          },
+          "orderDate": {
+            "type": "string",
+            "description": "Захиалгын огноо"
+          },
+          "status": {
+            "type": "number",
+            "description": "Төлөв"
+          },
+          "completeDate": {
+            "type": "string",
+            "description": "Захиалга биелсэн огноо"
+          },
+          "merchantId": {
+            "type": "number",
+            "description": "Дэлгүүрийн дугаар"
+          },
+          "description": {
+            "type": "string",
+            "description": "Захиалгын ерөнхий утга"
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Захиалгын хүчинтэй хугацаа"
+          },
+          "totalPrice": {
+            "type": "number",
+            "description": "Захиалгын нийт үнэ"
+          },
+          "statusName": {
+            "type": "string",
+            "description": "Төлөвийн нэр"
+          },
+          "items": {
+            "type": "array",
+            "description": "Захиалгын бараанууд",
+            "items": {
+              "$ref": "#/components/schemas/OrderItems"
+            }
+          },
+          "payType": {
+            "type": "string",
+            "description": "Төлбөрийн хэлбэр CASH, LINE"
+          },
+          "curCode": {
+            "type": "string",
+            "description": "Валют",
+            "example": "MNT"
+          },
+          "payAmount": {
+            "type": "number"
+          }
+        }
       },
       "ReversalItem": {
         "title": "ReversalItem",
