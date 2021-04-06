@@ -18,7 +18,14 @@
         "operationId": "19003000",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./System.v1.json#/components/schemas/response"
+                }
+              }
+            }
           }
         },
         "description": "Борлуулалтын мэдээлэл илгээх",
@@ -77,10 +84,14 @@
         "operationId": "post-sales-sendSalesInfoBatch",
         "responses": {
           "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./System.v1.json#/components/schemas/response"
+                }
+              }
+            }
           },
           "501": {
             "description": "Not Implemented"
@@ -155,7 +166,14 @@
         "operationId": "post-sales-sendReverseInfo",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./System.v1.json#/components/schemas/response"
+                }
+              }
+            }
           }
         },
         "description": "Буцаалтын гүйлгээний мэдээ илгээх",
@@ -177,7 +195,7 @@
                       "prodName": "string",
                       "qty": 0,
                       "price": 0,
-                      "prodCodeBase": "string"                      
+                      "prodCodeBase": "string"
                     },
                     {
                       "id": "string",
@@ -325,7 +343,7 @@
           "prodCodeBase": {
             "type": "string",
             "description": "Барааны код Скопа платформ дээрх"
-          }          
+          }
         },
         "required": [
           "prodCode",

@@ -18,7 +18,14 @@
         "operationId": "19000015",
         "responses": {
           "200": {
-            "description": "Холболт хэвийн"
+            "description": "Холболт хэвийн",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
           },
           "501": {
             "description": "Session дууссан байна."
@@ -128,6 +135,24 @@
                       }
                     }
                   }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              },
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
                 }
               }
             }
