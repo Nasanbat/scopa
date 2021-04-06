@@ -227,7 +227,7 @@
     },
     "/inv/sendProdBal": {
       "post": {
-        "summary": "",
+        "summary": "Send product balance",
         "operationId": "post-inv-sendProdBal",
         "responses": {
           "200": {
