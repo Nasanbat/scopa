@@ -224,6 +224,60 @@
           }
         ]
       }
+    },
+    "/inv/sendProdBal": {
+      "post": {
+        "summary": "",
+        "operationId": "post-inv-sendProdBal",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./System.v1.json#/components/schemas/response"
+                }
+              }
+            }
+          }
+        },
+        "description": "Барааны үлдэгдэл дамжуулах",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "description": "Connect функцээр авсан TOKEN",
+            "name": "SessionToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": [
+                    {
+                      "prodCode": "string",
+                      "prodName": "string",
+                      "prodCodeBase": "string",
+                      "qty": 0,
+                      "unit": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -351,6 +405,37 @@
           "qty",
           "price",
           "id"
+        ]
+      },
+      "Product": {
+        "title": "Product",
+        "type": "object",
+        "description": "Барааны мэдээлэл",
+        "properties": {
+          "prodCode": {
+            "type": "string"
+          },
+          "prodName": {
+            "type": "string"
+          },
+          "prodCodeBase": {
+            "type": "string",
+            "description": "Барааны Scopa дээрх код. "
+          },
+          "qty": {
+            "type": "number",
+            "description": "Үлдэгдэл"
+          },
+          "unit": {
+            "type": "string",
+            "description": "Хэмжих нэгж"
+          }
+        },
+        "required": [
+          "prodCode",
+          "prodName",
+          "qty",
+          "unit"
         ]
       }
     }
