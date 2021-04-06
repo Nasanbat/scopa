@@ -269,7 +269,11 @@
                       "prodName": "string",
                       "prodCodeBase": "string",
                       "qty": 0,
-                      "unit": "string"
+                      "unit": "string",
+                      "supplierName": "string",
+                      "supplierId": "string",
+                      "catId": "string",
+                      "catName": "string"
                     }
                   ]
                 }
@@ -651,6 +655,22 @@
           "unit": {
             "type": "string",
             "description": "Хэмжих нэгж"
+          },
+          "supplierName": {
+            "type": "string",
+            "description": "Нийлүүлэгчийн нэр"
+          },
+          "supplierId": {
+            "type": "string",
+            "description": "Нийлүүлэгчийн Id"
+          },
+          "catId": {
+            "type": "string",
+            "description": "Категори id"
+          },
+          "catName": {
+            "type": "string",
+            "description": "Категори нэр"
           }
         },
         "required": [
