@@ -172,20 +172,20 @@
                 "example-1": {
                   "value": [
                     {
+                      "id": "string",
                       "prodCode": "string",
                       "prodName": "string",
                       "qty": 0,
                       "price": 0,
-                      "prodCodeBase": "string",
-                      "id": "string"
+                      "prodCodeBase": "string"                      
                     },
                     {
+                      "id": "string",
                       "prodCode": "string",
                       "prodName": "string",
                       "qty": 0,
                       "price": 0,
-                      "prodCodeBase": "string",
-                      "id": "string"
+                      "prodCodeBase": "string"
                     }
                   ]
                 }
@@ -302,6 +302,10 @@
         "type": "object",
         "description": "Буцаалт доторх барааны мэдээлэл",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Борлуулалтын дугаар"
+          },
           "prodCode": {
             "type": "string",
             "description": "Барааны код"
@@ -321,11 +325,7 @@
           "prodCodeBase": {
             "type": "string",
             "description": "Барааны код Скопа платформ дээрх"
-          },
-          "id": {
-            "type": "string",
-            "description": "Борлуулалтын дугаар"
-          }
+          }          
         },
         "required": [
           "prodCode",
