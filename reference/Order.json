@@ -866,11 +866,11 @@
             "type": "string",
             "description": "Нэмэлт тайлбар"
           },
-          "productCode": {
-            "description": "Барааны код",
+          "prodCodeBase": {
+            "description": "Барааны код скопа дээрх",
             "type": "string"
           },
-          "productName": {
+          "prodName": {
             "type": "string",
             "description": "Барааны нэр"
           },
@@ -886,7 +886,10 @@
         "required": [
           "itemId",
           "qty",
-          "price"
+          "price",
+          "prodCodeBase",
+          "curCode",
+          "meas"
         ]
       },
       "Order": {

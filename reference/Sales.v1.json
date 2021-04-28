@@ -293,7 +293,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Order"
+                  "$ref": "./Order.json#/components/schemas/Order"
                 },
                 "examples": {
                   "Захиалга 12": {
