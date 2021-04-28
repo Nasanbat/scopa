@@ -833,7 +833,23 @@
         "title": "OrderItems",
         "type": "object",
         "description": "Захиалгын бараанууд",
-        "x-examples": {},
+        "x-examples": {
+          "example-1": {
+            "orderId": 0,
+            "itemId": 0,
+            "orderQty": 0,
+            "price": 0,
+            "lastQty": 0,
+            "cancelQty": 0,
+            "description": "string",
+            "prodCodeBase": "string",
+            "prodName": "string",
+            "curCode": "string",
+            "meas": "string",
+            "bonusQty": 0,
+            "discount": 0
+          }
+        },
         "properties": {
           "orderId": {
             "type": "integer",
@@ -843,7 +859,7 @@
             "type": "integer",
             "description": "Захиалгын дэд дугаар"
           },
-          "qty": {
+          "orderQty": {
             "type": "number",
             "description": "Захиалах тоо",
             "format": "double"
@@ -853,9 +869,9 @@
             "format": "double",
             "description": "Барааны үнэ"
           },
-          "completeQty": {
+          "lastQty": {
             "type": "number",
-            "description": "Захиалгаар хүлээн авсан тоо",
+            "description": "Захиалгаар хүлээн авсан тоо ширхэг. \norderQty - cancelQty + bonusQty",
             "format": "double"
           },
           "cancelQty": {
@@ -881,14 +897,25 @@
           "meas": {
             "type": "string",
             "description": "Хэмжих нэгж: C - ширхэг, Kg - kilogram, L - liter  "
+          },
+          "bonusQty": {
+            "type": "number",
+            "description": "Урамшууллаар нэмэгдсэн тоо"
+          },
+          "discount": {
+            "type": "number",
+            "description": "Хөнгөлөх дүн."
+          },
+          "totalPrice": {
+            "type": "number",
+            "description": "totalPrice = (price-discount)*(orderQty-cancelQty)"
           }
         },
         "required": [
           "itemId",
-          "qty",
+          "orderQty",
           "price",
           "prodCodeBase",
-          "curCode",
           "meas"
         ]
       },
@@ -907,7 +934,7 @@
             "description": "Захиалгын огноо"
           },
           "status": {
-            "type": "number",
+            "type": "string",
             "description": "Төлөв"
           },
           "completeDate": {
@@ -928,7 +955,7 @@
           },
           "totalPrice": {
             "type": "number",
-            "description": "Захиалгын нийт үнэ"
+            "description": "Захиалгын нийт үнэ. \ntotalPrice = sum(item.totalPrice)"
           },
           "items": {
             "type": "array",
