@@ -13,7 +13,7 @@
   "servers": [
     {
       "url": "http://localhost:3000",
-      "description": "Suvdangerel Sanjjav"
+      "description": "Merchant"
     }
   ],
   "paths": {
@@ -23,12 +23,10 @@
         "operationId": "",
         "responses": {
           "200": {
-            "description": "User Created",
+            "description": "OK",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                },
+                "schema": {},
                 "examples": {
                   "New User Bob Fellow": {
                     "value": {
@@ -42,29 +40,18 @@
                     }
                   }
                 }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
+              },
+              "application/xml": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "enrollId": {
+                    "enrolliId": {
                       "type": "string"
                     }
                   }
                 }
               }
             }
-          },
-          "400": {
-            "description": "Missing Required Information"
-          },
-          "409": {
-            "description": "Email Already Taken"
           }
         },
         "requestBody": {
@@ -90,19 +77,10 @@
                   "shopLicense"
                 ]
               },
-              "examples": {
-                "Create User Bob Fellow": {
-                  "value": {
-                    "firstName": "Bob",
-                    "lastName": "Fellow",
-                    "email": "bob.fellow@gmail.com",
-                    "dateOfBirth": "1996-08-24"
-                  }
-                }
-              }
+              "examples": {}
             }
           },
-          "description": "Post the necessary fields for the API to create a new user."
+          "description": "Дэлгүүрийн мэдээлэл хадгалах функц"
         },
         "description": "Мерчант бүртгүүлэх"
       },
@@ -131,7 +109,8 @@
                 }
               }
             }
-          }
+          },
+          "description": ""
         }
       },
       "parameters": []
@@ -139,12 +118,30 @@
     "/verifyTan": {
       "post": {
         "summary": "",
-        "operationId": "post-verifyTan",
+        "operationId": "",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enrollId": {
+                      "type": "string"
+                    },
+                    "tan": {
+                      "type": "number",
+                      "minimum": 6,
+                      "maximum": 6
+                    }
+                  }
+                }
+              }
+            }
           }
-        }
+        },
+        "description": "Бүртгэл баталгаажуулах"
       }
     },
     "/saveBusinessOwner": {
@@ -195,16 +192,19 @@
                   "boEmail",
                   "boType"
                 ]
-              }
+              },
+              "examples": {}
             }
-          }
-        }
+          },
+          "description": "Бизнес эрхлэгчийн мэдээлэл хадгалах функц"
+        },
+        "description": "Бизнес эрхлэгийн мэдээлэл хадгалах"
       }
     },
     "/registerCust": {
       "post": {
         "summary": "",
-        "operationId": "post-registerCust",
+        "operationId": "",
         "responses": {
           "200": {
             "description": "OK"
@@ -230,16 +230,43 @@
               }
             }
           }
-        }
+        },
+        "description": ""
+      }
+    },
+    "/getTan": {
+      "post": {
+        "summary": "",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Бүртгэл баталгаажуулах код авах"
       }
     }
   },
   "components": {
     "schemas": {
-      "shop": {
-        "title": "enroll",
+      "businessOwner": {
+        "title": "businessOwner",
         "type": "object",
-        "description": "Мерчант бүртгүүлэх",
+        "description": "Бизнес эрхлэгчийн мэдээлэл",
         "x-examples": {},
         "properties": {
           "boLastname": {
@@ -278,7 +305,7 @@
         ]
       },
       "merchant": {
-        "title": "shopLicense",
+        "title": "merchant",
         "type": "object",
         "properties": {
           "id": {
@@ -293,17 +320,8 @@
               "type": "number"
             }
           }
-        }
-      },
-      "fingerprint": {
-        "title": "fingerprint",
-        "type": "object",
-        "properties": {
-          "imagePath": {
-            "type": "string"
-          }
         },
-        "description": ""
+        "description": "Мерчантын мэдээлэл"
       }
     },
     "securitySchemes": {
