@@ -19,7 +19,7 @@
   "paths": {
     "/saveMerchant": {
       "post": {
-        "summary": "Create New User",
+        "summary": "Save Merchant",
         "operationId": "",
         "responses": {
           "200": {
@@ -88,7 +88,7 @@
     },
     "/checkBusinessOwner": {
       "post": {
-        "summary": "",
+        "summary": "Check Business Owner",
         "operationId": "",
         "responses": {
           "200": {
@@ -115,9 +115,9 @@
       },
       "parameters": []
     },
-    "/verifyTan": {
+    "/verifyMobile": {
       "post": {
-        "summary": "",
+        "summary": "Verify Mobile",
         "operationId": "",
         "responses": {
           "200": {
@@ -142,11 +142,12 @@
           }
         },
         "description": "Бүртгэл баталгаажуулах"
-      }
+      },
+      "parameters": []
     },
     "/saveBusinessOwner": {
       "post": {
-        "summary": "",
+        "summary": "Save Business Owner",
         "operationId": "",
         "responses": {
           "200": {
@@ -201,9 +202,9 @@
         "description": "Бизнес эрхлэгийн мэдээлэл хадгалах"
       }
     },
-    "/registerCust": {
+    "/registerMerchant": {
       "post": {
-        "summary": "",
+        "summary": "Register Merchant",
         "operationId": "",
         "responses": {
           "200": {
@@ -232,11 +233,12 @@
           }
         },
         "description": ""
-      }
+      },
+      "parameters": []
     },
     "/getTan": {
       "post": {
-        "summary": "",
+        "summary": "Get Verification code",
         "operationId": "",
         "responses": {
           "200": {
@@ -258,7 +260,8 @@
           }
         },
         "description": "Бүртгэл баталгаажуулах код авах"
-      }
+      },
+      "parameters": []
     }
   },
   "components": {
