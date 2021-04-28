@@ -535,7 +535,39 @@
       "Order": {
         "title": "Order",
         "type": "object",
-        "x-examples": {},
+        "x-examples": {
+          "example-1": {
+            "orderId": 0,
+            "orderDate": "string",
+            "status": 0,
+            "completeDate": "string",
+            "merchantId": 0,
+            "description": "string",
+            "expiryDate": "string",
+            "totalPrice": 0,
+            "statusName": "string",
+            "items": [
+              {
+                "orderId": 0,
+                "itemId": 0,
+                "qty": 0,
+                "price": 0,
+                "complateQty": 0,
+                "cancelQty": 0,
+                "description": "string",
+                "productCode": "string",
+                "supplierId": 0,
+                "supplierName": "string",
+                "productName": "string",
+                "curCode": "string",
+                "meas": "string"
+              }
+            ],
+            "payType": "string",
+            "curCode": "MNT",
+            "payAmount": 0
+          }
+        },
         "description": "Захиалгын мэдээлэл",
         "properties": {
           "orderId": {
