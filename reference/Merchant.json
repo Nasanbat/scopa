@@ -17,136 +17,10 @@
     }
   ],
   "paths": {
-    "/users/{userId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "integer"
-          },
-          "name": "userId",
-          "in": "path",
-          "required": true,
-          "description": "Id of an existing user."
-        }
-      ],
-      "get": {
-        "summary": "Get User Info by User ID",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "User Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "examples": {
-                  "Get User Alice Smith": {
-                    "value": {
-                      "id": 142,
-                      "firstName": "Alice",
-                      "lastName": "Smith",
-                      "email": "alice.smith@gmail.com",
-                      "dateOfBirth": "1997-10-31",
-                      "emailVerified": true,
-                      "signUpDate": "2019-08-24"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User Not Found"
-          }
-        },
-        "operationId": "get-users-userId",
-        "description": "Retrieve the information of the user with the matching user ID."
-      },
-      "patch": {
-        "summary": "Update User Information",
-        "operationId": "patch-users-userId",
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "examples": {
-                  "Updated User Rebecca Baker": {
-                    "value": {
-                      "id": 13,
-                      "firstName": "Rebecca",
-                      "lastName": "Baker",
-                      "email": "rebecca@gmail.com",
-                      "dateOfBirth": "1985-10-02",
-                      "emailVerified": false,
-                      "createDate": "2019-08-24"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User Not Found"
-          },
-          "409": {
-            "description": "Email Already Taken"
-          }
-        },
-        "description": "Update the information of an existing user.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string",
-                    "description": "If a new email is given, the user's email verified property will be set to false."
-                  },
-                  "dateOfBirth": {
-                    "type": "string"
-                  }
-                }
-              },
-              "examples": {
-                "Update First Name": {
-                  "value": {
-                    "firstName": "Rebecca"
-                  }
-                },
-                "Update Email": {
-                  "value": {
-                    "email": "rebecca@gmail.com"
-                  }
-                },
-                "Update Last Name & Date of Birth": {
-                  "value": {
-                    "lastName": "Baker",
-                    "dateOfBirth": "1985-10-02"
-                  }
-                }
-              }
-            }
-          },
-          "description": "Patch user properties to update."
-        }
-      }
-    },
-    "/user": {
+    "/saveMerchant": {
       "post": {
         "summary": "Create New User",
-        "operationId": "post-user",
+        "operationId": "",
         "responses": {
           "200": {
             "description": "User Created",
@@ -171,6 +45,21 @@
               }
             }
           },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enrollId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "Missing Required Information"
           },
@@ -184,25 +73,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "dateOfBirth": {
+                  "shopName": {
                     "type": "string",
-                    "format": "date"
+                    "description": "Дэлгүүрийн нэр"
+                  },
+                  "shopLicense": {
+                    "type": "array",
+                    "description": "Дэлгүүрийн зөвшөөрлийн төрлүүд",
+                    "items": {
+                      "type": "number"
+                    }
                   }
                 },
                 "required": [
-                  "firstName",
-                  "lastName",
-                  "email",
-                  "dateOfBirth"
+                  "shopName",
+                  "shopLicense"
                 ]
               },
               "examples": {
@@ -219,29 +104,144 @@
           },
           "description": "Post the necessary fields for the API to create a new user."
         },
-        "description": "Create a new user."
+        "description": "Мерчант бүртгүүлэх"
+      },
+      "parameters": []
+    },
+    "/checkBusinessOwner": {
+      "post": {
+        "summary": "",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Хураас иргэний мэдээлэл шалгуулах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fingerprint": {
+                    "type": "string",
+                    "description": "Хурууны хээний зураг"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    },
+    "/verifyTan": {
+      "post": {
+        "summary": "",
+        "operationId": "post-verifyTan",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/saveBusinessOwner": {
+      "post": {
+        "summary": "",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "boLastname": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн овог"
+                  },
+                  "boFirstname": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн нэр"
+                  },
+                  "boRegno": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн регистерийн дугаар"
+                  },
+                  "boMobile": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн утасны дугаар. Цаашид нэвтрэх нэр болно"
+                  },
+                  "boEmail": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн имэйл хаяг"
+                  },
+                  "boType": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн төрөл"
+                  }
+                },
+                "required": [
+                  "boLastname",
+                  "boFirstname",
+                  "boRegno",
+                  "boMobile",
+                  "boEmail",
+                  "boType"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/registerCust": {
+      "post": {
+        "summary": "",
+        "operationId": "post-registerCust",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mobile": {
+                    "type": "string"
+                  },
+                  "pin": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "mobile",
+                  "pin"
+                ]
+              }
+            }
+          }
+        }
       }
     }
   },
   "components": {
     "schemas": {
-      "enroll": {
+      "shop": {
         "title": "enroll",
         "type": "object",
         "description": "Мерчант бүртгүүлэх",
         "x-examples": {},
         "properties": {
-          "shopName": {
-            "type": "string",
-            "description": "Дэлгүүрийн нэр"
-          },
-          "shopLicense": {
-            "description": "Үйл ажиллагааны тусгай зөвшөөрлүүд",
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
           "boLastname": {
             "type": "string",
             "description": "Бизнес эрхлэгчийн овог"
@@ -269,8 +269,6 @@
           }
         },
         "required": [
-          "shopName",
-          "shopLicense",
           "boLastname",
           "boFirstname",
           "boRegno",
@@ -279,7 +277,7 @@
           "boRole"
         ]
       },
-      "shopLicense": {
+      "merchant": {
         "title": "shopLicense",
         "type": "object",
         "properties": {
@@ -288,21 +286,14 @@
           },
           "name": {
             "type": "string"
+          },
+          "licenseType": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
           }
         }
-      },
-      "boRole": {
-        "title": "boRole",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "description": "Дэлгүүрийн эзэн, түрээслэгч, хамтран эзэмшигч"
       },
       "fingerprint": {
         "title": "fingerprint",
