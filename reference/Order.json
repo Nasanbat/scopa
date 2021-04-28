@@ -870,14 +870,6 @@
             "description": "Барааны код",
             "type": "string"
           },
-          "supplierId": {
-            "description": "Захиалсан барааны нийлүүлэгч. Олон нийлүүлэгчтэй үед ашиглана.",
-            "type": "integer"
-          },
-          "supplierName": {
-            "type": "string",
-            "description": "Нийлүүлэгчийн нэр"
-          },
           "productName": {
             "type": "string",
             "description": "Барааны нэр"
@@ -935,10 +927,6 @@
             "type": "number",
             "description": "Захиалгын нийт үнэ"
           },
-          "statusName": {
-            "type": "string",
-            "description": "Төлөвийн нэр"
-          },
           "items": {
             "type": "array",
             "description": "Захиалгын бараанууд",
@@ -948,7 +936,7 @@
           },
           "payType": {
             "type": "string",
-            "description": "Төлбөрийн хэлбэр CASH, LINE"
+            "description": "Төлбөрийн хэлбэр CASH, LINE, MIXED"
           },
           "curCode": {
             "type": "string",
@@ -957,6 +945,9 @@
           },
           "payAmount": {
             "type": "number"
+          },
+          "supplierId": {
+            "type": "integer"
           }
         }
       },
