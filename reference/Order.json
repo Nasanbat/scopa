@@ -853,7 +853,7 @@
             "format": "double",
             "description": "Барааны үнэ"
           },
-          "complateQty": {
+          "completeQty": {
             "type": "number",
             "description": "Захиалгаар хүлээн авсан тоо",
             "format": "double"
