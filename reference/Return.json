@@ -1,0 +1,460 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Return",
+    "version": "1.0",
+    "description": "БАРАА БУЦААЛТТАЙ ХОЛБООТОЙ API-ууд"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/return/createNew": {
+      "post": {
+        "summary": "Create new",
+        "operationId": "post-createNew",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "returnId": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "returnId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Шинээр буцаалт үүсгэх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "supplierId": {
+                    "type": "integer",
+                    "description": "Нийлүүлэгчийн Id"
+                  },
+                  "itemCount": {
+                    "type": "integer",
+                    "description": "Буцаах барааны тоо нэр төрлөөр"
+                  },
+                  "items": {
+                    "type": "array",
+                    "description": "Буцаасан барааны дэлгэрэнгүй жагсаалт",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemAddNew"
+                    }
+                  }
+                },
+                "required": [
+                  "supplierId",
+                  "itemCount",
+                  "items"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "supplierId": 0,
+                    "itemCount": 0,
+                    "items": [
+                      {
+                        "prodCode": "string",
+                        "qty": 0,
+                        "unitPrice": 0,
+                        "meas": "string",
+                        "reason": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    },
+    "/return/removeItem": {
+      "post": {
+        "summary": "Remove Item",
+        "operationId": "post-return-removeItem",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "returnId": {
+                    "type": "string"
+                  },
+                  "productCode": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "returnId",
+                  "productCode"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "returnId": "string",
+                    "productCode": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Буцаалтын бүргэлээс мөр хасах"
+      }
+    },
+    "/return/list": {
+      "get": {
+        "summary": "list",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/returnReq"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": [
+                      {
+                        "returnId": 0,
+                        "supplierId": "string",
+                        "status": "string",
+                        "itemCount": 0,
+                        "totalAmt": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-return-list",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "description": "Төлөв: ALL, PENDING, COMPLETED"
+                  },
+                  "interval": {
+                    "type": "string",
+                    "description": "Хугацаа: LAST, LAST_DAY, LAST_WEEK, LAST_MONTH"
+                  },
+                  "supplierId": {
+                    "type": "string",
+                    "description": "Нийлүүлэгчийн id: selected supplier id"
+                  }
+                },
+                "required": [
+                  "status",
+                  "interval"
+                ]
+              },
+              "examples": {
+                "example-2": {
+                  "value": {
+                    "status": "string",
+                    "interval": "string",
+                    "supplierId": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Бүртгэсэн буцаалтын жагсаалт авах"
+      }
+    },
+    "/return/remove": {
+      "post": {
+        "summary": "Remove",
+        "operationId": "post-return-remove",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Бүртгэсэн буцаалтыг устгах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "returnId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "returnId"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "returnId": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/return/editItem": {
+      "post": {
+        "summary": "Edit item",
+        "operationId": "post-return-editItem",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Бүртгэсэн буцаалт доторх мөр өөрчлөх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemEdit"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "returnId": "string",
+                    "productCode": "string",
+                    "qty": 0,
+                    "reason": "string",
+                    "meas": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/return/addItem": {
+      "post": {
+        "summary": "Add item",
+        "operationId": "post-return-addItem",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Бүртгэсэн буцаалт дээр мөр нэмэх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemEdit"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "returnId": "string",
+                    "productCode": "string",
+                    "qty": 0,
+                    "meas": "string",
+                    "reason": "string"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "returnId": {
+                    "type": "string"
+                  },
+                  "productCode": {
+                    "type": "string"
+                  },
+                  "qty": {
+                    "type": "number"
+                  },
+                  "meas": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "returnId",
+                  "productCode",
+                  "qty",
+                  "meas",
+                  "reason"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ItemAddNew": {
+        "title": "Item",
+        "type": "object",
+        "description": "Буцаах бараа",
+        "x-examples": {
+          "Alice Smith": {
+            "id": 142,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice.smith@gmail.com",
+            "dateOfBirth": "1997-10-31",
+            "emailVerified": true,
+            "signUpDate": "2019-08-24"
+          }
+        },
+        "properties": {
+          "productCode": {
+            "type": "string",
+            "description": "Скопагаас кодлосон барааны код байна"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Тоо, хэмжээ"
+          },
+          "unitPrice": {
+            "type": "number",
+            "description": "Нэгжийн үнэ"
+          },
+          "meas": {
+            "type": "string",
+            "description": "Хэмжих нэгж: C - ширхэг, Kg - kilogram, L - liter   "
+          },
+          "reason": {
+            "type": "string",
+            "description": "Буцаасан шалтгаан: EXPIRED хугацаа дууссан, UNFOLD - баглаа задарсан, MOLD - муудсан, OTHER"
+          }
+        },
+        "required": [
+          "productCode",
+          "qty",
+          "unitPrice",
+          "meas"
+        ]
+      },
+      "returnReq": {
+        "title": "returnReq",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "returnId": 0,
+            "supplierId": "string",
+            "status": "string",
+            "itemCount": 0,
+            "totalAmt": 0
+          }
+        },
+        "properties": {
+          "returnId": {
+            "type": "integer",
+            "description": "Буцаалтын id"
+          },
+          "supplierId": {
+            "type": "string",
+            "description": "Нийлүүлэгч"
+          },
+          "status": {
+            "type": "string",
+            "description": "Төлөв: PENDING, ACCEPTED, COMPLETED"
+          },
+          "itemCount": {
+            "type": "integer",
+            "description": "Буцаалт доторх барааны тоо"
+          },
+          "totalAmt": {
+            "type": "number",
+            "description": "Буцаалтын үнийн дүн"
+          }
+        },
+        "required": [
+          "returnId",
+          "supplierId",
+          "status",
+          "itemCount",
+          "totalAmt"
+        ]
+      },
+      "ItemEdit": {
+        "title": "ItemAdd",
+        "type": "object",
+        "description": "Буцаах бараа",
+        "properties": {
+          "returnId": {
+            "type": "string",
+            "description": "Буцаалтын дугаар"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Буцаах барааны код"
+          },
+          "qty": {
+            "type": "integer",
+            "description": "Тоо, хэмжээ"
+          },
+          "meas": {
+            "type": "string",
+            "description": "Нэгж: C - ширхэг, Kg - килограмм, L - литр"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Буцаасан шалтгаан: EXPIRED хугацаа дууссан, UNFOLD - баглаа задарсан, MOLD - муудсан, OTHER"
+          }
+        },
+        "required": [
+          "returnId",
+          "productCode",
+          "qty",
+          "meas"
+        ]
+      }
+    }
+  }
+}
