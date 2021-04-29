@@ -409,7 +409,16 @@
           "prodName",
           "qty",
           "price"
-        ]
+        ],
+        "x-examples": {
+          "example-1": {
+            "prodCode": "string",
+            "prodName": "string",
+            "qty": 0,
+            "price": 0,
+            "prodCodeBase": "string"
+          }
+        }
       },
       "Sales": {
         "title": "Sales",
@@ -446,7 +455,7 @@
           },
           "salesDate": {
             "type": "string",
-            "description": "борлуулалт хийсэн огноо, цаг, минуттай",
+            "description": "борлуулалт хийсэн огноо, цаг, минуттай\nyyyy.MM.dd hh:mi",
             "format": "date-time",
             "example": "2021.05.20 18:25",
             "default": "yyyy.MM.dd hh:mi"
@@ -547,7 +556,20 @@
           "prodName",
           "qty",
           "unit"
-        ]
+        ],
+        "x-examples": {
+          "example-1": {
+            "prodCode": "string",
+            "prodName": "string",
+            "prodCodeBase": "string",
+            "qty": 0,
+            "unit": "string",
+            "supplierName": "string",
+            "supplierId": "string",
+            "catId": "string",
+            "catName": "string"
+          }
+        }
       }
     }
   }
