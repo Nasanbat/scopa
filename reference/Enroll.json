@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Merchant",
+    "title": "Enroll",
     "version": "1.0",
     "description": "Мерчант дэлгүүрийн бүртгэлтэй холбоотой апи функцүүд",
     "contact": {
