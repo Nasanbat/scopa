@@ -1,0 +1,322 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Enroll",
+    "version": "1.0",
+    "description": "Мерчант дэлгүүрийн бүртгэлтэй холбоотой апи функцүүд",
+    "contact": {
+      "name": "SCOPA team",
+      "email": "devsupport@scopa.mn",
+      "url": "http://www.scopa.mn/"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Merchant"
+    }
+  ],
+  "paths": {
+    "/saveMerchant": {
+      "post": {
+        "summary": "Save Merchant",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {},
+                "examples": {}
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enrolliId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "shopName": {
+                    "type": "string",
+                    "description": "Дэлгүүрийн нэр"
+                  },
+                  "shopLicense": {
+                    "type": "array",
+                    "description": "Дэлгүүрийн зөвшөөрлийн төрлүүд",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "required": [
+                  "shopName",
+                  "shopLicense"
+                ]
+              },
+              "examples": {}
+            }
+          },
+          "description": "Дэлгүүрийн мэдээлэл хадгалах функц"
+        },
+        "description": "Мерчант бүртгүүлэх"
+      },
+      "parameters": []
+    },
+    "/checkBusinessOwner": {
+      "post": {
+        "summary": "Check Business Owner",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Хураас иргэний мэдээлэл шалгуулах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fingerprint": {
+                    "type": "string",
+                    "description": "Хурууны хээний зураг"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": []
+    },
+    "/verifyMobile": {
+      "post": {
+        "summary": "Verify Mobile",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enrollId": {
+                      "type": "string"
+                    },
+                    "tan": {
+                      "type": "number",
+                      "minimum": 6,
+                      "maximum": 6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Бүртгэл баталгаажуулах"
+      },
+      "parameters": []
+    },
+    "/saveBusinessOwner": {
+      "post": {
+        "summary": "Save Business Owner",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "boLastname": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн овог"
+                  },
+                  "boFirstname": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн нэр"
+                  },
+                  "boRegno": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн регистерийн дугаар"
+                  },
+                  "boMobile": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн утасны дугаар. Цаашид нэвтрэх нэр болно"
+                  },
+                  "boEmail": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн имэйл хаяг"
+                  },
+                  "boType": {
+                    "type": "string",
+                    "description": "Бизнес эрхлэгчийн төрөл"
+                  }
+                },
+                "required": [
+                  "boLastname",
+                  "boFirstname",
+                  "boRegno",
+                  "boMobile",
+                  "boEmail",
+                  "boType"
+                ]
+              },
+              "examples": {}
+            }
+          },
+          "description": "Бизнес эрхлэгчийн мэдээлэл хадгалах функц"
+        },
+        "description": "Бизнес эрхлэгийн мэдээлэл хадгалах"
+      }
+    },
+    "/registerMerchant": {
+      "post": {
+        "summary": "Register Merchant",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mobile": {
+                    "type": "string"
+                  },
+                  "pin": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "mobile",
+                  "pin"
+                ]
+              }
+            }
+          }
+        },
+        "description": ""
+      },
+      "parameters": []
+    },
+    "/getTan": {
+      "post": {
+        "summary": "Get Verification code",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Бүртгэл баталгаажуулах код авах"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {
+      "businessOwner": {
+        "title": "businessOwner",
+        "type": "object",
+        "description": "Бизнес эрхлэгчийн мэдээлэл",
+        "x-examples": {},
+        "properties": {
+          "boLastname": {
+            "type": "string",
+            "description": "Бизнес эрхлэгчийн овог"
+          },
+          "boFirstname": {
+            "type": "string",
+            "description": "Бизнес эрхлэгчийн нэр"
+          },
+          "boRegno": {
+            "type": "string",
+            "description": "Бизнес эрхлэгчийн регистерийн дугаар"
+          },
+          "boMobile": {
+            "type": "string",
+            "description": "Бизнес эрхлэгчийн утасны дугаар. Цаашид нэвтрэх нэр болно."
+          },
+          "boEmail": {
+            "type": "string",
+            "description": "Бизнес эрхлэгчийн имэйл хаяг. Цаашид нууц сэргээхэд ашиглана.",
+            "format": "email"
+          },
+          "boRole": {
+            "type": "number",
+            "description": "Бизнес эрхлэгч нь тухайн дэлгүүрийн эзэмшигч эсэх"
+          }
+        },
+        "required": [
+          "boLastname",
+          "boFirstname",
+          "boRegno",
+          "boMobile",
+          "boEmail",
+          "boRole"
+        ]
+      },
+      "merchant": {
+        "title": "merchant",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "licenseType": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "description": "Мерчантын мэдээлэл"
+      }
+    },
+    "securitySchemes": {
+      "NESSESSION": {
+        "name": "API Key",
+        "type": "apiKey",
+        "in": "query",
+        "description": ""
+      }
+    }
+  }
+}
