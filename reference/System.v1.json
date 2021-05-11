@@ -52,12 +52,11 @@
         "responses": {
           "200": {
             "description": "OK",
-            "headers": {
-              "SessionToken": {
+            "content": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
-                },
-                "description": "NEW_TOKEN"
+                  "$ref": "#/components/schemas/connect_response"
+                }
               }
             }
           },
@@ -199,14 +198,85 @@
           "responseDesc"
         ],
         "x-examples": {
-          "example-1": {
-            "responseCode": "string",
-            "responseDesc": "string",
-            "responseData": {}
+          "connect response": {
+            "responseCode": "0",
+            "responseDesc": "",
+            "responseData": {
+              "merchantId": 123456
+            }
+          }
+        }
+      },
+      "connect_response": {
+        "title": "connect_response",
+        "type": "object",
+        "x-examples": {
+          "Success": {
+            "responseCode": "1",
+            "responseDesc": "",
+            "responseData": {
+              "merchantId": "123456",
+              "merchantName": "Танан Март"
+            }
+          },
+          "Failed": {
+            "responseCode": "125400",
+            "responseDesc": "ТАН код буруу байна."
+          }
+        },
+        "properties": {
+          "responseCode": {
+            "type": "string"
+          },
+          "responseDesc": {
+            "type": "string"
+          },
+          "responseData": {
+            "type": "object",
+            "required": [
+              "merchantId"
+            ],
+            "properties": {
+              "merchantId": {
+                "type": "string",
+                "description": "Холболт хийгдсэн мерчантын дугаарыг буцаана"
+              },
+              "merchantName": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "responseCode"
+        ]
+      }
+    },
+    "responses": {
+      "general_res": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "responseCode": {
+                  "type": "string"
+                },
+                "responseDesc": {
+                  "type": "string"
+                },
+                "responseData": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "responseCode"
+              ]
+            }
           }
         }
       }
-    },
-    "responses": {}
+    }
   }
 }
