@@ -1,0 +1,101 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Customer",
+    "version": "1.0",
+    "contact": {
+      "name": "SCOPA team",
+      "url": "http://www.scopa.mn/",
+      "email": "devsupport@scopa.mn"
+    },
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "User Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "New User Bob Fellow": {
+                    "value": {
+                      "id": 12,
+                      "firstName": "Bob",
+                      "lastName": "Fellow",
+                      "email": "bob.fellow@gmail.com",
+                      "dateOfBirth": "1996-08-24",
+                      "emailVerified": false,
+                      "createDate": "2020-11-18"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          },
+          "409": {
+            "description": "Email Already Taken"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mobileNo": {
+                    "type": "string"
+                  },
+                  "credValue": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "mobileNo",
+                  "credValue"
+                ]
+              },
+              "examples": {
+                "Create User Bob Fellow": {
+                  "value": {
+                    "firstName": "Bob",
+                    "lastName": "Fellow",
+                    "email": "bob.fellow@gmail.com",
+                    "dateOfBirth": "1996-08-24"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "Нэвтрэх"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "NESSESSION": {
+        "name": "API Key",
+        "type": "apiKey",
+        "in": "query"
+      }
+    }
+  }
+}

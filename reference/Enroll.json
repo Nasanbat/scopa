@@ -17,16 +17,18 @@
     }
   ],
   "paths": {
-    "/saveMerchant": {
+    "/saveBoCidSelfie": {
       "post": {
-        "summary": "Save Merchant",
+        "summary": "Save business owner CID selfie",
         "operationId": "",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
-                "schema": {},
+                "schema": {
+                  "type": "object"
+                },
                 "examples": {}
               },
               "application/xml": {
@@ -48,29 +50,204 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "shopName": {
-                    "type": "string",
-                    "description": "Дэлгүүрийн нэр"
+                  "enrollId": {
+                    "description": "Дэлгүүрийн нэр",
+                    "type": "number"
                   },
-                  "shopLicense": {
-                    "type": "array",
-                    "description": "Дэлгүүрийн зөвшөөрлийн төрлүүд",
-                    "items": {
-                      "type": "number"
-                    }
+                  "imagePath": {
+                    "type": "string"
                   }
                 },
                 "required": [
-                  "shopName",
-                  "shopLicense"
+                  "enrollId"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "enrollId": 0,
+                    "imagePath": "CID/SELFIE/selfie.png"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Дэлгүүрийн мэдээлэл хадгалах функц"
+        },
+        "description": "Бизнес эрхлэгчийн иргэний үнэмлэхийн ард талын зураг хадгалах"
+      },
+      "parameters": []
+    },
+    "/saveBoFingerprint": {
+      "post": {
+        "summary": "Save business owner fingerprint",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "description": "Бизнес эрхлэгчийн иргэний үнэмлэхийн урд талын зураг хадгалах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "number"
+                  },
+                  "imagePath": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "enrollId"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "enrollId": 0,
+                    "imagePath": "FP/fingerprint.png"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "operationId": ""
+      },
+      "parameters": []
+    },
+    "/saveBoLoginInfo": {
+      "post": {
+        "summary": "Save business owner login information",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Бизнес эрхлэгчийн нэвтрэх мэдээллийг хадгалах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "number"
+                  },
+                  "mobileNo": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": []
+    },
+    "/enterBoInfo": {
+      "post": {
+        "summary": "Enter business owner information",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "description": "Бизнес эрхлэгчийн төрөл",
+                    "type": "number"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "registerCode": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "enrollId"
                 ]
               },
               "examples": {}
             }
           },
-          "description": "Дэлгүүрийн мэдээлэл хадгалах функц"
+          "description": "Бизнес эрхлэгчийн мэдээлэл хадгалах функц"
         },
-        "description": "Мерчант бүртгүүлэх"
+        "description": "Бизнес эрхлэгчийн мэдээллийг оруулах"
+      },
+      "parameters": []
+    },
+    "/saveBoCidBack": {
+      "post": {
+        "summary": "Save business owner CID back",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Бизнес эрхлэгчийн сэлфи зураг хадгалах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "number"
+                  },
+                  "imagePath": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "enrollId": 0,
+                    "imagePath": "CID/BACK/back.png"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
       },
       "parameters": []
     },
@@ -94,7 +271,6 @@
             }
           }
         },
-        "description": "Бизнес эрхлэгчийн иргэний үнэмлэхийн урд талын зураг авах",
         "requestBody": {
           "content": {
             "application/json": {
@@ -104,44 +280,29 @@
                   "imagePath": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "imagePath"
-                ]
+                }
               },
               "examples": {
                 "example-1": {
                   "value": {
-                    "imagePath": "CID/FRONT/"
+                    "imagePath": "CID/FRONT/front.png"
                   }
                 }
               }
             }
-          },
-          "description": ""
+          }
         },
-        "operationId": ""
+        "description": "Бизнес эрхлэгчийн иргэний үнэмлэхийн урд талын зураг хадгалах"
       },
       "parameters": []
     },
     "/verifyMobile": {
       "post": {
-        "summary": "Verify Mobile",
+        "summary": "Verify mobile number",
+        "operationId": "",
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "enrollId": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         },
         "description": "Утасны дугаар баталгаажуулах",
@@ -160,109 +321,20 @@
                 }
               }
             }
-          },
-          "description": ""
-        }
-      },
-      "parameters": []
-    },
-    "/saveBusinessOwner": {
-      "post": {
-        "summary": "Save Business Owner",
-        "responses": {
-          "200": {
-            "description": "OK"
           }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "boLastname": {
-                    "type": "string",
-                    "description": "Бизнес эрхлэгчийн овог"
-                  },
-                  "boFirstname": {
-                    "type": "string",
-                    "description": "Бизнес эрхлэгчийн нэр"
-                  },
-                  "boRegno": {
-                    "type": "string",
-                    "description": "Бизнес эрхлэгчийн регистерийн дугаар"
-                  },
-                  "boMobile": {
-                    "type": "string",
-                    "description": "Бизнес эрхлэгчийн утасны дугаар. Цаашид нэвтрэх нэр болно"
-                  },
-                  "boEmail": {
-                    "type": "string",
-                    "description": "Бизнес эрхлэгчийн имэйл хаяг"
-                  },
-                  "boType": {
-                    "type": "string",
-                    "description": "Бизнес эрхлэгчийн төрөл"
-                  }
-                },
-                "required": [
-                  "boLastname",
-                  "boFirstname",
-                  "boRegno",
-                  "boMobile",
-                  "boEmail",
-                  "boType"
-                ]
-              },
-              "examples": {}
-            }
-          },
-          "description": "Бизнес эрхлэгчийн мэдээлэл хадгалах функц"
-        },
-        "description": "Бизнес эрхлэгийн мэдээлэл хадгалах"
+        }
       }
     },
-    "/registerMerchant": {
+    "/registerBo": {
       "post": {
-        "summary": "Register Merchant",
+        "summary": "Register business owner",
+        "operationId": "",
         "responses": {
           "200": {
             "description": "OK"
           }
         },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "mobile": {
-                    "type": "string"
-                  },
-                  "pin": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "mobile",
-                  "pin"
-                ]
-              }
-            }
-          }
-        },
-        "description": ""
-      },
-      "parameters": []
-    },
-    "/getTan": {
-      "post": {
-        "summary": "Get Verification code",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
+        "description": "Бизнес эрхлэгч бүртгэх",
         "requestBody": {
           "content": {
             "application/json": {
@@ -270,81 +342,21 @@
                 "type": "object",
                 "properties": {
                   "enrollId": {
+                    "type": "number"
+                  },
+                  "pin": {
                     "type": "string"
                   }
                 }
               }
             }
           }
-        },
-        "description": "Бүртгэл баталгаажуулах код авах"
-      },
-      "parameters": []
+        }
+      }
     }
   },
   "components": {
-    "schemas": {
-      "businessOwner": {
-        "title": "businessOwner",
-        "type": "object",
-        "description": "Бизнес эрхлэгчийн мэдээлэл",
-        "x-examples": {},
-        "properties": {
-          "boLastname": {
-            "type": "string",
-            "description": "Бизнес эрхлэгчийн овог"
-          },
-          "boFirstname": {
-            "type": "string",
-            "description": "Бизнес эрхлэгчийн нэр"
-          },
-          "boRegno": {
-            "type": "string",
-            "description": "Бизнес эрхлэгчийн регистерийн дугаар"
-          },
-          "boMobile": {
-            "type": "string",
-            "description": "Бизнес эрхлэгчийн утасны дугаар. Цаашид нэвтрэх нэр болно."
-          },
-          "boEmail": {
-            "type": "string",
-            "description": "Бизнес эрхлэгчийн имэйл хаяг. Цаашид нууц сэргээхэд ашиглана.",
-            "format": "email"
-          },
-          "boRole": {
-            "type": "number",
-            "description": "Бизнес эрхлэгч нь тухайн дэлгүүрийн эзэмшигч эсэх"
-          }
-        },
-        "required": [
-          "boLastname",
-          "boFirstname",
-          "boRegno",
-          "boMobile",
-          "boEmail",
-          "boRole"
-        ]
-      },
-      "merchant": {
-        "title": "merchant",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "name": {
-            "type": "string"
-          },
-          "licenseType": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          }
-        },
-        "description": "Мерчантын мэдээлэл"
-      }
-    },
+    "schemas": {},
     "securitySchemes": {
       "NESSESSION": {
         "name": "API Key",
