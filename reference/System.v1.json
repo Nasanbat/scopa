@@ -212,16 +212,14 @@
         "type": "object",
         "x-examples": {
           "Success": {
-            "responseCode": "1",
-            "responseDesc": "",
-            "responseData": {
-              "merchantId": "123456",
-              "merchantName": "Танан Март"
+            "value": {
+              "responseCode": "0",
+              "responseDesc": "",
+              "responseData": {
+                "merchantId": 45923,
+                "merchantName": "Цэцэг минимаркет"
+              }
             }
-          },
-          "Failed": {
-            "responseCode": "125400",
-            "responseDesc": "ТАН код буруу байна."
           }
         },
         "properties": {
@@ -233,18 +231,18 @@
           },
           "responseData": {
             "type": "object",
-            "required": [
-              "merchantId"
-            ],
             "properties": {
               "merchantId": {
-                "type": "string",
+                "type": "number",
                 "description": "Холболт хийгдсэн мерчантын дугаарыг буцаана"
               },
               "merchantName": {
                 "type": "string"
               }
-            }
+            },
+            "required": [
+              "merchantId"
+            ]
           }
         },
         "required": [
