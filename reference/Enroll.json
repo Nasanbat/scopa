@@ -74,7 +74,7 @@
       },
       "parameters": []
     },
-    "/checkBusinessOwner": {
+    "/saveBoCidFront": {
       "post": {
         "summary": "Check Business Owner",
         "responses": {
@@ -82,23 +82,33 @@
             "description": "OK"
           }
         },
-        "description": "Хураас иргэний мэдээлэл шалгуулах",
+        "description": "Бизнес эрхлэгчийн иргэний үнэмлэхийн урд талын зураг авах",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "fingerprint": {
-                    "type": "string",
-                    "description": "Хурууны хээний зураг"
+                  "imagePath": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "imagePath"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "imagePath": "CID/FRONT/"
                   }
                 }
               }
             }
           },
           "description": ""
-        }
+        },
+        "operationId": ""
       },
       "parameters": []
     },
