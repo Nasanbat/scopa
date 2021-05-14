@@ -76,10 +76,22 @@
     },
     "/saveBoCidFront": {
       "post": {
-        "summary": "Check Business Owner",
+        "summary": "Save business owner CID front",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "description": "Бизнес эрхлэгчийн иргэний үнэмлэхийн урд талын зураг авах",
@@ -124,12 +136,7 @@
                   "type": "object",
                   "properties": {
                     "enrollId": {
-                      "type": "string"
-                    },
-                    "tan": {
-                      "type": "number",
-                      "minimum": 6,
-                      "maximum": 6
+                      "type": "number"
                     }
                   }
                 }
@@ -137,7 +144,25 @@
             }
           }
         },
-        "description": "Бүртгэл баталгаажуулах"
+        "description": "Утасны дугаар баталгаажуулах",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "number"
+                  },
+                  "tan": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
       },
       "parameters": []
     },
