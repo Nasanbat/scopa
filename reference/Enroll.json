@@ -59,7 +59,8 @@
                   }
                 },
                 "required": [
-                  "enrollId"
+                  "enrollId",
+                  "imagePath"
                 ]
               },
               "examples": {
@@ -108,7 +109,8 @@
                   }
                 },
                 "required": [
-                  "enrollId"
+                  "enrollId",
+                  "imagePath"
                 ]
               },
               "examples": {
@@ -163,7 +165,12 @@
                   "email": {
                     "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "enrollId",
+                  "mobileNo",
+                  "email"
+                ]
               }
             }
           },
@@ -201,7 +208,10 @@
                   }
                 },
                 "required": [
-                  "enrollId"
+                  "enrollId",
+                  "lastName",
+                  "firstName",
+                  "registerCode"
                 ]
               },
               "examples": {}
@@ -234,7 +244,11 @@
                   "imagePath": {
                     "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "enrollId",
+                  "imagePath"
+                ]
               },
               "examples": {
                 "example-1": {
@@ -280,7 +294,10 @@
                   "imagePath": {
                     "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "imagePath"
+                ]
               },
               "examples": {
                 "example-1": {
@@ -318,7 +335,11 @@
                   "tan": {
                     "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "enrollId",
+                  "tan"
+                ]
               }
             }
           }
@@ -347,7 +368,11 @@
                   "pin": {
                     "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "enrollId",
+                  "pin"
+                ]
               }
             }
           }
