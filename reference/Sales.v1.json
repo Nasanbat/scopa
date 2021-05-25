@@ -23,6 +23,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "./System.v1.json#/components/schemas/response"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "responseCode": "string",
+                      "responseDesc": "string",
+                      "responseData": {}
+                    }
+                  }
                 }
               }
             }
@@ -58,6 +67,57 @@
                         "prodCodeBase": "511"
                       }
                     ]
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "merchantId": "string",
+                    "branchNo": "string",
+                    "posNo": "string",
+                    "districtCode": "string",
+                    "customerNo": "string",
+                    "billType": "string",
+                    "billIdSuffix": "string",
+                    "invoiceId": "string",
+                    "amount": "string",
+                    "cashAmount": "string",
+                    "nonCashAmount": "string",
+                    "vat": "string",
+                    "cityTax": "string",
+                    "returnBillId": "string",
+                    "taxType": "string",
+                    "stocks": [
+                      {
+                        "productCode": "string",
+                        "code": "string",
+                        "name": "string",
+                        "measureUnit": "string",
+                        "qty": "string",
+                        "unitPrice": "string",
+                        "totalAmount": "string",
+                        "cityTax": "string",
+                        "vat": "string",
+                        "barCode": "string",
+                        "supplierId": "string",
+                        "supplierName": "string",
+                        "serialNo": "string",
+                        "SKU": "string"
+                      }
+                    ],
+                    "bankTransactions": [
+                      {
+                        "rrn": "string",
+                        "bankId": "string",
+                        "terminalId": "string",
+                        "approvalCode": "string",
+                        "amount": "string",
+                        "curCode": "MNT"
+                      }
+                    ],
+                    "group": true,
+                    "reportMonth": "string",
+                    "saleId": "string",
+                    "saleDate": "string"
                   }
                 }
               }
@@ -141,6 +201,59 @@
                       ]
                     }
                   ]
+                },
+                "example-2": {
+                  "value": [
+                    {
+                      "merchantId": "M1001",
+                      "branchNo": "B001",
+                      "posNo": "001",
+                      "districtCode": "string",
+                      "customerNo": "string",
+                      "billType": "string",
+                      "billIdSuffix": "string",
+                      "invoiceId": "string",
+                      "amount": "string",
+                      "cashAmount": "string",
+                      "nonCashAmount": "string",
+                      "vat": "string",
+                      "cityTax": "string",
+                      "returnBillId": "string",
+                      "taxType": "string",
+                      "stocks": [
+                        {
+                          "productCode": "string",
+                          "code": "string",
+                          "name": "string",
+                          "measureUnit": "string",
+                          "qty": "string",
+                          "unitPrice": "string",
+                          "totalAmount": "string",
+                          "cityTax": "string",
+                          "vat": "string",
+                          "barCode": "string",
+                          "supplierId": "string",
+                          "supplierName": "string",
+                          "serialNo": "string",
+                          "SKU": "string"
+                        }
+                      ],
+                      "bankTransactions": [
+                        {
+                          "rrn": "string",
+                          "bankId": "string",
+                          "terminalId": "string",
+                          "approvalCode": "string",
+                          "amount": "string",
+                          "curCode": "MNT"
+                        }
+                      ],
+                      "group": true,
+                      "reportMonth": "string",
+                      "saleId": "string",
+                      "saleDate": "string"
+                    }
+                  ]
                 }
               }
             }
@@ -181,10 +294,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ReversalItem"
-                }
+                "$ref": "#/components/schemas/Sales"
               },
               "examples": {
                 "example-1": {
@@ -206,6 +316,57 @@
                       "prodCodeBase": "string"
                     }
                   ]
+                },
+                "example-2": {
+                  "value": {
+                    "merchantId": "string",
+                    "branchNo": "string",
+                    "posNo": "string",
+                    "districtCode": "string",
+                    "customerNo": "string",
+                    "billType": "string",
+                    "billIdSuffix": "string",
+                    "invoiceId": "string",
+                    "amount": "string",
+                    "cashAmount": "string",
+                    "nonCashAmount": "string",
+                    "vat": "string",
+                    "cityTax": "string",
+                    "returnBillId": "string",
+                    "taxType": "string",
+                    "stocks": [
+                      {
+                        "productCode": "string",
+                        "code": "string",
+                        "name": "string",
+                        "measureUnit": "string",
+                        "qty": "string",
+                        "unitPrice": "string",
+                        "totalAmount": "string",
+                        "cityTax": "string",
+                        "vat": "string",
+                        "barCode": "string",
+                        "supplierId": "string",
+                        "supplierName": "string",
+                        "serialNo": "string",
+                        "SKU": "string"
+                      }
+                    ],
+                    "bankTransactions": [
+                      {
+                        "rrn": "string",
+                        "bankId": "string",
+                        "terminalId": "string",
+                        "approvalCode": "string",
+                        "amount": "string",
+                        "curCode": "MNT"
+                      }
+                    ],
+                    "group": true,
+                    "reportMonth": "string",
+                    "saleId": "string",
+                    "saleDate": "string"
+                  }
                 }
               }
             }
@@ -377,7 +538,7 @@
   },
   "components": {
     "schemas": {
-      "SalesItem": {
+      "SalesItem_old": {
         "description": "Борлуулалт доторх барааны мэдээлэл",
         "type": "object",
         "properties": {
@@ -409,19 +570,10 @@
           "prodName",
           "qty",
           "price"
-        ],
-        "x-examples": {
-          "example-1": {
-            "prodCode": "string",
-            "prodName": "string",
-            "qty": 0,
-            "price": 0,
-            "prodCodeBase": "string"
-          }
-        }
+        ]
       },
-      "Sales": {
-        "title": "Sales",
+      "Sales_old": {
+        "title": "Sales_old",
         "type": "object",
         "description": "Борлуулалтын мэдээ",
         "x-examples": {
@@ -455,7 +607,7 @@
           },
           "salesDate": {
             "type": "string",
-            "description": "борлуулалт хийсэн огноо, цаг, минуттай\nyyyy.MM.dd hh:mi",
+            "description": "борлуулалт хийсэн огноо, цаг, минуттай",
             "format": "date-time",
             "example": "2021.05.20 18:25",
             "default": "yyyy.MM.dd hh:mi"
@@ -464,7 +616,7 @@
             "type": "array",
             "description": "Борлуулсан бараанууд",
             "items": {
-              "$ref": "#/components/schemas/SalesItem"
+              "$ref": "#/components/schemas/SalesItem_old"
             }
           }
         },
@@ -472,6 +624,140 @@
           "id",
           "totalPrice"
         ]
+      },
+      "OrderItems": {
+        "title": "OrderItems",
+        "type": "object",
+        "description": "Захиалгын бараанууд",
+        "x-examples": {},
+        "properties": {
+          "orderId": {
+            "type": "integer",
+            "description": "Захиалгын дугаар"
+          },
+          "itemId": {
+            "type": "integer",
+            "description": "Захиалгын дэд дугаар"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Захиалах тоо",
+            "format": "double"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "Барааны үнэ"
+          },
+          "complateQty": {
+            "type": "number",
+            "description": "Захиалгаар хүлээн авсан тоо",
+            "format": "double"
+          },
+          "cancelQty": {
+            "type": "number",
+            "description": "Захиалгаар хүлээж аваагүй тоо"
+          },
+          "description": {
+            "type": "string",
+            "description": "Нэмэлт тайлбар"
+          },
+          "productCode": {
+            "description": "Барааны код",
+            "type": "string"
+          },
+          "supplierId": {
+            "description": "Захиалсан барааны нийлүүлэгч. Олон нийлүүлэгчтэй үед ашиглана.",
+            "type": "integer"
+          },
+          "supplierName": {
+            "type": "string",
+            "description": "Нийлүүлэгчийн нэр"
+          },
+          "productName": {
+            "type": "string",
+            "description": "Барааны нэр"
+          },
+          "curCode": {
+            "type": "string",
+            "description": "Валют"
+          },
+          "measureUnit": {
+            "type": "string",
+            "description": "Хэмжих нэгж: C - ширхэг, Kg - kilogram, L - liter  "
+          }
+        },
+        "required": [
+          "itemId",
+          "qty",
+          "price"
+        ]
+      },
+      "Order": {
+        "title": "Order",
+        "type": "object",
+        "x-examples": {},
+        "description": "Захиалгын мэдээлэл",
+        "properties": {
+          "orderId": {
+            "type": "integer",
+            "description": "Захиалгын дугаар"
+          },
+          "orderDate": {
+            "type": "string",
+            "description": "Захиалгын огноо"
+          },
+          "status": {
+            "type": "number",
+            "description": "Төлөв"
+          },
+          "completeDate": {
+            "type": "string",
+            "description": "Захиалга биелсэн огноо"
+          },
+          "merchantId": {
+            "type": "number",
+            "description": "Дэлгүүрийн дугаар"
+          },
+          "description": {
+            "type": "string",
+            "description": "Захиалгын ерөнхий утга"
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Захиалгын хүчинтэй хугацаа"
+          },
+          "totalPrice": {
+            "type": "number",
+            "description": "Захиалгын нийт үнэ"
+          },
+          "statusName": {
+            "type": "string",
+            "description": "Төлөвийн нэр"
+          },
+          "items": {
+            "type": "array",
+            "description": "Захиалгын бараанууд",
+            "items": {
+              "$ref": "#/components/schemas/OrderItems"
+            }
+          },
+          "payType": {
+            "type": "string",
+            "description": "Төлбөрийн хэлбэр CASH, LINE"
+          },
+          "curCode": {
+            "type": "string",
+            "description": "Валют",
+            "example": "MNT"
+          },
+          "payAmount": {
+            "type": "number"
+          },
+          "branchNo": {
+            "type": "string"
+          }
+        }
       },
       "ReversalItem": {
         "title": "ReversalItem",
@@ -494,21 +780,21 @@
             "type": "number",
             "description": "Тоо ширхэг"
           },
-          "price": {
+          "unitPrice": {
             "type": "number",
             "description": "нэгж үнэ"
           },
-          "prodCodeBase": {
+          "productCode": {
             "type": "string",
             "description": "Барааны код Скопа платформ дээрх"
           }
         },
         "required": [
+          "id",
           "prodCode",
           "prodName",
           "qty",
-          "price",
-          "id"
+          "unitPrice"
         ]
       },
       "Product": {
@@ -522,7 +808,7 @@
           "prodName": {
             "type": "string"
           },
-          "prodCodeBase": {
+          "productCode": {
             "type": "string",
             "description": "Барааны Scopa дээрх код. "
           },
@@ -530,7 +816,7 @@
             "type": "number",
             "description": "Үлдэгдэл"
           },
-          "unit": {
+          "unitPrice": {
             "type": "string",
             "description": "Хэмжих нэгж"
           },
@@ -555,19 +841,200 @@
           "prodCode",
           "prodName",
           "qty",
-          "unit"
-        ],
-        "x-examples": {
-          "example-1": {
-            "prodCode": "string",
-            "prodName": "string",
-            "prodCodeBase": "string",
-            "qty": 0,
-            "unit": "string",
-            "supplierName": "string",
-            "supplierId": "string",
-            "catId": "string",
-            "catName": "string"
+          "unitPrice"
+        ]
+      },
+      "SalesItem": {
+        "title": "SalesItem",
+        "type": "object",
+        "description": "Борлуулалт доторх барааны мэдээлэл",
+        "properties": {
+          "productCode": {
+            "type": "string",
+            "description": "SCOPA-н барааны код"
+          },
+          "code": {
+            "type": "string",
+            "description": "Өөрийн систем дээрх барааны код"
+          },
+          "name": {
+            "type": "string",
+            "description": "Барааны нэр"
+          },
+          "measureUnit": {
+            "type": "string",
+            "description": "Хэмжих нэгж"
+          },
+          "qty": {
+            "type": "string",
+            "description": "2 орны нарийвчлалтай тоо Тоо, хэмжээ"
+          },
+          "unitPrice": {
+            "type": "string",
+            "description": "2 орны нарийвчлалтай тоо Нэгж үнэ Бүх төрлийн татвар шингэсэн дүн"
+          },
+          "totalAmount": {
+            "type": "string",
+            "description": "Нийт үнэ"
+          },
+          "cityTax": {
+            "type": "string",
+            "description": "Хотын татвар"
+          },
+          "vat": {
+            "type": "string",
+            "description": "Татвар"
+          },
+          "barCode": {
+            "type": "string",
+            "description": "Барааны баркод"
+          },
+          "supplierId": {
+            "type": "string",
+            "description": "Нийлүүлэгч дугаар"
+          },
+          "supplierName": {
+            "type": "string",
+            "description": "Нийлүүлэгч"
+          },
+          "serialNo": {
+            "type": "string"
+          },
+          "SKU": {
+            "type": "string",
+            "description": "Stock Keeping Units (SKUs)"
+          },
+          "ItemId": {
+            "type": "number",
+            "description": "Борлуулалтын дэд дугаар"
+          },
+          "returnItemId": {
+            "type": "number",
+            "description": "Буцаасан борлуулалтын дэд дугаар"
+          }
+        },
+        "required": [
+          "productCode",
+          "measureUnit",
+          "qty",
+          "unitPrice",
+          "totalAmount"
+        ]
+      },
+      "Sales": {
+        "title": "Sales",
+        "type": "object",
+        "description": "Борлуулалтын мэдээ",
+        "x-internal": false,
+        "x-examples": {},
+        "properties": {
+          "merchantId": {
+            "type": "string"
+          },
+          "branchNo": {
+            "type": "string"
+          },
+          "posNo": {
+            "type": "string"
+          },
+          "districtCode": {
+            "type": "string"
+          },
+          "customerNo": {
+            "type": "string"
+          },
+          "billType": {
+            "type": "string",
+            "description": "Төлбөр хийсэн хэлбэр: CASH, CARD, MOBILE, MIXED"
+          },
+          "billIdSuffix": {
+            "type": "string"
+          },
+          "invoiceId": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "string"
+          },
+          "cashAmount": {
+            "type": "string"
+          },
+          "nonCashAmount": {
+            "type": "string"
+          },
+          "vat": {
+            "type": "string"
+          },
+          "cityTax": {
+            "type": "string"
+          },
+          "returnSaleId": {
+            "type": "string"
+          },
+          "taxType": {
+            "type": "string"
+          },
+          "stocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SalesItem"
+            }
+          },
+          "bankTransactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SalesTransaction"
+            }
+          },
+          "group": {
+            "type": "boolean"
+          },
+          "reportMonth": {
+            "type": "string"
+          },
+          "saleId": {
+            "type": "string",
+            "description": "Борлуулалтын давтагдахгүй дугаарлалт"
+          },
+          "saleDate": {
+            "type": "string",
+            "description": "борлуулалт хийсэн огноо, цаг, минуттай"
+          },
+          "returnDate": {
+            "type": "string",
+            "description": "Буцаалт хийсэн огноо"
+          }
+        }
+      },
+      "SalesTransaction": {
+        "title": "BillBankTransaction",
+        "type": "object",
+        "properties": {
+          "rrn": {
+            "type": "string",
+            "description": "12 оронтой бүхэл тоо Бэлэн бус гүйлгээний баримтын дугаар\n"
+          },
+          "bankId": {
+            "type": "string",
+            "description": "2 оронтой бүхэл тоо Пос терминалын эзэмшигч банкны код"
+          },
+          "terminalId": {
+            "type": "string",
+            "description": "Латин үсэг тоо холилдсон 6 ба түүнээс дээш тэмдэгт бүхий тэмдэгт мөр Пос терминалын дугаар"
+          },
+          "approvalCode": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "string",
+            "description": "Дүн"
+          },
+          "curCode": {
+            "type": "string",
+            "description": "Валют",
+            "default": "MNT",
+            "minLength": 3,
+            "maxLength": 3
           }
         }
       }
