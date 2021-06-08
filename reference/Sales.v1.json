@@ -980,16 +980,7 @@
               "$ref": "#/components/schemas/SalesItem"
             }
           },
-          "bankTransactions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SalesTransaction"
-            }
-          },
-          "group": {
-            "type": "boolean"
-          },
-          "reportMonth": {
+          "fp": {
             "type": "string"
           },
           "salesId": {
