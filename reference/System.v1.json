@@ -179,13 +179,6 @@
         "title": "response",
         "type": "object",
         "description": "Хариу",
-        "x-examples": {
-          "example-1": {
-            "responseCode": "string",
-            "responseDesc": "string",
-            "responseData": {}
-          }
-        },
         "properties": {
           "responseCode": {
             "type": "string",
