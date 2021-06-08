@@ -968,7 +968,7 @@
           "cityTax": {
             "type": "string"
           },
-          "returnSaleId": {
+          "returnSalesId": {
             "type": "string"
           },
           "taxType": {
@@ -992,11 +992,11 @@
           "reportMonth": {
             "type": "string"
           },
-          "saleId": {
+          "salesId": {
             "type": "string",
             "description": "Борлуулалтын давтагдахгүй дугаарлалт"
           },
-          "saleDate": {
+          "salesDate": {
             "type": "string",
             "description": "борлуулалт хийсэн огноо, цаг, минуттай"
           },
