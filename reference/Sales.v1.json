@@ -45,86 +45,44 @@
                 "$ref": "#/components/schemas/Sales"
               },
               "examples": {
-                "example-1": {
-                  "value": {
-                    "id": "100011",
-                    "totalPrice": 35200,
-                    "payType": "CARD",
-                    "salesDate": "2021.05.20 18:25",
-                    "items": [
-                      {
-                        "prodCode": "789",
-                        "prodName": "Атар талх",
-                        "qty": 2,
-                        "price": 1200,
-                        "prodCodeBase": "111"
-                      },
-                      {
-                        "prodCode": "856",
-                        "prodName": "Eden архи",
-                        "qty": 1,
-                        "price": 32800,
-                        "prodCodeBase": "511"
-                      }
-                    ]
-                  }
-                },
                 "example-2": {
                   "value": {
-                    "salesId": "S202105220001",
-                    "merchantId": "M001",
-                    "salesDate": "2021.05.22",
-                    "fp": "202105",
-                    "districtCode": "",
-                    "branchNo": "100",
-                    "posNo": "01",
-                    "customerNo": "CUST001",
-                    "amount": "55000",
-                    "cashAmount": "50000",
-                    "nonCashAmount": "5000",
-                    "billType": "MIXED",
-                    "vat": "5500",
-                    "cityTax": "0",
+                    "salesId": "string",
+                    "merchantId": "string",
+                    "salesDate": "string",
+                    "fp": "string",
+                    "districtCode": "string",
+                    "branchNo": "string",
+                    "posNo": "string",
+                    "customerNo": "string",
+                    "amount": "string",
+                    "cashAmount": "string",
+                    "nonCashAmount": "string",
+                    "billType": "string",
+                    "vat": "string",
+                    "cityTax": "string",
                     "stocks": [
                       {
-                        "ItemId": 1,
-                        "scfProdId": "SCF0001",
-                        "code": "100010",
-                        "name": "Атар талх",
-                        "meas": "ш",
-                        "qty": "20",
-                        "unitPrice": "1600",
-                        "totalPrice ": "32000",
-                        "cityTax": "0",
-                        "vat": "3200",
-                        "barCode": "",
-                        "serialNo": "",
-                        "SKU": "",
-                        "supplierId": "",
-                        "supplierName": "АТАР ӨРГӨӨ",
-                        "returnItemId": 0
-                      },
-                      {
-                        "ItemId": 2,
-                        "scfProdId": "SCF0002",
-                        "code": "100020",
-                        "name": "Атар боорцог",
-                        "meas": "ш",
-                        "qty": "10",
-                        "unitPrice": "2300",
-                        "totalPrice ": "23000",
-                        "cityTax": "0",
-                        "vat": "230",
-                        "barCode": "",
-                        "serialNo": "",
-                        "SKU": "",
-                        "supplierId": "",
-                        "supplierName": "АТАР ӨРГӨӨ",
+                        "ItemId": 0,
+                        "scfProdId": "string",
+                        "code": "string",
+                        "name": "string",
+                        "meas": "string",
+                        "qty": "string",
+                        "unitPrice": "string",
+                        "totalPrice ": "string",
+                        "cityTax": "string",
+                        "vat": "string",
+                        "barCode": "string",
+                        "serialNo": "string",
+                        "SKU": "string",
+                        "supplierId": "string",
+                        "supplierName": "string",
                         "returnItemId": 0
                       }
                     ],
-                    "returnSalesId": "",
-                    "returnDate": ""
+                    "returnSalesId": "string",
+                    "returnDate": "string"
                   }
                 }
               }
@@ -178,87 +136,84 @@
                 "example-1": {
                   "value": [
                     {
-                      "id": "100010",
-                      "totalPrice": 230,
-                      "payType": "CARD",
-                      "salesDate": "2021.05.20 18:25",
-                      "items": [
+                      "salesId": "string",
+                      "merchantId": "string",
+                      "salesDate": "string",
+                      "fp": "string",
+                      "districtCode": "string",
+                      "branchNo": "string",
+                      "posNo": "string",
+                      "customerNo": "string",
+                      "amount": "string",
+                      "cashAmount": "string",
+                      "nonCashAmount": "string",
+                      "billType": "string",
+                      "vat": "string",
+                      "cityTax": "string",
+                      "stocks": [
                         {
-                          "prodCode": "123",
-                          "prodName": "Талх",
-                          "qty": 1,
-                          "price": 230,
-                          "prodCodeBase": "1250"
+                          "ItemId": 0,
+                          "scfProdId": "string",
+                          "code": "string",
+                          "name": "string",
+                          "meas": "string",
+                          "qty": "string",
+                          "unitPrice": "string",
+                          "totalPrice ": "string",
+                          "cityTax": "string",
+                          "vat": "string",
+                          "barCode": "string",
+                          "serialNo": "string",
+                          "SKU": "string",
+                          "supplierId": "string",
+                          "supplierName": "string",
+                          "returnItemId": 0
                         }
-                      ]
-                    },
-                    {
-                      "id": "100011",
-                      "totalPrice": 2780,
-                      "payType": "CASH",
-                      "salesDate": "2021.05.20 18:23",
-                      "items": [
-                        {
-                          "prodCode": "7778",
-                          "prodName": "Гоймон",
-                          "qty": 1,
-                          "price": 2780,
-                          "prodCodeBase": "452"
-                        }
-                      ]
+                      ],
+                      "returnSalesId": "string",
+                      "returnDate": "string"
                     }
                   ]
                 },
                 "example-2": {
                   "value": [
                     {
-                      "merchantId": "M1001",
-                      "branchNo": "B001",
-                      "posNo": "001",
+                      "salesId": "string",
+                      "merchantId": "string",
+                      "salesDate": "string",
+                      "fp": "string",
                       "districtCode": "string",
+                      "branchNo": "string",
+                      "posNo": "string",
                       "customerNo": "string",
-                      "billType": "string",
-                      "billIdSuffix": "string",
-                      "invoiceId": "string",
                       "amount": "string",
                       "cashAmount": "string",
                       "nonCashAmount": "string",
+                      "billType": "string",
                       "vat": "string",
                       "cityTax": "string",
-                      "returnBillId": "string",
-                      "taxType": "string",
                       "stocks": [
                         {
-                          "productCode": "string",
+                          "ItemId": 0,
+                          "scfProdId": "string",
                           "code": "string",
                           "name": "string",
-                          "measureUnit": "string",
+                          "meas": "string",
                           "qty": "string",
                           "unitPrice": "string",
-                          "totalAmount": "string",
+                          "totalPrice ": "string",
                           "cityTax": "string",
                           "vat": "string",
                           "barCode": "string",
+                          "serialNo": "string",
+                          "SKU": "string",
                           "supplierId": "string",
                           "supplierName": "string",
-                          "serialNo": "string",
-                          "SKU": "string"
+                          "returnItemId": 0
                         }
                       ],
-                      "bankTransactions": [
-                        {
-                          "rrn": "string",
-                          "bankId": "string",
-                          "terminalId": "string",
-                          "approvalCode": "string",
-                          "amount": "string",
-                          "curCode": "MNT"
-                        }
-                      ],
-                      "group": true,
-                      "reportMonth": "string",
-                      "saleId": "string",
-                      "saleDate": "string"
+                      "returnSalesId": "string",
+                      "returnDate": "string"
                     }
                   ]
                 }
