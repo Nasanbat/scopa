@@ -767,16 +767,25 @@
           "prodCode": {
             "type": "string"
           },
-          "prodName": {
-            "type": "string"
+          "merchantId": {
+            "type": "integer"
           },
-          "productCode": {
+          "scfProdId": {
             "type": "string",
             "description": "Барааны Scopa дээрх код. "
+          },
+          "name": {
+            "type": "string"
+          },
+          "name2": {
+            "type": "string"
           },
           "qty": {
             "type": "number",
             "description": "Үлдэгдэл"
+          },
+          "meas": {
+            "type": "string"
           },
           "unitPrice": {
             "type": "string",
@@ -797,11 +806,18 @@
           "catName": {
             "type": "string",
             "description": "Категори нэр"
+          },
+          "posNo": {
+            "type": "string"
+          },
+          "brchCode": {
+            "type": "string"
           }
         },
         "required": [
           "prodCode",
-          "prodName",
+          "merchantId",
+          "name",
           "qty",
           "unitPrice"
         ]
@@ -819,11 +835,11 @@
             "type": "string",
             "description": "SCOPA-н барааны код"
           },
-          "code": {
+          "prodCode": {
             "type": "string",
             "description": "Өөрийн систем дээрх барааны код"
           },
-          "name": {
+          "prodName": {
             "type": "string",
             "description": "Барааны нэр"
           },
@@ -832,24 +848,24 @@
             "description": "Хэмжих нэгж"
           },
           "qty": {
-            "type": "string",
+            "type": "number",
             "description": "2 орны нарийвчлалтай тоо Тоо, хэмжээ"
           },
           "unitPrice": {
-            "type": "string",
+            "type": "number",
             "description": "2 орны нарийвчлалтай тоо Нэгж үнэ Бүх төрлийн татвар шингэсэн дүн"
           },
           "totalPrice ": {
-            "type": "string",
+            "type": "number",
             "description": "Нийт үнэ"
           },
           "cityTax": {
-            "type": "string",
-            "description": "Хотын татвар"
+            "description": "Хотын татвар",
+            "type": "number"
           },
           "vat": {
-            "type": "string",
-            "description": "Татвар"
+            "description": "Татвар",
+            "type": "number"
           },
           "barCode": {
             "type": "string",
@@ -863,7 +879,7 @@
             "description": "Stock Keeping Units (SKUs)"
           },
           "supplierId": {
-            "type": "string",
+            "type": "integer",
             "description": "Нийлүүлэгч дугаар"
           },
           "supplierName": {
@@ -878,7 +894,7 @@
         "required": [
           "ItemId",
           "scfProdId",
-          "name",
+          "prodName",
           "meas",
           "qty",
           "unitPrice"
@@ -896,7 +912,7 @@
             "description": "Борлуулалтын давтагдахгүй дугаарлалт"
           },
           "merchantId": {
-            "type": "string"
+            "type": "integer"
           },
           "salesDate": {
             "type": "string",
@@ -909,7 +925,7 @@
           "districtCode": {
             "type": "string"
           },
-          "branchNo": {
+          "brchCode": {
             "type": "string"
           },
           "posNo": {
@@ -918,24 +934,24 @@
           "customerNo": {
             "type": "string"
           },
-          "amount": {
-            "type": "string"
+          "totalPrice": {
+            "type": "number"
           },
           "cashAmount": {
-            "type": "string"
+            "type": "number"
           },
           "nonCashAmount": {
-            "type": "string"
+            "type": "number"
           },
-          "billType": {
+          "payType": {
             "type": "string",
             "description": "Төлбөр хийсэн хэлбэр: CASH, CARD, MOBILE, MIXED"
           },
           "vat": {
-            "type": "string"
+            "type": "number"
           },
           "cityTax": {
-            "type": "string"
+            "type": "number"
           },
           "stocks": {
             "type": "array",
