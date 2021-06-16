@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/sales/sendSalesInfo": {
+    "/app/api/sendSalesInfo": {
       "parameters": [],
       "post": {
         "summary": "Send sales info",
@@ -93,10 +93,11 @@
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "SCFSESSION=\"8aPsc1XMdwor3kS3spYOFDSqNmq4vd\""
             },
             "in": "header",
-            "name": "SessionToken",
+            "name": "Cookie",
             "description": "Connect функцээр авсан TOKEN",
             "required": true
           }
