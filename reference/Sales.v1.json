@@ -774,10 +774,10 @@
             "type": "string",
             "description": "Барааны Scopa дээрх код. "
           },
-          "name": {
+          "prodName": {
             "type": "string"
           },
-          "name2": {
+          "prodName2": {
             "type": "string"
           },
           "qty": {
@@ -817,7 +817,7 @@
         "required": [
           "prodCode",
           "merchantId",
-          "name",
+          "prodName",
           "qty",
           "unitPrice"
         ]
@@ -931,7 +931,7 @@
           "posNo": {
             "type": "string"
           },
-          "customerNo": {
+          "registerNo": {
             "type": "string"
           },
           "totalPrice": {
