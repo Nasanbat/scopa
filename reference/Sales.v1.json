@@ -3,19 +3,23 @@
   "info": {
     "title": "Sales",
     "version": "1.0",
-    "description": "БОРЛУУЛАЛТЫН МЭДЭЭЛЭЛ ХҮЛЭЭН АВАХ API-ууд"
+    "description": "БОРЛУУЛАЛТЫН МЭДЭЭЛЭЛ ХҮЛЭЭН АВАХ API-ууд",
+    "contact": {
+      "name": "SCOPA",
+      "email": "scopa@scopa.mn"
+    }
   },
   "servers": [
     {
-      "url": "http://merchant.scopa.mn"
+      "url": "https://merchant.scopa.mn"
     }
   ],
   "paths": {
-    "/app/api/sendSalesInfo": {
+    "/ecr/api/sendSalesInfo": {
       "parameters": [],
       "post": {
         "summary": "Send sales info",
-        "operationId": "19003000",
+        "operationId": "16220001",
         "responses": {
           "200": {
             "description": "OK",
@@ -45,44 +49,64 @@
                 "$ref": "#/components/schemas/Sales"
               },
               "examples": {
-                "example-2": {
+                "salesId:123": {
                   "value": {
-                    "salesId": "string",
-                    "merchantId": "string",
-                    "salesDate": "string",
-                    "fp": "string",
-                    "districtCode": "string",
-                    "branchNo": "string",
-                    "posNo": "string",
-                    "customerNo": "string",
-                    "amount": "string",
-                    "cashAmount": "string",
-                    "nonCashAmount": "string",
-                    "billType": "string",
-                    "vat": "string",
-                    "cityTax": "string",
+                    "salesId": 123,
+                    "salesDate": "2021-06-24T14:55:06.607",
+                    "merchantId": 1,
+                    "brchCode": "100",
+                    "posNo": "001",
+                    "totalPrice": 40000,
+                    "totalDiscount": 0,
+                    "registerNo": "123456789",
+                    "payType": "CASH",
+                    "cashAmount": 40000,
+                    "nonCashAmount": 0,
+                    "vat": 0,
+                    "cityTax": 0,
+                    "fp": "202106",
+                    "returnId": 0,
+                    "returnDate": "0001-01-01T00:00:00.000",
                     "stocks": [
                       {
-                        "ItemId": 0,
-                        "scfProdId": "string",
-                        "code": "string",
-                        "name": "string",
-                        "meas": "string",
-                        "qty": "string",
-                        "unitPrice": "string",
-                        "totalPrice ": "string",
-                        "cityTax": "string",
-                        "vat": "string",
-                        "barCode": "string",
-                        "serialNo": "string",
-                        "SKU": "string",
-                        "supplierId": "string",
-                        "supplierName": "string",
+                        "salesId": 123,
+                        "itemNo": 1,
+                        "prodCode": "7",
+                        "scfProdId": "777",
+                        "prodName": "Бараа 1",
+                        "meas": "PC",
+                        "qty": 2,
+                        "unitPrice": 15000,
+                        "totalPrice": 30000,
+                        "discountAmount": 0,
+                        "vat": 0,
+                        "cityTax": 0,
+                        "barcode": "",
+                        "sku": "",
+                        "serialNo": "",
+                        "supplierId": 0,
+                        "returnItemId": 0
+                      },
+                      {
+                        "salesId": 123,
+                        "itemNo": 2,
+                        "prodCode": "6",
+                        "scfProdId": "666",
+                        "prodName": "Бараа 2",
+                        "meas": "PC",
+                        "qty": 4,
+                        "unitPrice": 2500,
+                        "totalPrice": 10100,
+                        "discountAmount": 100,
+                        "vat": 100,
+                        "cityTax": 10,
+                        "barcode": "BAR666",
+                        "sku": "SKU666",
+                        "serialNo": "S666",
+                        "supplierId": 15,
                         "returnItemId": 0
                       }
-                    ],
-                    "returnSalesId": "string",
-                    "returnDate": "string"
+                    ]
                   }
                 }
               }
@@ -94,20 +118,30 @@
           {
             "schema": {
               "type": "string",
-              "example": "SCFSESSION=\"8aPsc1XMdwor3kS3spYOFDSqNmq4vd\""
+              "default": "8aPsc1XMdwor3kS3spYOFDSqNmq4vd"
             },
             "in": "header",
-            "name": "Cookie",
+            "name": "SessionToken",
             "description": "Connect функцээр авсан TOKEN",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "description": "application/json",
             "required": true
           }
         ]
       }
     },
-    "/sales/sendSalesInfoBatch": {
+    "/ecr/api/sendSalesInfoBatch": {
       "post": {
         "summary": "Send sales info batch",
-        "operationId": "post-sales-sendSalesInfoBatch",
+        "operationId": "16220002",
         "responses": {
           "200": {
             "description": "OK",
@@ -226,17 +260,29 @@
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "8aPsc1XMdwor3kS3spYOFDSqNmq4vd"
             },
             "in": "header",
             "name": "SessionToken",
             "description": "Connect функцээр авсан TOKEN",
             "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "description": "application/json",
+            "required": true
           }
         ]
-      }
+      },
+      "parameters": []
     },
-    "/sales/sendReverseInfo": {
+    "/ecr/api/sendReverseInfo": {
       "post": {
         "summary": "Send sales reversal info",
         "operationId": "post-sales-sendReverseInfo",
@@ -339,20 +385,32 @@
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "8aPsc1XMdwor3kS3spYOFDSqNmq4vd"
             },
             "in": "header",
             "name": "SessionToken",
             "description": "Connect функцээр авсан TOKEN",
             "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "description": "application/json",
+            "required": true
           }
         ]
-      }
+      },
+      "parameters": []
     },
-    "/inv/sendProdBal": {
+    "/ecr/api/sendProdBal": {
       "post": {
         "summary": "Send product balance",
-        "operationId": "post-inv-sendProdBal",
+        "operationId": "16220003",
         "responses": {
           "200": {
             "description": "OK",
@@ -369,11 +427,23 @@
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "8aPsc1XMdwor3kS3spYOFDSqNmq4vd"
             },
             "in": "header",
             "description": "Connect функцээр авсан TOKEN",
-            "name": "SessionToken"
+            "name": "SessionToken",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            },
+            "in": "header",
+            "description": "application/json",
+            "name": "Content-Type",
+            "required": true
           }
         ],
         "requestBody": {
@@ -405,9 +475,10 @@
             }
           }
         }
-      }
+      },
+      "parameters": []
     },
-    "/Order/DetailOrder": {
+    "/ecr/api/DetailOrder": {
       "post": {
         "summary": "Detail Order",
         "operationId": "19001004",
@@ -494,7 +565,29 @@
             }
           },
           "description": ""
-        }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "default": "8aPsc1XMdwor3kS3spYOFDSqNmq4vd"
+            },
+            "in": "header",
+            "name": "SessionToken",
+            "required": true,
+            "description": "Connect функцээр авсан TOKEN"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "required": true,
+            "description": "application/json"
+          }
+        ]
       },
       "parameters": []
     }
@@ -828,9 +921,14 @@
         "type": "object",
         "description": "Борлуулалт доторх барааны мэдээлэл",
         "properties": {
-          "ItemId": {
+          "salesId": {
+            "type": "integer",
+            "description": "Борлуулалтын дугаар"
+          },
+          "itemNo": {
             "type": "number",
-            "description": "Борлуулалтын дэд дугаар"
+            "description": "Борлуулалтын дэд дугаар",
+            "default": 1
           },
           "scfProdId": {
             "type": "string",
@@ -893,7 +991,8 @@
           }
         },
         "required": [
-          "ItemId",
+          "salesId",
+          "itemNo",
           "scfProdId",
           "prodName",
           "meas",
@@ -917,7 +1016,9 @@
           },
           "salesDate": {
             "type": "string",
-            "description": "борлуулалт хийсэн огноо, цаг, минуттай"
+            "description": "борлуулалт хийсэн огноо, цаг, минуттай",
+            "format": "date-time",
+            "default": "2021-06-24T14:55:06.607"
           },
           "fp": {
             "type": "string",
