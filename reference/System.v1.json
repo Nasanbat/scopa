@@ -3,19 +3,23 @@
   "info": {
     "title": "System",
     "version": "1.0",
-    "description": "System холболт тогтоох, холболт шалгах зэрэг апи функцүүд"
+    "description": "System холболт тогтоох, холболт шалгах зэрэг апи функцүүд",
+    "contact": {
+      "name": "",
+      "email": "scopa@scopa.mn"
+    }
   },
   "servers": [
     {
-      "url": "http://merchant.scopa.mn"
+      "url": "https://merchant.scopa.mn"
     }
   ],
   "paths": {
-    "/system/echo": {
+    "/app/api/echo": {
       "parameters": [],
       "post": {
         "summary": "Echo",
-        "operationId": "19000015",
+        "operationId": "16200001",
         "responses": {
           "200": {
             "description": "Холболт хэвийн",
@@ -23,7 +27,8 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/response"
-                }
+                },
+                "examples": {}
               }
             }
           },
@@ -35,23 +40,47 @@
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "8aPsc1XMdwor3kS3spYOFDSqNmq4vd"
             },
             "in": "header",
             "name": "SessionToken",
-            "description": "TOKEN"
+            "description": "Session Token connectMerch хүсэлтээр авна.",
+            "required": true
+          }
+        ],
+        "tags": [],
+        "x-internal": false
+      },
+      "get": {
+        "summary": "Холболт хэвийн байгаа эсэхийг шалгана",
+        "operationId": "16200001-GET",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Холболт хэвийн байгаа эсэхийг шалгана",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "default": "8aPsc1XMdwor3kS3spYOFDSqNmq4vd"
+            },
+            "in": "header",
+            "name": "SessionToken"
           }
         ]
       }
     },
-    "/system/connect": {
+    "/app/api/connectMerch": {
       "parameters": [],
       "post": {
         "summary": "Connect",
-        "operationId": "19000015",
+        "operationId": "16200002",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Энэ токенийг ашиглана дараа дараачийн үйлдлүүдийг хийнэ",
             "content": {
               "application/json": {
                 "schema": {
@@ -60,19 +89,30 @@
               }
             }
           },
-          "501": {
-            "description": "Session үүсгэж өгөх боломжгүй "
+          "500": {
+            "description": "41000225 - Системд нэвтрээгүй байна"
           },
-          "": {
-            "headers": {
-              "AccessToken": {
+          "501": {
+            "description": "Session үүсгэж өгөх боломжгүй ",
+            "content": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/connect_response"
                 },
-                "description": "Энэ токенийг ашиглана дараа дараачийн үйлдлүүдийг хийнэ."
+                "examples": {
+                  "TAN code expired": {
+                    "value": {
+                      "responseCode": 2,
+                      "responseDesc": "TAN code expired!",
+                      "responseData": null,
+                      "merchantId": null,
+                      "merchantName": null,
+                      "sessionToken": null
+                    }
+                  }
+                }
               }
-            },
-            "description": ""
+            }
           }
         },
         "description": "СКОПА платформд холболт тогтоох. ",
@@ -80,31 +120,33 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "tanCode": {
-                    "type": "integer",
-                    "description": "Merchant mobile app -с энэ ТАН кодыг авч дамжуулна."
-                  }
-                }
+                "type": "string",
+                "example": "413799",
+                "description": "Тан код"
               },
               "examples": {
-                "example-1": {
-                  "value": {
-                    "tanCode": 845762
-                  }
+                "Default": {
+                  "value": "413799"
                 }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
               }
             }
           },
           "description": "Холболтын session token авах функц. Авсан токеноо ашиглана дараа дараачийн үйлдлүүдийг хийнэ."
-        }
+        },
+        "parameters": []
       }
     },
-    "/system/getCommand": {
-      "get": {
-        "summary": "Get command",
-        "tags": [],
+    "/app/api/getCommand": {
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "operationId": "16200003",
         "responses": {
           "200": {
             "description": "OK",
@@ -114,167 +156,121 @@
                   "$ref": "#/components/schemas/response"
                 },
                 "examples": {
-                  "Take order data": {
+                  "orderComplate": {
                     "value": {
-                      "responseCode": "0",
+                      "responseCode": 0,
                       "responseDesc": "Амжилттай",
-                      "responseData": {
-                        "cmd": "TAKE_ORDER_DATA",
-                        "data": 1200012
-                      }
+                      "responseData": "",
+                      "cmd": "TAKE_ORDER_DATA",
+                      "data": "1200012"
                     }
                   },
                   "To send inv balance": {
                     "value": {
-                      "responseCode": "0",
+                      "responseCode": 0,
                       "responseDesc": "Амжилттай",
-                      "responseData": {
-                        "cmd": "SEND_PROD_BAL",
-                        "data": "1245"
-                      }
+                      "responseData": "",
+                      "cmd": "SEND_PROD_BAL",
+                      "data": "1245"
                     }
                   }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              },
-              "multipart/form-data": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              },
-              "text/html": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
                 }
               }
             }
           }
         },
-        "operationId": "get-system-getCommand",
         "description": "Системээс өгсөн командыг авах. ",
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "8aPsc1XMdwor3kS3spYOFDSqNmq4vd"
             },
             "in": "header",
-            "name": "SessionToken",
-            "description": "Connect функцээр авсан TOKEN",
-            "required": true
+            "name": "SessionToken"
           }
-        ]
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "default": 1
+              },
+              "examples": {
+                "Merchant": {
+                  "value": 1
+                }
+              }
+            }
+          },
+          "description": "Мерчантын дугаар"
+        }
       }
     }
   },
   "components": {
     "schemas": {
       "response": {
-        "title": "response",
+        "description": "",
         "type": "object",
-        "description": "Хариу",
         "properties": {
           "responseCode": {
-            "type": "string",
-            "description": "0 - бол амжилттай, 0-с ялгаатай бол бизнес алдаа гарсан гэсэн үг."
+            "type": "number"
+          },
+          "responseDesc": {
+            "type": "string"
+          },
+          "responseData": {},
+          "cmd": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "responseCode",
+          "responseDesc",
+          "cmd",
+          "data"
+        ],
+        "x-examples": {}
+      },
+      "connect_response": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "number"
           },
           "responseDesc": {
             "type": "string",
-            "description": "Бизнесс алдаа гарсан үед алдааны тухай тайлбар"
+            "minLength": 1
           },
-          "responseData": {
-            "type": "object",
-            "description": "Дата буцаах бол энд байрлана"
-          }
+          "responseData": {},
+          "merchantId": {},
+          "merchantName": {},
+          "sessionToken": {}
         },
         "required": [
           "responseCode",
           "responseDesc"
         ],
         "x-examples": {
-          "connect response": {
-            "responseCode": "0",
-            "responseDesc": "",
-            "responseData": {
-              "merchantId": 123456
+          "ConnectedMerchant": {
+            "value": {
+              "responseCode": 0,
+              "responseDesc": "",
+              "responseData": null,
+              "merchantId": 1,
+              "merchantName": "Цэцэг дэлгүүр",
+              "sessionToken": "ыбсыбсыбөыбөмыбө"
             }
           }
         }
-      },
-      "connect_response": {
-        "title": "connect_response",
-        "type": "object",
-        "x-examples": {
-          "Success": {
-            "value": {
-              "responseCode": "0",
-              "responseDesc": "",
-              "responseData": {
-                "merchantId": 45923,
-                "merchantName": "Цэцэг минимаркет"
-              }
-            }
-          }
-        },
-        "properties": {
-          "responseCode": {
-            "type": "string"
-          },
-          "responseDesc": {
-            "type": "string"
-          },
-          "responseData": {
-            "type": "object",
-            "properties": {
-              "merchantId": {
-                "type": "number",
-                "description": "Холболт хийгдсэн мерчантын дугаарыг буцаана"
-              },
-              "merchantName": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "merchantId"
-            ]
-          }
-        },
-        "required": [
-          "responseCode"
-        ]
       }
     },
-    "responses": {
-      "general_res": {
-        "description": "Example response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "responseCode": {
-                  "type": "string"
-                },
-                "responseDesc": {
-                  "type": "string"
-                },
-                "responseData": {
-                  "type": "object"
-                }
-              },
-              "required": [
-                "responseCode"
-              ]
-            }
-          }
-        }
-      }
-    }
+    "responses": {}
   }
 }
