@@ -882,7 +882,7 @@
             "type": "string"
           },
           "unitPrice": {
-            "type": "string",
+            "type": "number",
             "description": "Хэмжих нэгж"
           },
           "supplierName": {
@@ -1009,7 +1009,7 @@
         "x-examples": {},
         "properties": {
           "salesId": {
-            "type": "string",
+            "type": "integer",
             "description": "Борлуулалтын давтагдахгүй дугаарлалт",
             "default": "123"
           },
@@ -1064,7 +1064,7 @@
             }
           },
           "returnSalesId": {
-            "type": "string",
+            "type": "integer",
             "default": "123"
           },
           "returnDate": {
