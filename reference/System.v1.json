@@ -17,44 +17,9 @@
   "paths": {
     "/ecr/api/echo": {
       "parameters": [],
-      "post": {
-        "summary": "Echo",
-        "operationId": "16200001",
-        "responses": {
-          "200": {
-            "description": "Холболт хэвийн",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/response"
-                },
-                "examples": {}
-              }
-            }
-          },
-          "501": {
-            "description": "Session дууссан байна."
-          }
-        },
-        "description": "Холболт хэвийн байгаа эсэхийг шалгана",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "default": "8aPsc1XMdwor3kS3spYOFDSqNmq4vd"
-            },
-            "in": "header",
-            "name": "SessionToken",
-            "description": "Session Token connectMerch хүсэлтээр авна.",
-            "required": true
-          }
-        ],
-        "tags": [],
-        "x-internal": false
-      },
       "get": {
         "summary": "Холболт хэвийн байгаа эсэхийг шалгана",
-        "operationId": "16200001-GET",
+        "operationId": "16200001",
         "responses": {
           "200": {
             "description": "OK"
