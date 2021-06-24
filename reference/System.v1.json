@@ -15,7 +15,7 @@
     }
   ],
   "paths": {
-    "/app/api/echo": {
+    "/ecr/api/echo": {
       "parameters": [],
       "post": {
         "summary": "Echo",
@@ -73,7 +73,7 @@
         ]
       }
     },
-    "/app/api/connectMerch": {
+    "/ecr/api/connectMerch": {
       "parameters": [],
       "post": {
         "summary": "Connect",
@@ -142,7 +142,7 @@
         "parameters": []
       }
     },
-    "/app/api/getCommand": {
+    "/ecr/api/getCommand": {
       "parameters": [],
       "post": {
         "summary": "",
