@@ -923,7 +923,8 @@
         "properties": {
           "salesId": {
             "type": "integer",
-            "description": "Борлуулалтын дугаар"
+            "description": "Борлуулалтын дугаар",
+            "default": 123
           },
           "itemNo": {
             "type": "number",
@@ -1009,7 +1010,8 @@
         "properties": {
           "salesId": {
             "type": "string",
-            "description": "Борлуулалтын давтагдахгүй дугаарлалт"
+            "description": "Борлуулалтын давтагдахгүй дугаарлалт",
+            "default": "123"
           },
           "merchantId": {
             "type": "integer"
@@ -1062,11 +1064,14 @@
             }
           },
           "returnSalesId": {
-            "type": "string"
+            "type": "string",
+            "default": "123"
           },
           "returnDate": {
             "type": "string",
-            "description": "Буцаалт хийсэн огноо"
+            "description": "Буцаалт хийсэн огноо",
+            "format": "date-time",
+            "default": "2021-06-24T14:55:06.607"
           }
         },
         "required": [
