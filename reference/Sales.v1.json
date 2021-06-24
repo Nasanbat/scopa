@@ -890,11 +890,11 @@
             "description": "Нийлүүлэгчийн нэр"
           },
           "supplierId": {
-            "type": "string",
-            "description": "Нийлүүлэгчийн Id"
+            "description": "Нийлүүлэгчийн Id",
+            "type": "integer"
           },
           "catId": {
-            "type": "string",
+            "type": "integer",
             "description": "Категори id"
           },
           "catName": {
