@@ -15,7 +15,7 @@
     }
   ],
   "paths": {
-    "/ecr/api/sendSalesInfo": {
+    "/sendSalesInfo": {
       "parameters": [],
       "post": {
         "summary": "Send sales info",
@@ -140,7 +140,7 @@
         ]
       }
     },
-    "/ecr/api/sendSalesInfoBatch": {
+    "/sendSalesInfoBatch": {
       "post": {
         "summary": "Send sales info batch",
         "operationId": "16220002",
@@ -231,7 +231,7 @@
                       "vat": 0,
                       "cityTax": 0,
                       "stocks": [
-                        { 
+                        {
                           "salesId": 123,
                           "itemNo": 0,
                           "scfProdId": "string",
@@ -286,7 +286,7 @@
       },
       "parameters": []
     },
-    "/ecr/api/sendReverseInfo": {
+    "/sendReverseInfo": {
       "post": {
         "summary": "Send sales reversal info",
         "operationId": "post-sales-sendReverseInfo",
@@ -309,8 +309,7 @@
               "schema": {
                 "$ref": "#/components/schemas/Sales"
               },
-              "examples": { 
-              }
+              "examples": {}
             }
           },
           "description": "Буцааж байгаа бараанууд"
@@ -340,7 +339,7 @@
       },
       "parameters": []
     },
-    "/ecr/api/sendProdBal": {
+    "/sendProdBal": {
       "post": {
         "summary": "Send product balance",
         "operationId": "16220003",
@@ -413,7 +412,7 @@
       },
       "parameters": []
     },
-    "/ecr/api/DetailOrder": {
+    "/DetailOrder": {
       "post": {
         "summary": "Detail Order",
         "operationId": "19001004",
@@ -598,7 +597,7 @@
           "salesDate": {
             "type": "string",
             "description": "борлуулалт хийсэн огноо, цаг, минуттай",
-            "format": "date-time", 
+            "format": "date-time",
             "default": "2021-06-24T14:55:06.607"
           },
           "items": {
