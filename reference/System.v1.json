@@ -18,7 +18,7 @@
     "/ecr/api/echo": {
       "parameters": [],
       "get": {
-        "summary": "Холболт хэвийн байгаа эсэхийг шалгана",
+        "summary": "echo",
         "operationId": "16200001",
         "responses": {
           "200": {
@@ -110,7 +110,7 @@
     "/ecr/api/getCommand": {
       "parameters": [],
       "post": {
-        "summary": "",
+        "summary": "getCommand",
         "operationId": "16200003",
         "responses": {
           "200": {
