@@ -31,9 +31,11 @@
                 "examples": {
                   "example-1": {
                     "value": {
-                      "responseCode": "string",
+                      "responseCode": 0,
                       "responseDesc": "string",
-                      "responseData": {}
+                      "responseData": "",
+                      "cmd": "",
+                      "data": ""
                     }
                   }
                 }
@@ -171,84 +173,86 @@
                 "example-1": {
                   "value": [
                     {
-                      "salesId": "string",
-                      "merchantId": "string",
-                      "salesDate": "string",
+                      "salesId": 123,
+                      "merchantId": 1,
+                      "salesDate": "2021-06-24T14:55:06.607",
                       "fp": "string",
                       "districtCode": "string",
                       "branchNo": "string",
                       "posNo": "string",
                       "customerNo": "string",
                       "amount": "string",
-                      "cashAmount": "string",
-                      "nonCashAmount": "string",
+                      "cashAmount": 0,
+                      "nonCashAmount": 0,
                       "billType": "string",
-                      "vat": "string",
-                      "cityTax": "string",
+                      "vat": 0,
+                      "cityTax": 0,
                       "stocks": [
                         {
-                          "ItemId": 0,
+                          "salesId": 123,
+                          "itemNo": 0,
                           "scfProdId": "string",
                           "code": "string",
-                          "name": "string",
+                          "prodName": "string",
                           "meas": "string",
-                          "qty": "string",
-                          "unitPrice": "string",
-                          "totalPrice ": "string",
-                          "cityTax": "string",
-                          "vat": "string",
+                          "qty": 0,
+                          "unitPrice": 0,
+                          "totalPrice ": 0,
+                          "cityTax": 0,
+                          "vat": 0,
                           "barCode": "string",
                           "serialNo": "string",
                           "SKU": "string",
-                          "supplierId": "string",
+                          "supplierId": 0,
                           "supplierName": "string",
                           "returnItemId": 0
                         }
                       ],
-                      "returnSalesId": "string",
-                      "returnDate": "string"
+                      "returnSalesId": 0,
+                      "returnDate": "2021-06-24T14:55:06.607"
                     }
                   ]
                 },
                 "example-2": {
                   "value": [
                     {
-                      "salesId": "string",
-                      "merchantId": "string",
-                      "salesDate": "string",
+                      "salesId": 123,
+                      "merchantId": 1,
+                      "salesDate": "2021-06-24T14:55:06.607",
                       "fp": "string",
                       "districtCode": "string",
                       "branchNo": "string",
                       "posNo": "string",
                       "customerNo": "string",
                       "amount": "string",
-                      "cashAmount": "string",
-                      "nonCashAmount": "string",
+                      "cashAmount": 0,
+                      "nonCashAmount": 0,
                       "billType": "string",
-                      "vat": "string",
-                      "cityTax": "string",
+                      "vat": 0,
+                      "cityTax": 0,
                       "stocks": [
-                        {
-                          "ItemId": 0,
+                        { 
+                          "salesId": 123,
+                          "itemNo": 0,
                           "scfProdId": "string",
                           "code": "string",
-                          "name": "string",
+                          "prodName": "string",
                           "meas": "string",
-                          "qty": "string",
-                          "unitPrice": "string",
-                          "totalPrice ": "string",
-                          "cityTax": "string",
-                          "vat": "string",
+                          "qty": 0,
+                          "unitPrice": 0,
+                          "totalPrice ": 0,
+                          "cityTax": 0,
+                          "vat": 0,
                           "barCode": "string",
                           "serialNo": "string",
                           "SKU": "string",
-                          "supplierId": "string",
+                          "supplierId": 1,
                           "supplierName": "string",
                           "returnItemId": 0
                         }
                       ],
-                      "returnSalesId": "string",
-                      "returnDate": "string"
+                      "returnSalesId": 0,
+                      "returnDate": "2021-06-24T14:55:06.607"
                     }
                   ]
                 }
@@ -305,78 +309,7 @@
               "schema": {
                 "$ref": "#/components/schemas/Sales"
               },
-              "examples": {
-                "example-1": {
-                  "value": [
-                    {
-                      "id": "string",
-                      "prodCode": "string",
-                      "prodName": "string",
-                      "qty": 0,
-                      "price": 0,
-                      "prodCodeBase": "string"
-                    },
-                    {
-                      "id": "string",
-                      "prodCode": "string",
-                      "prodName": "string",
-                      "qty": 0,
-                      "price": 0,
-                      "prodCodeBase": "string"
-                    }
-                  ]
-                },
-                "example-2": {
-                  "value": {
-                    "merchantId": "string",
-                    "branchNo": "string",
-                    "posNo": "string",
-                    "districtCode": "string",
-                    "customerNo": "string",
-                    "billType": "string",
-                    "billIdSuffix": "string",
-                    "invoiceId": "string",
-                    "amount": "string",
-                    "cashAmount": "string",
-                    "nonCashAmount": "string",
-                    "vat": "string",
-                    "cityTax": "string",
-                    "returnBillId": "string",
-                    "taxType": "string",
-                    "stocks": [
-                      {
-                        "productCode": "string",
-                        "code": "string",
-                        "name": "string",
-                        "measureUnit": "string",
-                        "qty": "string",
-                        "unitPrice": "string",
-                        "totalAmount": "string",
-                        "cityTax": "string",
-                        "vat": "string",
-                        "barCode": "string",
-                        "supplierId": "string",
-                        "supplierName": "string",
-                        "serialNo": "string",
-                        "SKU": "string"
-                      }
-                    ],
-                    "bankTransactions": [
-                      {
-                        "rrn": "string",
-                        "bankId": "string",
-                        "terminalId": "string",
-                        "approvalCode": "string",
-                        "amount": "string",
-                        "curCode": "MNT"
-                      }
-                    ],
-                    "group": true,
-                    "reportMonth": "string",
-                    "saleId": "string",
-                    "saleDate": "string"
-                  }
-                }
+              "examples": { 
               }
             }
           },
@@ -464,9 +397,11 @@
                       "prodCodeBase": "string",
                       "qty": 0,
                       "unit": "string",
+                      "unitPrice": 0,
                       "supplierName": "string",
-                      "supplierId": "string",
-                      "catId": "string",
+                      "supplierId": 0,
+                      "merchantId": 0,
+                      "catId": 0,
                       "catName": "string"
                     }
                   ]
@@ -495,7 +430,7 @@
                     "value": {
                       "orderId": 12,
                       "orderDate": "2021.03.12",
-                      "status": 0,
+                      "status": "PENDING",
                       "statusName": "Хүлээгдэж байгаа",
                       "merchantId": 123,
                       "description": "Атар талх 10, Боов-10",
@@ -506,10 +441,11 @@
                       "curCode": "MNT",
                       "items": [
                         {
-                          "ItemId": 1,
+                          "itemId": 1,
                           "productCode": "AT001",
-                          "productName": "Атар талх",
-                          "qty": 10,
+                          "productName": "AT001",
+                          "prodCodeBase": "AT001",
+                          "orderQty": 10,
                           "meas": "C",
                           "price": 1500,
                           "curCode": "MNT",
@@ -517,10 +453,11 @@
                           "description": "Талх"
                         },
                         {
-                          "ItemId": 2,
+                          "itemId": 2,
                           "productCode": "AT002",
                           "productName": "Боорцог",
-                          "qty": 10,
+                          "prodCodeBase": "AT002",
+                          "orderQty": 10,
                           "meas": "C",
                           "price": 3000,
                           "curCode": "MNT",
@@ -533,9 +470,6 @@
                 }
               }
             }
-          },
-          "501": {
-            "$ref": "#/components/responses/501"
           }
         },
         "description": "Захиалгын мэдээлэл лавлах",
@@ -637,7 +571,7 @@
             "id": "string",
             "totalPrice": 0,
             "payType": "string",
-            "salesDate": "2021.05.20 18:25",
+            "salesDate": "2021-06-24T14:55:06.607",
             "items": [
               {
                 "prodCode": "string",
@@ -664,9 +598,8 @@
           "salesDate": {
             "type": "string",
             "description": "борлуулалт хийсэн огноо, цаг, минуттай",
-            "format": "date-time",
-            "example": "2021.05.20 18:25",
-            "default": "yyyy.MM.dd hh:mi"
+            "format": "date-time", 
+            "default": "2021-06-24T14:55:06.607"
           },
           "items": {
             "type": "array",
@@ -1011,7 +944,7 @@
           "salesId": {
             "type": "integer",
             "description": "Борлуулалтын давтагдахгүй дугаарлалт",
-            "default": "123"
+            "default": 123
           },
           "merchantId": {
             "type": "integer"
@@ -1065,7 +998,7 @@
           },
           "returnSalesId": {
             "type": "integer",
-            "default": "123"
+            "default": 123
           },
           "returnDate": {
             "type": "string",
