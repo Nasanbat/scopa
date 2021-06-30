@@ -1,0 +1,1611 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Merchant remote onboarding",
+    "version": "1.0",
+    "summary": "Мерчантын бүртгэл",
+    "description": "Мерчант өөрийгөө апп, вэбээс бүртгүүлэх API"
+  },
+  "servers": [
+    {
+      "url": "http://172.16.116.33:30204/scf.mse.api",
+      "description": "enroll api"
+    },
+    {
+      "description": "merch api",
+      "url": "http://172.16.116.33:30204/scf.merch.api"
+    }
+  ],
+  "paths": {
+    "/startCse": {
+      "post": {
+        "summary": "Бизнес эрхлэгчийн бүртгэл эхлүүлэх",
+        "operationId": "post-startCse",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "imagePath": {
+                      "type": "string"
+                    },
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "imagePath",
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "imagePath": "",
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "examples": {}
+            }
+          },
+          "description": ""
+        },
+        "description": "Бизнес эрхлэгч шинээр бүртгүүлэх",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "tags": [
+          "businessOwner"
+        ]
+      },
+      "parameters": []
+    },
+    "/saveBoCidFront": {
+      "post": {
+        "summary": "Иргэний үнэмлэхийн урд тал таних",
+        "operationId": "post-saveBoCidFront",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "imagePath": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "imagePath",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "imagePath": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "businessOwner"
+        ]
+      }
+    },
+    "/saveBoCidBack": {
+      "post": {
+        "summary": "Иргэний үнэмлэхийн ар тал таних",
+        "operationId": "post-saveBoCidBack",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "imagePath": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "imagePath",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "imagePath": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ]
+      }
+    },
+    "/saveBoCidSelfie": {
+      "post": {
+        "summary": "Иргэний үнэмлэх, сэлфи зураг таних",
+        "operationId": "post-saveBoCidSelfie",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "imagePath": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "imagePath",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "imagePath": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/processBoFingerprint": {
+      "post": {
+        "summary": "",
+        "operationId": "post-processBoFingerprint",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "imagePath": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "imagePath",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "imagePath": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": ""
+      }
+    },
+    "/enterBoInfo": {
+      "post": {
+        "summary": "Бизнес эрхлэгчийн мэдээлэл оруулах",
+        "operationId": "post-enterBoInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    },
+                    "registerCode": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "firstName",
+                    "lastName",
+                    "registerCode",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "firstName": "",
+                      "lastName": "",
+                      "registerCode": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "registerCode": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "firstName",
+                  "lastName",
+                  "registerCode",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "firstName": "",
+                    "lastName": "",
+                    "registerCode": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          },
+          "description": "Иргэний үнэмлэх, хурууны хээ хоорондоо таарахгүй үед дуудах функц"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ]
+      }
+    },
+    "/saveBoLoginInfo": {
+      "parameters": [],
+      "post": {
+        "summary": "Бизнес эрхлэгчийн нэвтрэх мэдээллийг хадгалах",
+        "operationId": "post-saveBoLoginInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "mobileNo": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "mobileNo",
+                  "email",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "mobileNo": "",
+                    "email": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ]
+      }
+    },
+    "/resendTan": {
+      "post": {
+        "summary": "Баталгаажуулах код авах",
+        "operationId": "post-resendTan",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/registerBo": {
+      "post": {
+        "summary": "",
+        "operationId": "post-registerBo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "tan": "",
+                    "enrollId": 0
+                  }
+                },
+                "properties": {
+                  "enrollId": {
+                    "type": "number"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "enrollId"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/startMse": {
+      "post": {
+        "summary": "Дэлгүүрийн бүртгэл эхлүүлэх",
+        "operationId": "post-startMse",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {},
+                    "enrollId": {
+                      "type": "number"
+                    },
+                    "imagePath": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "enrollId",
+                    "imagePath"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": null,
+                      "enrollId": 23,
+                      "imagePath": "SCF/MSE/"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/access_token"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ]
+      }
+    },
+    "/saveBasicLicense": {
+      "post": {
+        "summary": "Үйл ажиллагаа эрхлэх зөвшөөрөл уншуулах",
+        "operationId": "post-saveBasicLicense",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/access_token"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "imagePath": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "imagePath",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "imagePath": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/saveAlcoholLicense": {
+      "post": {
+        "summary": "Согтууруулах ундааны зөвшөөрөл уншуулах",
+        "operationId": "post-saveAlcoholLicense",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "flag": {
+                      "type": "string"
+                    },
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "flag",
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "flag": "",
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/access_token"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "imagePath": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "imagePath",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "imagePath": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/saveCigarLicense": {
+      "post": {
+        "summary": "Тамхины зөвшөөрөл уншуулах",
+        "operationId": "post-saveCigarLicense",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "flag": {
+                      "type": "string"
+                    },
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "flag",
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "flag": "",
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/access_token"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "imagePath": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "imagePath",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "imagePath": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/enterMerchantInfo": {
+      "post": {
+        "summary": "Дэлгүүрийн мэдээлэл оруулах",
+        "operationId": "post-enterMerchantInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "merchName": {
+                    "type": "string"
+                  },
+                  "entityName": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "merchName",
+                  "entityName",
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "merchName": "",
+                    "entityName": "",
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/access_token"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ]
+      }
+    },
+    "/verifyMobile": {
+      "post": {
+        "summary": "",
+        "operationId": "post-verifyMobile",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "string"
+                  },
+                  "tkn": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkMse": {
+      "post": {
+        "summary": "Дэлгүүрийн бүртгэл шалгах",
+        "operationId": "post-checkMse",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "flag": {
+                      "type": "string"
+                    },
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "flag",
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "flag": "",
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/access_token"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ]
+      }
+    },
+    "/registerMerchant": {
+      "post": {
+        "summary": "Дэлгүүр бүртгэх",
+        "operationId": "post-registerMerchant",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {
+                      "type": "string"
+                    },
+                    "enrollId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "responseDesc",
+                    "enrollId"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": "",
+                      "enrollId": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "enrollId": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "enrollId"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "enrollId": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/access_token"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ]
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Нэвтрэх",
+        "operationId": "post-login",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "responseCode": {
+                      "type": "number"
+                    },
+                    "responseDesc": {},
+                    "session": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "custCode": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "lastAccessDate": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "isBiometricLogin": {
+                      "type": "number"
+                    },
+                    "credStatus": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "expireTimeout": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "responseCode",
+                    "session",
+                    "custCode",
+                    "lastAccessDate",
+                    "isBiometricLogin",
+                    "credStatus",
+                    "expireTimeout"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "responseCode": 0,
+                      "responseDesc": null,
+                      "session": "WfAi0jeUq1QUoAI55q1V3AoWPHf9zXDJaTzlfAAtS7e25T2OPg",
+                      "custCode": "100000012",
+                      "lastAccessDate": "2021-06-29T11:15:02.481",
+                      "isBiometricLogin": 0,
+                      "credStatus": "NORMAL",
+                      "expireTimeout": 30
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "loginCode": {
+                    "type": "string"
+                  },
+                  "custCredValue": {
+                    "type": "string"
+                  },
+                  "deviceId": {
+                    "type": "string"
+                  },
+                  "deviceName": {
+                    "type": "string"
+                  },
+                  "deviceIp": {
+                    "type": "string"
+                  },
+                  "deviceMac": {
+                    "type": "string"
+                  },
+                  "osType": {
+                    "type": "string"
+                  },
+                  "appVersion": {
+                    "type": "number"
+                  },
+                  "biometricFlag": {
+                    "type": "string"
+                  },
+                  "pushToken": {
+                    "type": "string"
+                  },
+                  "latitude": {
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "type": "number"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "loginCode": "99077754",
+                    "custCredValue": "Qwe123",
+                    "deviceId": "string",
+                    "deviceName": "string",
+                    "deviceIp": "string",
+                    "deviceMac": "string",
+                    "osType": "string",
+                    "appVersion": 1,
+                    "biometricFlag": "string",
+                    "pushToken": "string",
+                    "latitude": 0,
+                    "longitude": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "summary": "",
+        "operationId": "post-logout",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/app_id"
+          },
+          {
+            "$ref": "#/components/parameters/app_secret"
+          },
+          {
+            "$ref": "#/components/parameters/access_token"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "parameters": {
+      "app_id": {
+        "name": "app_id",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "default": "1"
+        },
+        "description": "Аппын дугаар"
+      },
+      "app_secret": {
+        "name": "app_secret",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "default": "SCOPA"
+        },
+        "description": "Аппын нууцлал"
+      },
+      "access_token": {
+        "name": "access_token",
+        "in": "header",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "Токен"
+      },
+      "Content-Type": {
+        "name": "Content-Type",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "default": "application/json"
+        },
+        "description": "content type"
+      }
+    },
+    "responses": {}
+  }
+}
